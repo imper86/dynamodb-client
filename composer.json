@@ -8,11 +8,63 @@
             "OoAws\\DynamodbClient\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "OoAws\\DynamodbClientTests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "OO AWS",
             "email": "oo-aws@asz.gg"
         }
     ],
-    "require": {}
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "captainhook/captainhook-phar": true
+        }
+    },
+    "require": {
+        "php": ">=8.4"
+    },
+    "require-dev": {
+        "captainhook/captainhook-phar": "^5.29",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-webmozart-assert": "^2.0",
+        "rector/rector": "^2.6",
+        "shipmonk/composer-dependency-analyser": "^1.8"
+    },
+    "scripts": {
+        "cs:check": "php-cs-fixer check --allow-risky=yes",
+        "cs:fix": "php-cs-fixer fix --allow-risky=yes",
+        "stan": "phpstan analyse --memory-limit=1G",
+        "rector:check": "rector process --dry-run",
+        "rector:fix": "rector process",
+        "cda": "composer-dependency-analyser",
+        "analyse": [
+            "@cs:check",
+            "@stan",
+            "@rector:check",
+            "@cda"
+        ],
+        "fix": [
+            "cs:fix",
+            "rector:fix"
+        ]
+    },
+    "scripts-descriptions": {
+        "cs:check": "Runs php-cs-fixer check without changing files",
+        "cs:fix": "Runs php-cs-fixer fix",
+        "stan": "Runs phpstan",
+        "rector:check": "Runs rector dry run",
+        "rector:fix": "Runs rector",
+        "cda": "Runs composer-dependency-analyser",
+        "analyse": "Runs cs:check, stan, rector:check and cda",
+        "fix": "Runs cs:fix and rector:fix"
+    }
 }
