@@ -31,7 +31,7 @@ use function sprintf;
  * a JSON object for maps) and denormalizes it back, delegating items of
  * {@see ObjectCollectionInterface} to the rest of the serializer chain.
  */
-final readonly class CollectionNormalizer implements
+final class CollectionNormalizer implements
     NormalizerInterface,
     DenormalizerInterface,
     NormalizerAwareInterface,
