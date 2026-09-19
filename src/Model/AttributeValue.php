@@ -24,9 +24,9 @@ final readonly class AttributeValue
         #[SerializedName('BS')]
         public ?BlobSet $blobSet = null,
         #[SerializedName('L')]
-        public ?AttributeValueObjectList $list = null,
+        public ?AttributeValueList $list = null,
         #[SerializedName('M')]
-        public ?AttributeValueObjectMap $map = null,
+        public ?AttributeValueMap $map = null,
         #[SerializedName('N')]
         public ?string $number = null,
         #[SerializedName('NS')]

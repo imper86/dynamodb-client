@@ -9,7 +9,7 @@ use OoAws\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<AttributeValue>
  */
-final readonly class AttributeValueObjectList extends AbstractObjectList
+final readonly class AttributeValueList extends AbstractObjectList
 {
     /**
      * @return class-string<AttributeValue>

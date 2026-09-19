@@ -6,8 +6,8 @@ namespace OoAws\DynamoDBClientTests\ValueObject;
 
 use InvalidArgumentException;
 use OoAws\DynamoDBClient\Model\AttributeValue;
-use OoAws\DynamoDBClient\Model\AttributeValueObjectList;
-use OoAws\DynamoDBClient\Model\AttributeValueObjectMap;
+use OoAws\DynamoDBClient\Model\AttributeValueList;
+use OoAws\DynamoDBClient\Model\AttributeValueMap;
 use OoAws\DynamoDBClient\Model\Capacity;
 use OoAws\DynamoDBClient\ValueObject\AbstractList;
 use OoAws\DynamoDBClient\ValueObject\AbstractMap;
@@ -30,8 +30,8 @@ use function iterator_to_array;
 #[CoversClass(AbstractList::class)]
 #[CoversClass(AbstractMap::class)]
 #[CoversClass(AbstractSet::class)]
-#[CoversClass(AttributeValueObjectList::class)]
-#[CoversClass(AttributeValueObjectMap::class)]
+#[CoversClass(AttributeValueList::class)]
+#[CoversClass(AttributeValueMap::class)]
 #[CoversClass(BlobSet::class)]
 #[CoversClass(NonEmptyStringList::class)]
 #[CoversClass(NonEmptyStringMap::class)]
@@ -45,7 +45,7 @@ final class CollectionTest extends TestCase
     public function testList(): void
     {
         $first = new AttributeValue(string: 'a');
-        $list = new AttributeValueObjectList([$first, new AttributeValue(number: '1')]);
+        $list = new AttributeValueList([$first, new AttributeValue(number: '1')]);
 
         self::assertCount(2, $list);
         self::assertFalse($list->isEmpty());
@@ -60,7 +60,7 @@ final class CollectionTest extends TestCase
     public function testMap(): void
     {
         $value = new AttributeValue(string: 'a');
-        $map = new AttributeValueObjectMap(['id' => $value]);
+        $map = new AttributeValueMap(['id' => $value]);
 
         self::assertCount(1, $map);
         self::assertTrue($map->has('id'));
@@ -68,7 +68,7 @@ final class CollectionTest extends TestCase
         self::assertNull($map->get('missing'));
         self::assertSame(['id'], $map->keys());
         self::assertSame(['id' => $value], iterator_to_array($map));
-        self::assertTrue(new AttributeValueObjectMap()->isEmpty());
+        self::assertTrue(new AttributeValueMap()->isEmpty());
     }
 
     /**
@@ -89,11 +89,11 @@ final class CollectionTest extends TestCase
      */
     public static function provideInvalidCollectionCases(): iterable
     {
-        yield 'object list with wrong item type' => [AttributeValueObjectList::class, [new Capacity()]];
+        yield 'object list with wrong item type' => [AttributeValueList::class, [new Capacity()]];
 
-        yield 'object list with string keys' => [AttributeValueObjectList::class, ['a' => new AttributeValue()]];
+        yield 'object list with string keys' => [AttributeValueList::class, ['a' => new AttributeValue()]];
 
-        yield 'object map with int keys' => [AttributeValueObjectMap::class, [new AttributeValue()]];
+        yield 'object map with int keys' => [AttributeValueMap::class, [new AttributeValue()]];
 
         yield 'string set with duplicates' => [StringSet::class, ['a', 'a']];
 

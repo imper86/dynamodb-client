@@ -6,8 +6,8 @@ namespace OoAws\DynamoDBClientTests\Serializer\Normalizer;
 
 use InvalidArgumentException;
 use OoAws\DynamoDBClient\Model\AttributeValue;
-use OoAws\DynamoDBClient\Model\AttributeValueObjectList;
-use OoAws\DynamoDBClient\Model\AttributeValueObjectMap;
+use OoAws\DynamoDBClient\Model\AttributeValueList;
+use OoAws\DynamoDBClient\Model\AttributeValueMap;
 use OoAws\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
 use OoAws\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use OoAws\DynamoDBClient\ValueObject\NumberSet;
@@ -51,21 +51,21 @@ final class CollectionNormalizerTest extends TestCase
      */
     public function testRoundTripOfNestedAttributeValues(): void
     {
-        $map = new AttributeValueObjectMap([
+        $map = new AttributeValueMap([
             'id' => new AttributeValue(string: 'abc'),
             'tags' => new AttributeValue(stringSet: new StringSet(['a', 'b'])),
-            'items' => new AttributeValue(list: new AttributeValueObjectList([
+            'items' => new AttributeValue(list: new AttributeValueList([
                 new AttributeValue(numberSet: new NumberSet(['1', '2.5'])),
-                new AttributeValue(map: new AttributeValueObjectMap()),
+                new AttributeValue(map: new AttributeValueMap()),
             ])),
         ]);
 
         $json = $this->serializer->serialize($map, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
 
         self::assertSame('{"id":{"S":"abc"},"tags":{"SS":["a","b"]},"items":{"L":[{"NS":["1","2.5"]},{"M":{}}]}}', $json, 'Empty map must be serialized as a JSON object.');
-        $deserialized = $this->serializer->deserialize($json, AttributeValueObjectMap::class, 'json');
+        $deserialized = $this->serializer->deserialize($json, AttributeValueMap::class, 'json');
 
-        self::assertInstanceOf(AttributeValueObjectMap::class, $deserialized);
+        self::assertInstanceOf(AttributeValueMap::class, $deserialized);
         self::assertInstanceOf(StringSet::class, $deserialized->get('tags')?->stringSet);
         self::assertInstanceOf(NumberSet::class, $deserialized->get('items')?->list?->get(0)?->numberSet);
         self::assertSame($json, $this->serializer->serialize($deserialized, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]));

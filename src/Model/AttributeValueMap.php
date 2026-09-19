@@ -9,7 +9,7 @@ use OoAws\DynamoDBClient\ValueObject\AbstractObjectMap;
 /**
  * @extends AbstractObjectMap<AttributeValue>
  */
-final readonly class AttributeValueObjectMap extends AbstractObjectMap
+final readonly class AttributeValueMap extends AbstractObjectMap
 {
     /**
      * @return class-string<AttributeValue>

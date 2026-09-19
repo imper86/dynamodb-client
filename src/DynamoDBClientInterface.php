@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace OoAws\DynamoDBClient;
 
-use OoAws\DynamoDBClient\Request\GetItemRequest;
+use OoAws\DynamoDBClient\Message\GetItemRequest;
+use OoAws\DynamoDBClient\Message\GetItemResponse;
 
 interface DynamoDBClientInterface
 {
-    public function getItem(GetItemRequest $request): void;
+    public function getItem(GetItemRequest $request): GetItemResponse;
 }
