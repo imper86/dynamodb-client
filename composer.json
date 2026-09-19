@@ -5,12 +5,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "OoAws\\DynamodbClient\\": "src/"
+            "OoAws\\DynamoDBClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "OoAws\\DynamodbClientTests\\": "tests/"
+            "OoAws\\DynamoDBClientTests\\": "tests/"
         }
     },
     "authors": [
@@ -26,7 +26,9 @@
         }
     },
     "require": {
-        "php": ">=8.4"
+        "php": ">=8.4",
+        "symfony/serializer": "^8.1",
+        "webmozart/assert": "^2.4"
     },
     "require-dev": {
         "captainhook/captainhook-phar": "^5.29",
@@ -36,8 +38,11 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpstan/phpstan-webmozart-assert": "^2.0",
+        "phpunit/phpunit": "^13.3",
         "rector/rector": "^2.6",
-        "shipmonk/composer-dependency-analyser": "^1.8"
+        "shipmonk/composer-dependency-analyser": "^1.8",
+        "symfony/property-access": "^8.1",
+        "symfony/property-info": "^8.1"
     },
     "scripts": {
         "cs:check": "php-cs-fixer check --allow-risky=yes",

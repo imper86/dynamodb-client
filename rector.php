@@ -9,6 +9,7 @@ use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameVariableToMatchNewTypeRector;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -46,6 +47,7 @@ return RectorConfig::configure()
             RenamePropertyToMatchTypeRector::class,
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             ThrowWithPreviousExceptionRector::class,
+            PreferPHPUnitThisCallRector::class,
         ],
     )
 ;

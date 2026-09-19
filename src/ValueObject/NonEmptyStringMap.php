@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace OoAws\DynamoDBClient\ValueObject;
+
+use Webmozart\Assert\Assert;
+
+/**
+ * @extends AbstractMap<non-empty-string>
+ */
+final readonly class NonEmptyStringMap extends AbstractMap
+{
+    protected static function validate(array $items): void
+    {
+        Assert::allStringNotEmpty($items);
+    }
+}
