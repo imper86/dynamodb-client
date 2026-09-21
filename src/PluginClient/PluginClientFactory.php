@@ -22,6 +22,8 @@ final readonly class PluginClientFactory
 {
     /**
      * @param non-empty-string $region
+     * @param null|non-empty-string $appId an opaque identifier of your application, reported in the
+     *                                     user agent, falls back to the AWS_SDK_UA_APP_ID variable
      * @throws InvalidArgumentException
      * @throws MissingCredentialsException when no credentials are given and the environment does not provide any
      * @throws NotFoundException
@@ -30,6 +32,7 @@ final readonly class PluginClientFactory
         string $region,
         ?Credentials $credentials = null,
         ?ClientInterface $client = null,
+        ?string $appId = null,
     ): PluginClient {
         $uriFactory = Psr17FactoryDiscovery::findUriFactory();
         $baseUri = $uriFactory->createUri(sprintf('https://dynamodb.%s.amazonaws.com', $region));
@@ -41,6 +44,8 @@ final readonly class PluginClientFactory
                 'Content-Type' => 'application/x-amz-json-1.0',
             ]))
             ->addPlugin(new AuthorizationPlugin($region, $credentials))
+            // The user agent is never signed, so it is set once the request is final.
+            ->addPlugin(new UserAgentPlugin($appId))
             ->createClient($client ?? Psr18ClientDiscovery::find())
         ;
     }
