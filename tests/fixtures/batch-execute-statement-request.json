@@ -1,0 +1,30 @@
+{
+    "Statements": [
+        {
+            "Statement": "SELECT * FROM \"Thread\" WHERE \"ForumName\" = ? AND \"Subject\" = ?",
+            "ConsistentRead": true,
+            "Parameters": [
+                {
+                    "S": "Amazon DynamoDB"
+                },
+                {
+                    "S": "How do I update multiple items?"
+                }
+            ]
+        },
+        {
+            "Statement": "SELECT * FROM \"Thread\" WHERE \"ForumName\" = ? AND \"Subject\" = ?",
+            "ConsistentRead": true,
+            "Parameters": [
+                {
+                    "S": "Amazon DynamoDB"
+                },
+                {
+                    "S": "How do I delete an item?"
+                }
+            ],
+            "ReturnValuesOnConditionCheckFailure": "ALL_OLD"
+        }
+    ],
+    "ReturnConsumedCapacity": "TOTAL"
+}

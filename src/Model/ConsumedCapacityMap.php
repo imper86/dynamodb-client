@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
 /**
  * @extends AbstractObjectMap<ConsumedCapacity>
  */
-final readonly class ConsumedCapacityObjectMap extends AbstractObjectMap
+final readonly class ConsumedCapacityMap extends AbstractObjectMap
 {
     /**
      * @return class-string<ConsumedCapacity>

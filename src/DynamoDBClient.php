@@ -14,6 +14,8 @@ use Imper86\DynamoDBClient\Exception\InvalidArgumentException;
 use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
 use Imper86\DynamoDBClient\Exception\RequestSerializationException;
 use Imper86\DynamoDBClient\Exception\ResponseDeserializationException;
+use Imper86\DynamoDBClient\Message\BatchExecuteStatementRequest;
+use Imper86\DynamoDBClient\Message\BatchExecuteStatementResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -56,6 +58,15 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
         $this->requestFactory = $requestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
         $this->streamFactory = $streamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
         $this->serializer = $serializer ?? SerializerFactory::create();
+    }
+
+    public function batchExecuteStatement(BatchExecuteStatementRequest $request): BatchExecuteStatementResponse
+    {
+        return $this->sendRequest(
+            'DynamoDB_20120810.BatchExecuteStatement',
+            $request,
+            BatchExecuteStatementResponse::class,
+        );
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse

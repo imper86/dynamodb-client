@@ -18,7 +18,6 @@ use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
 use Imper86\DynamoDBClient\Exception\RequestSerializationException;
 use Imper86\DynamoDBClient\Exception\ResponseDeserializationException;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
-use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\AttributeValue;
 use Imper86\DynamoDBClient\Model\AttributeValueMap;
 use Imper86\DynamoDBClient\Model\ConsumedCapacity;
@@ -41,7 +40,7 @@ use function file_get_contents;
  * @internal
  */
 #[CoversClass(DynamoDBClient::class)]
-final class DynamoDBClientTest extends TestCase
+final class GetItemTest extends TestCase
 {
     private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/get-item-request.json';
 
@@ -87,14 +86,17 @@ final class DynamoDBClientTest extends TestCase
 
         $response = $this->createClient($httpClient)->getItem($this->documentedRequest());
 
-        self::assertSame(['Tags', 'LastPostDateTime', 'Message'], $response->item->keys());
-        self::assertSame('201303190436', $response->item->get('LastPostDateTime')?->string);
+        $item = $response->item;
+
+        self::assertInstanceOf(AttributeValueMap::class, $item);
+        self::assertSame(['Tags', 'LastPostDateTime', 'Message'], $item->keys());
+        self::assertSame('201303190436', $item->get('LastPostDateTime')?->string);
         self::assertSame(
             "I want to update multiple items in a single call. What's the best way to do that?",
-            $response->item->get('Message')?->string,
+            $item->get('Message')?->string,
         );
 
-        $tags = $response->item->get('Tags')?->stringSet;
+        $tags = $item->get('Tags')?->stringSet;
 
         self::assertInstanceOf(StringSet::class, $tags);
         self::assertSame(['Update', 'Multiple Items', 'HelpMe'], $tags->toArray());
@@ -134,7 +136,7 @@ final class DynamoDBClientTest extends TestCase
         $response = $this->createClient($httpClient)->getItem($this->documentedRequest());
 
         self::assertNull($response->consumedCapacity);
-        self::assertSame('How do I update multiple items?', $response->item->get('Subject')?->string);
+        self::assertSame('How do I update multiple items?', $response->item?->get('Subject')?->string);
     }
 
     /**
@@ -185,7 +187,28 @@ final class DynamoDBClientTest extends TestCase
     }
 
     /**
-     * A successful response without an Item cannot become a {@see GetItemResponse}.
+     * The service answers a key that matches nothing with a payload that carries no Item.
+     *
+     * @throws ExceptionInterface
+     * @throws InvalidArgumentException
+     * @throws MissingCredentialsException
+     * @throws NotFoundException
+     */
+    public function testLeavesTheItemEmptyWhenTheKeyMatchesNothing(): void
+    {
+        $httpClient = new MockClient();
+        $httpClient->addResponse(new Response(
+            body: '{"ConsumedCapacity":{"CapacityUnits":1,"TableName":"Thread"}}',
+        ));
+
+        $response = $this->createClient($httpClient)->getItem($this->documentedRequest());
+
+        self::assertNull($response->item);
+        self::assertSame(1.0, $response->consumedCapacity?->capacityUnits);
+    }
+
+    /**
+     * An Item that is a JSON array cannot become an {@see AttributeValueMap}.
      *
      * @throws ExceptionInterface
      * @throws InvalidArgumentException
@@ -196,7 +219,7 @@ final class DynamoDBClientTest extends TestCase
     {
         $httpClient = new MockClient();
         $httpClient->addResponse(new Response(
-            body: '{"ConsumedCapacity":{"CapacityUnits":1,"TableName":"Thread"}}',
+            body: '{"Item":[{"S":"How do I update multiple items?"}]}',
         ));
 
         try {
