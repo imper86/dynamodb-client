@@ -10,6 +10,7 @@ use InvalidArgumentException;
 use Nyholm\Psr7\Request;
 use Nyholm\Psr7\Response;
 use Imper86\DynamoDBClient\DynamoDBClient;
+use Imper86\DynamoDBClient\Exception\BadResponseException;
 use Imper86\DynamoDBClient\Exception\ExceptionInterface;
 use Imper86\DynamoDBClient\Exception\HttpClientException;
 use Imper86\DynamoDBClient\Exception\InvalidArgumentException as ClientInvalidArgumentException;
@@ -159,14 +160,14 @@ final class DynamoDBClientTest extends TestCase
     }
 
     /**
-     * An error payload carries no Item, so it cannot become a {@see GetItemResponse}.
+     * The service answers an error with a payload that carries no Item, so there is nothing to deserialize.
      *
      * @throws ExceptionInterface
      * @throws InvalidArgumentException
      * @throws MissingCredentialsException
      * @throws NotFoundException
      */
-    public function testWrapsAResponseItCannotDeserialize(): void
+    public function testWrapsAResponseTheServiceRejected(): void
     {
         $httpClient = new MockClient();
         $httpClient->addResponse(new Response(
@@ -177,9 +178,32 @@ final class DynamoDBClientTest extends TestCase
 
         try {
             $this->createClient($httpClient)->getItem($this->documentedRequest());
+            self::fail('Expected a ' . BadResponseException::class . '.');
+        } catch (BadResponseException $exception) {
+            self::assertSame(400, $exception->response->getStatusCode());
+        }
+    }
+
+    /**
+     * A successful response without an Item cannot become a {@see GetItemResponse}.
+     *
+     * @throws ExceptionInterface
+     * @throws InvalidArgumentException
+     * @throws MissingCredentialsException
+     * @throws NotFoundException
+     */
+    public function testWrapsAResponseItCannotDeserialize(): void
+    {
+        $httpClient = new MockClient();
+        $httpClient->addResponse(new Response(
+            body: '{"ConsumedCapacity":{"CapacityUnits":1,"TableName":"Thread"}}',
+        ));
+
+        try {
+            $this->createClient($httpClient)->getItem($this->documentedRequest());
             self::fail('Expected a ' . ResponseDeserializationException::class . '.');
         } catch (ResponseDeserializationException $exception) {
-            self::assertSame(400, $exception->response->getStatusCode());
+            self::assertSame(200, $exception->response->getStatusCode());
         }
     }
 

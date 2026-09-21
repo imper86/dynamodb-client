@@ -6,6 +6,7 @@ namespace Imper86\DynamoDBClient;
 
 use Http\Discovery\Exception\NotFoundException;
 use Http\Discovery\Psr17FactoryDiscovery;
+use Imper86\DynamoDBClient\Exception\BadResponseException;
 use LogicException;
 use Imper86\DynamoDBClient\Exception\ExceptionInterface;
 use Imper86\DynamoDBClient\Exception\HttpClientException;
@@ -93,6 +94,10 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
                 $response = $this->httpClient->sendRequest($request);
             } catch (ClientExceptionInterface $exception) {
                 throw HttpClientException::from($exception);
+            }
+
+            if (200 !== $response->getStatusCode()) {
+                throw new BadResponseException($response);
             }
 
             if (null === $expectedResponseType) {
