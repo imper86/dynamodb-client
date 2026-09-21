@@ -16,6 +16,8 @@ use Imper86\DynamoDBClient\Exception\RequestSerializationException;
 use Imper86\DynamoDBClient\Exception\ResponseDeserializationException;
 use Imper86\DynamoDBClient\Message\BatchExecuteStatementRequest;
 use Imper86\DynamoDBClient\Message\BatchExecuteStatementResponse;
+use Imper86\DynamoDBClient\Message\BatchGetItemRequest;
+use Imper86\DynamoDBClient\Message\BatchGetItemResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -67,6 +69,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             BatchExecuteStatementResponse::class,
         );
+    }
+
+    public function batchGetItem(BatchGetItemRequest $request): BatchGetItemResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.BatchGetItem', $request, BatchGetItemResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse
