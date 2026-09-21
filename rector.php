@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector;
+use Rector\Carbon\Rector\New_\DateTimeInstanceToCarbonRector;
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
+use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
 use Rector\Config\RectorConfig;
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
@@ -42,12 +44,15 @@ return RectorConfig::configure()
     ->withSkip(
         [
             CatchExceptionNameMatchingTypeRector::class,
+            // The project does not depend on nesbot/carbon.
+            DateTimeInstanceToCarbonRector::class,
             RenameParamToMatchTypeRector::class,
             RenameVariableToMatchNewTypeRector::class,
             RenamePropertyToMatchTypeRector::class,
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             ThrowWithPreviousExceptionRector::class,
             PreferPHPUnitThisCallRector::class,
+            NewlineBetweenClassLikeStmtsRector::class,
         ],
     )
 ;

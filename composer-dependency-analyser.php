@@ -7,4 +7,5 @@ use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 
 return new Configuration()
     // Required at runtime by Symfony's PhpDocExtractor, never referenced directly.
-    ->ignoreErrorsOnPackage('phpdocumentor/reflection-docblock', [ErrorType::UNUSED_DEPENDENCY]);
+    ->ignoreErrorsOnPackage('phpdocumentor/reflection-docblock', [ErrorType::UNUSED_DEPENDENCY])
+;
