@@ -44,6 +44,7 @@
         "captainhook/captainhook-phar": "^5.29",
         "friendsofphp/php-cs-fixer": "^3.95",
         "nyholm/psr7": "^1.8",
+        "php-http/curl-client": "^2.4",
         "php-http/message": "^1.16",
         "php-http/mock-client": "^1.6",
         "phpstan/phpstan": "^2.2",
@@ -63,11 +64,13 @@
         "rector:check": "rector process --dry-run",
         "rector:fix": "rector process",
         "cda": "composer-dependency-analyser",
+        "unit": "phpunit",
         "analyse": [
             "@cs:check",
             "@stan",
             "@rector:check",
-            "@cda"
+            "@cda",
+            "@unit"
         ],
         "fix": [
             "@cs:fix",

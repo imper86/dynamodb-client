@@ -10,7 +10,7 @@ use Imper86\DynamoDBClient\Model\ConsumedCapacity;
 final readonly class GetItemResponse
 {
     public function __construct(
-        public ConsumedCapacity $consumedCapacity,
         public AttributeValueMap $item,
+        public ?ConsumedCapacity $consumedCapacity = null,
     ) {}
 }
