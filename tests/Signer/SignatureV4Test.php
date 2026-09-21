@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\Signer;
+namespace Imper86\DynamoDBClientTests\Signer;
 
 use DateTimeImmutable;
 use DateTimeZone;
 use InvalidArgumentException;
 use Nyholm\Psr7\Request;
-use OoAws\DynamoDBClient\Model\Credentials;
-use OoAws\DynamoDBClient\Signer\SignatureV4;
+use Imper86\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\Signer\SignatureV4;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -121,7 +121,7 @@ final class SignatureV4Test extends TestCase
     {
         $request = new Request('POST', 'https://example.amazonaws.com/', [
             'Content-Length' => '13',
-            'User-Agent' => 'oo-aws/1.0',
+            'User-Agent' => 'imper86/1.0',
             'X-Amzn-Trace-Id' => 'Root=1-63441c4a',
             'X-Amz-Target' => 'DynamoDB_20120810.GetItem',
         ], 'Param1=value1');

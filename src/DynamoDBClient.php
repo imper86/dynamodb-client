@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient;
+namespace Imper86\DynamoDBClient;
 
 use Http\Discovery\Exception\NotFoundException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use LogicException;
-use OoAws\DynamoDBClient\Exception\ExceptionInterface;
-use OoAws\DynamoDBClient\Exception\HttpClientException;
-use OoAws\DynamoDBClient\Exception\InvalidArgumentException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
-use OoAws\DynamoDBClient\Exception\RequestSerializationException;
-use OoAws\DynamoDBClient\Exception\ResponseDeserializationException;
-use OoAws\DynamoDBClient\Message\GetItemRequest;
-use OoAws\DynamoDBClient\Message\GetItemResponse;
-use OoAws\DynamoDBClient\Model\Credentials;
-use OoAws\DynamoDBClient\PluginClient\PluginClientFactory;
-use OoAws\DynamoDBClient\Serializer\SerializerFactory;
+use Imper86\DynamoDBClient\Exception\ExceptionInterface;
+use Imper86\DynamoDBClient\Exception\HttpClientException;
+use Imper86\DynamoDBClient\Exception\InvalidArgumentException;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Exception\RequestSerializationException;
+use Imper86\DynamoDBClient\Exception\ResponseDeserializationException;
+use Imper86\DynamoDBClient\Message\GetItemRequest;
+use Imper86\DynamoDBClient\Message\GetItemResponse;
+use Imper86\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
+use Imper86\DynamoDBClient\Serializer\SerializerFactory;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;

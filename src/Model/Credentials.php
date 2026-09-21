@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Model;
+namespace Imper86\DynamoDBClient\Model;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
 use Webmozart\Assert\Assert;
 
 use function getenv;

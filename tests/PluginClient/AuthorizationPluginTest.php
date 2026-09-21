@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\PluginClient;
+namespace Imper86\DynamoDBClientTests\PluginClient;
 
 use Http\Promise\FulfilledPromise;
 use Http\Promise\Promise;
@@ -10,9 +10,9 @@ use Nyholm\Psr7\Request;
 use Nyholm\Psr7\Response;
 use InvalidArgumentException;
 use RuntimeException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
-use OoAws\DynamoDBClient\Model\Credentials;
-use OoAws\DynamoDBClient\PluginClient\AuthorizationPlugin;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\PluginClient\AuthorizationPlugin;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;

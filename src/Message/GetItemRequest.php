@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Message;
+namespace Imper86\DynamoDBClient\Message;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Model\AttributeValueMap;
-use OoAws\DynamoDBClient\Model\ReturnConsumedCapacity;
-use OoAws\DynamoDBClient\ValueObject\NonEmptyStringList;
-use OoAws\DynamoDBClient\ValueObject\NonEmptyStringMap;
+use Imper86\DynamoDBClient\Model\AttributeValueMap;
+use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
 final readonly class GetItemRequest

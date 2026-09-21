@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\Serializer\Normalizer;
+namespace Imper86\DynamoDBClientTests\Serializer\Normalizer;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Model\AttributeValue;
-use OoAws\DynamoDBClient\Model\AttributeValueList;
-use OoAws\DynamoDBClient\Model\AttributeValueMap;
-use OoAws\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
-use OoAws\DynamoDBClient\ValueObject\NonEmptyStringMap;
-use OoAws\DynamoDBClient\ValueObject\NumberSet;
-use OoAws\DynamoDBClient\ValueObject\StringSet;
+use Imper86\DynamoDBClient\Model\AttributeValue;
+use Imper86\DynamoDBClient\Model\AttributeValueList;
+use Imper86\DynamoDBClient\Model\AttributeValueMap;
+use Imper86\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
+use Imper86\DynamoDBClient\ValueObject\NumberSet;
+use Imper86\DynamoDBClient\ValueObject\StringSet;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\ValueObject;
+namespace Imper86\DynamoDBClientTests\ValueObject;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Model\AttributeValue;
-use OoAws\DynamoDBClient\Model\AttributeValueList;
-use OoAws\DynamoDBClient\Model\AttributeValueMap;
-use OoAws\DynamoDBClient\Model\Capacity;
-use OoAws\DynamoDBClient\ValueObject\AbstractList;
-use OoAws\DynamoDBClient\ValueObject\AbstractMap;
-use OoAws\DynamoDBClient\ValueObject\AbstractSet;
-use OoAws\DynamoDBClient\ValueObject\BlobSet;
-use OoAws\DynamoDBClient\ValueObject\CollectionInterface;
-use OoAws\DynamoDBClient\ValueObject\NonEmptyStringList;
-use OoAws\DynamoDBClient\ValueObject\NonEmptyStringMap;
-use OoAws\DynamoDBClient\ValueObject\NumberSet;
-use OoAws\DynamoDBClient\ValueObject\StringSet;
+use Imper86\DynamoDBClient\Model\AttributeValue;
+use Imper86\DynamoDBClient\Model\AttributeValueList;
+use Imper86\DynamoDBClient\Model\AttributeValueMap;
+use Imper86\DynamoDBClient\Model\Capacity;
+use Imper86\DynamoDBClient\ValueObject\AbstractList;
+use Imper86\DynamoDBClient\ValueObject\AbstractMap;
+use Imper86\DynamoDBClient\ValueObject\AbstractSet;
+use Imper86\DynamoDBClient\ValueObject\BlobSet;
+use Imper86\DynamoDBClient\ValueObject\CollectionInterface;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
+use Imper86\DynamoDBClient\ValueObject\NumberSet;
+use Imper86\DynamoDBClient\ValueObject\StringSet;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

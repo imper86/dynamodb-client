@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\PluginClient;
+namespace Imper86\DynamoDBClient\PluginClient;
 
 use Http\Client\Common\Plugin;
 use Http\Promise\Promise;
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
-use OoAws\DynamoDBClient\Model\Credentials;
-use OoAws\DynamoDBClient\Signer\SignatureV4;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\Signer\SignatureV4;
 use Psr\Http\Message\RequestInterface;
 use RuntimeException;
 

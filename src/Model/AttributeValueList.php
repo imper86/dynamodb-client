@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Model;
+namespace Imper86\DynamoDBClient\Model;
 
-use OoAws\DynamoDBClient\ValueObject\AbstractObjectList;
+use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 
 /**
  * @extends AbstractObjectList<AttributeValue>

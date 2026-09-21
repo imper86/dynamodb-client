@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Message;
+namespace Imper86\DynamoDBClient\Message;
 
-use OoAws\DynamoDBClient\Model\AttributeValueMap;
-use OoAws\DynamoDBClient\Model\ConsumedCapacity;
+use Imper86\DynamoDBClient\Model\AttributeValueMap;
+use Imper86\DynamoDBClient\Model\ConsumedCapacity;
 
 final readonly class GetItemResponse
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\Serializer;
+namespace Imper86\DynamoDBClientTests\Serializer;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Message\GetItemRequest;
-use OoAws\DynamoDBClient\Model\AttributeValue;
-use OoAws\DynamoDBClient\Model\AttributeValueMap;
-use OoAws\DynamoDBClient\Model\ReturnConsumedCapacity;
-use OoAws\DynamoDBClient\Serializer\SerializerFactory;
+use Imper86\DynamoDBClient\Message\GetItemRequest;
+use Imper86\DynamoDBClient\Model\AttributeValue;
+use Imper86\DynamoDBClient\Model\AttributeValueMap;
+use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
+use Imper86\DynamoDBClient\Serializer\SerializerFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Serializer\NameConverter;
+namespace Imper86\DynamoDBClient\Serializer\NameConverter;
 
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 

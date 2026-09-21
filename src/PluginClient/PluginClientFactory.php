@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\PluginClient;
+namespace Imper86\DynamoDBClient\PluginClient;
 
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
@@ -12,8 +12,8 @@ use Http\Discovery\Exception\NotFoundException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
-use OoAws\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Model\Credentials;
 use Psr\Http\Client\ClientInterface;
 
 use function sprintf;

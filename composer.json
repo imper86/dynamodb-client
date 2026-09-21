@@ -1,22 +1,22 @@
 {
-    "name": "oo-aws/dynamodb-client",
+    "name": "imper86/dynamodb-client",
     "description": "Object oriented DynamoDB Client",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "OoAws\\DynamoDBClient\\": "src/"
+            "Imper86\\DynamoDBClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "OoAws\\DynamoDBClientTests\\": "tests/"
+            "Imper86\\DynamoDBClientTests\\": "tests/"
         }
     },
     "authors": [
         {
-            "name": "OO AWS",
-            "email": "oo-aws@asz.gg"
+            "name": "imper86",
+            "email": "me@imper.info"
         }
     ],
     "config": {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\ValueObject;
+namespace Imper86\DynamoDBClient\ValueObject;
 
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;

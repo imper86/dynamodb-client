@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Serializer;
+namespace Imper86\DynamoDBClient\Serializer;
 
-use OoAws\DynamoDBClient\Serializer\NameConverter\PascalCaseNameConverter;
-use OoAws\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
+use Imper86\DynamoDBClient\Serializer\NameConverter\PascalCaseNameConverter;
+use Imper86\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;

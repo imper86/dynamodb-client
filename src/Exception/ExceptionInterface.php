@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Exception;
+namespace Imper86\DynamoDBClient\Exception;
 
 use Throwable;
 

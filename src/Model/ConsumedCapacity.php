@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Model;
+namespace Imper86\DynamoDBClient\Model;
 
 final readonly class ConsumedCapacity
 {

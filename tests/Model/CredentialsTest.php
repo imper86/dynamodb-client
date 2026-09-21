@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClientTests\Model;
+namespace Imper86\DynamoDBClientTests\Model;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Exception\MissingCredentialsException;
-use OoAws\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
+use Imper86\DynamoDBClient\Model\Credentials;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

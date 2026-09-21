@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Signer;
+namespace Imper86\DynamoDBClient\Signer;
 
 use DateTimeImmutable;
 use DateTimeZone;
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\Model\Credentials;
+use Imper86\DynamoDBClient\Model\Credentials;
 use Psr\Http\Message\RequestInterface;
 use RuntimeException;
 use Webmozart\Assert\Assert;

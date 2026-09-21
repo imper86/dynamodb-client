@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient;
+namespace Imper86\DynamoDBClient;
 
-use OoAws\DynamoDBClient\Exception\ExceptionInterface;
-use OoAws\DynamoDBClient\Message\GetItemRequest;
-use OoAws\DynamoDBClient\Message\GetItemResponse;
+use Imper86\DynamoDBClient\Exception\ExceptionInterface;
+use Imper86\DynamoDBClient\Message\GetItemRequest;
+use Imper86\DynamoDBClient\Message\GetItemResponse;
 
 interface DynamoDBClientInterface
 {

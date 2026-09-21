@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Model;
+namespace Imper86\DynamoDBClient\Model;
 
-use OoAws\DynamoDBClient\ValueObject\AbstractObjectMap;
+use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
 
 /**
  * @extends AbstractObjectMap<ConsumedCapacity>

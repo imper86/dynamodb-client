@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Serializer\Normalizer;
+namespace Imper86\DynamoDBClient\Serializer\Normalizer;
 
 use ArrayObject;
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\ValueObject\AbstractMap;
-use OoAws\DynamoDBClient\ValueObject\CollectionInterface;
-use OoAws\DynamoDBClient\ValueObject\ObjectCollectionInterface;
+use Imper86\DynamoDBClient\ValueObject\AbstractMap;
+use Imper86\DynamoDBClient\ValueObject\CollectionInterface;
+use Imper86\DynamoDBClient\ValueObject\ObjectCollectionInterface;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException as SerializerInvalidArgumentException;
 use Symfony\Component\Serializer\Exception\NotNormalizableValueException;

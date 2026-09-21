@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OoAws\DynamoDBClient\Model;
+namespace Imper86\DynamoDBClient\Model;
 
 use InvalidArgumentException;
-use OoAws\DynamoDBClient\ValueObject\BlobSet;
-use OoAws\DynamoDBClient\ValueObject\NumberSet;
-use OoAws\DynamoDBClient\ValueObject\StringSet;
+use Imper86\DynamoDBClient\ValueObject\BlobSet;
+use Imper86\DynamoDBClient\ValueObject\NumberSet;
+use Imper86\DynamoDBClient\ValueObject\StringSet;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
