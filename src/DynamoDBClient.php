@@ -18,6 +18,8 @@ use Imper86\DynamoDBClient\Message\BatchExecuteStatementRequest;
 use Imper86\DynamoDBClient\Message\BatchExecuteStatementResponse;
 use Imper86\DynamoDBClient\Message\BatchGetItemRequest;
 use Imper86\DynamoDBClient\Message\BatchGetItemResponse;
+use Imper86\DynamoDBClient\Message\BatchWriteItemRequest;
+use Imper86\DynamoDBClient\Message\BatchWriteItemResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -74,6 +76,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function batchGetItem(BatchGetItemRequest $request): BatchGetItemResponse
     {
         return $this->sendRequest('DynamoDB_20120810.BatchGetItem', $request, BatchGetItemResponse::class);
+    }
+
+    public function batchWriteItem(BatchWriteItemRequest $request): BatchWriteItemResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.BatchWriteItem', $request, BatchWriteItemResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse

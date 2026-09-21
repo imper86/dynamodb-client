@@ -1,0 +1,55 @@
+{
+    "RequestItems": {
+        "Forum": [
+            {
+                "PutRequest": {
+                    "Item": {
+                        "Name": {
+                            "S": "Amazon DynamoDB"
+                        },
+                        "Category": {
+                            "S": "Amazon Web Services"
+                        }
+                    }
+                }
+            },
+            {
+                "PutRequest": {
+                    "Item": {
+                        "Name": {
+                            "S": "Amazon RDS"
+                        },
+                        "Category": {
+                            "S": "Amazon Web Services"
+                        }
+                    }
+                }
+            },
+            {
+                "PutRequest": {
+                    "Item": {
+                        "Name": {
+                            "S": "Amazon Redshift"
+                        },
+                        "Category": {
+                            "S": "Amazon Web Services"
+                        }
+                    }
+                }
+            },
+            {
+                "PutRequest": {
+                    "Item": {
+                        "Name": {
+                            "S": "Amazon ElastiCache"
+                        },
+                        "Category": {
+                            "S": "Amazon Web Services"
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "ReturnConsumedCapacity": "TOTAL"
+}
