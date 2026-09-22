@@ -1,0 +1,14 @@
+{
+    "TableDescription": {
+        "TableArn": "arn:aws:dynamodb:us-west-2:123456789012:table/Reply",
+        "ItemCount": 0,
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 5,
+            "WriteCapacityUnits": 5
+        },
+        "TableName": "Reply",
+        "TableSizeBytes": 0,
+        "TableStatus": "DELETING"
+    }
+}

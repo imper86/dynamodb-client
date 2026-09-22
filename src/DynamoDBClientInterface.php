@@ -21,6 +21,8 @@ use Imper86\DynamoDBClient\Message\DeleteItemRequest;
 use Imper86\DynamoDBClient\Message\DeleteItemResponse;
 use Imper86\DynamoDBClient\Message\DeleteResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\DeleteResourcePolicyResponse;
+use Imper86\DynamoDBClient\Message\DeleteTableRequest;
+use Imper86\DynamoDBClient\Message\DeleteTableResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -65,6 +67,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function deleteResourcePolicy(DeleteResourcePolicyRequest $request): DeleteResourcePolicyResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function deleteTable(DeleteTableRequest $request): DeleteTableResponse;
 
     /**
      * @throws ExceptionInterface
