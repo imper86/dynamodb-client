@@ -54,6 +54,8 @@ use Imper86\DynamoDBClient\Message\DescribeTimeToLiveRequest;
 use Imper86\DynamoDBClient\Message\DescribeTimeToLiveResponse;
 use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationRequest;
+use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -233,6 +235,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             'DynamoDB_20120810.DisableKinesisStreamingDestination',
             $request,
             DisableKinesisStreamingDestinationResponse::class,
+        );
+    }
+
+    public function enableKinesisStreamingDestination(
+        EnableKinesisStreamingDestinationRequest $request,
+    ): EnableKinesisStreamingDestinationResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.EnableKinesisStreamingDestination',
+            $request,
+            EnableKinesisStreamingDestinationResponse::class,
         );
     }
 

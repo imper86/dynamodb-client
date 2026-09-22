@@ -45,6 +45,8 @@ use Imper86\DynamoDBClient\Message\DescribeTimeToLiveRequest;
 use Imper86\DynamoDBClient\Message\DescribeTimeToLiveResponse;
 use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationRequest;
+use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -164,6 +166,13 @@ interface DynamoDBClientInterface
     public function disableKinesisStreamingDestination(
         DisableKinesisStreamingDestinationRequest $request,
     ): DisableKinesisStreamingDestinationResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function enableKinesisStreamingDestination(
+        EnableKinesisStreamingDestinationRequest $request,
+    ): EnableKinesisStreamingDestinationResponse;
 
     /**
      * @throws ExceptionInterface

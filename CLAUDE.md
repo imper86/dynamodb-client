@@ -76,8 +76,8 @@ The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWrite
 `createTable`, `deleteBackup`, `deleteItem`, `deleteResourcePolicy`, `deleteTable`, `describeBackup`,
 `describeContinuousBackups`, `describeContributorInsights`, `describeEndpoints`, `describeExport`,
 `describeImport`, `describeKinesisStreamingDestination`, `describeLimits`, `describeTable`,
-`describeTableReplicaAutoScaling`, `describeTimeToLive`, `disableKinesisStreamingDestination`, `getItem` — are
-the templates. Read one end to end before starting another.
+`describeTableReplicaAutoScaling`, `describeTimeToLive`, `disableKinesisStreamingDestination`,
+`enableKinesisStreamingDestination`, `getItem` — are the templates. Read one end to end before starting another.
 `createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
 `ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
 and `updateTable` will reuse.
