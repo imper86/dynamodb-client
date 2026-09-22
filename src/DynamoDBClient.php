@@ -64,6 +64,8 @@ use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeRequest;
 use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
+use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
+use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -281,6 +283,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function getItem(GetItemRequest $request): GetItemResponse
     {
         return $this->sendRequest('DynamoDB_20120810.GetItem', $request, GetItemResponse::class);
+    }
+
+    public function getResourcePolicy(GetResourcePolicyRequest $request): GetResourcePolicyResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.GetResourcePolicy', $request, GetResourcePolicyResponse::class);
     }
 
     /**

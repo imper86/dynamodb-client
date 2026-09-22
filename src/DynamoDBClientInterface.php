@@ -55,6 +55,8 @@ use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeRequest;
 use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
+use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
+use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
 
 interface DynamoDBClientInterface
 {
@@ -201,4 +203,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function getItem(GetItemRequest $request): GetItemResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function getResourcePolicy(GetResourcePolicyRequest $request): GetResourcePolicyResponse;
 }
