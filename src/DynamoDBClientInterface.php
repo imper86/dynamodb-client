@@ -19,6 +19,8 @@ use Imper86\DynamoDBClient\Message\DeleteBackupRequest;
 use Imper86\DynamoDBClient\Message\DeleteBackupResponse;
 use Imper86\DynamoDBClient\Message\DeleteItemRequest;
 use Imper86\DynamoDBClient\Message\DeleteItemResponse;
+use Imper86\DynamoDBClient\Message\DeleteResourcePolicyRequest;
+use Imper86\DynamoDBClient\Message\DeleteResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -58,6 +60,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function deleteItem(DeleteItemRequest $request): DeleteItemResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function deleteResourcePolicy(DeleteResourcePolicyRequest $request): DeleteResourcePolicyResponse;
 
     /**
      * @throws ExceptionInterface
