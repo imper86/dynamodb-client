@@ -1,0 +1,22 @@
+{
+    "ExportDescription": {
+        "BilledSizeBytes": 123456,
+        "ClientToken": "8f3b8f4e-0a6c-4b53-9d8e-2c1f6a7b9e10",
+        "EndTime": 1576624366.5,
+        "ExportArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/export/01576624066799-a1b2c3d4",
+        "ExportFormat": "DYNAMODB_JSON",
+        "ExportManifest": "AWSDynamoDB/01576624066799-a1b2c3d4/manifest-summary.json",
+        "ExportStatus": "COMPLETED",
+        "ExportTime": 1576624066.799,
+        "ExportType": "FULL_EXPORT",
+        "ItemCount": 42,
+        "S3Bucket": "music-exports",
+        "S3BucketOwner": "123456789012",
+        "S3Prefix": "exports/music",
+        "S3SseAlgorithm": "KMS",
+        "S3SseKmsKeyId": "arn:aws:kms:eu-central-1:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+        "StartTime": 1576624070.25,
+        "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music",
+        "TableId": "e0a1b2c3-d4e5-4f60-8a7b-9c8d7e6f5a4b"
+    }
+}
