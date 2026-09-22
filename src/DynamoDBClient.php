@@ -82,6 +82,8 @@ use Imper86\DynamoDBClient\Message\ListTagsOfResourceRequest;
 use Imper86\DynamoDBClient\Message\ListTagsOfResourceResponse;
 use Imper86\DynamoDBClient\Message\PutItemRequest;
 use Imper86\DynamoDBClient\Message\PutItemResponse;
+use Imper86\DynamoDBClient\Message\PutResourcePolicyRequest;
+use Imper86\DynamoDBClient\Message\PutResourcePolicyResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -349,6 +351,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function putItem(PutItemRequest $request): PutItemResponse
     {
         return $this->sendRequest('DynamoDB_20120810.PutItem', $request, PutItemResponse::class);
+    }
+
+    public function putResourcePolicy(PutResourcePolicyRequest $request): PutResourcePolicyResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.PutResourcePolicy', $request, PutResourcePolicyResponse::class);
     }
 
     /**

@@ -73,6 +73,8 @@ use Imper86\DynamoDBClient\Message\ListTagsOfResourceRequest;
 use Imper86\DynamoDBClient\Message\ListTagsOfResourceResponse;
 use Imper86\DynamoDBClient\Message\PutItemRequest;
 use Imper86\DynamoDBClient\Message\PutItemResponse;
+use Imper86\DynamoDBClient\Message\PutResourcePolicyRequest;
+use Imper86\DynamoDBClient\Message\PutResourcePolicyResponse;
 
 interface DynamoDBClientInterface
 {
@@ -266,4 +268,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function putItem(PutItemRequest $request): PutItemResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function putResourcePolicy(PutResourcePolicyRequest $request): PutResourcePolicyResponse;
 }
