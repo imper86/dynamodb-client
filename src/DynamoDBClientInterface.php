@@ -36,6 +36,7 @@ use Imper86\DynamoDBClient\Message\DescribeImportRequest;
 use Imper86\DynamoDBClient\Message\DescribeImportResponse;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\DescribeLimitsResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -126,6 +127,11 @@ interface DynamoDBClientInterface
     public function describeKinesisStreamingDestination(
         DescribeKinesisStreamingDestinationRequest $request,
     ): DescribeKinesisStreamingDestinationResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeLimits(): DescribeLimitsResponse;
 
     /**
      * @throws ExceptionInterface

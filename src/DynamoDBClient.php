@@ -45,6 +45,7 @@ use Imper86\DynamoDBClient\Message\DescribeImportRequest;
 use Imper86\DynamoDBClient\Message\DescribeImportResponse;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\DescribeLimitsResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -190,6 +191,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             DescribeKinesisStreamingDestinationResponse::class,
         );
+    }
+
+    public function describeLimits(): DescribeLimitsResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.DescribeLimits', null, DescribeLimitsResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse
