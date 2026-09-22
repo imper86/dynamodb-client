@@ -165,7 +165,7 @@ and `0` for a `positive-int` at the call site, so the only way to reach the `Ass
 the value from the analyser. Leave the assertion in — it still guards callers who do not run
 PHPStan — and test the rules a well-typed caller can actually break.
 
-**9.** `composer fix && composer analyse`.
+**9.** `composer fix && composer fix && composer analyse` — see below for why `fix` runs twice.
 
 ## Named constructors
 
@@ -212,6 +212,12 @@ constructor** — `AttributeValue::string('x')` instead of `new AttributeValue(s
   every global function and keep the import list sorted (`composer fix` does it).
 - Rector runs with a wide set of prepared sets and a php85 target; check `rector.php` before fighting
   one of its rules.
+- **`composer fix` can need two runs.** It runs php-cs-fixer *before* Rector, so a Rector rewrite — say,
+  `null !== $x` into `$x instanceof \Fully\Qualified\Name` — leaves a file that `cs:check` then rejects.
+  Run `composer fix` again before `composer analyse`.
+- **Never `assertEquals` two objects.** Rector turns it into `assertSame`, which compares identity and
+  fails for two equal value objects. Compare members instead — individual properties, or `toArray()`
+  on a collection.
 - **Known gap:** `Model\ConsumedCapacity` types `Table` as `?string`, but the API returns a `Capacity`
   object there, and `WriteCapacityUnits` and `VectorIndexes` are missing entirely. A response from
   `ReturnConsumedCapacity::INDEXES` will fail to deserialize for any operation.
