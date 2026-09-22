@@ -1,0 +1,40 @@
+{
+    "ClientToken": "3c9e1f0a-7b2d-4e8f-a6c5-1d0b9e8f7a6c",
+    "InputCompressionType": "GZIP",
+    "InputFormat": "CSV",
+    "InputFormatOptions": {
+        "Csv": {
+            "Delimiter": ";",
+            "HeaderList": ["Artist", "SongTitle", "AlbumTitle"]
+        }
+    },
+    "S3BucketSource": {
+        "S3Bucket": "music-imports",
+        "S3BucketOwner": "123456789012",
+        "S3KeyPrefix": "imports/music"
+    },
+    "TableCreationParameters": {
+        "AttributeDefinitions": [
+            {"AttributeName": "Artist", "AttributeType": "S"},
+            {"AttributeName": "SongTitle", "AttributeType": "S"},
+            {"AttributeName": "AlbumTitle", "AttributeType": "S"}
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "AlbumTitleIndex",
+                "KeySchema": [{"AttributeName": "AlbumTitle", "KeyType": "HASH"}],
+                "Projection": {"ProjectionType": "ALL"}
+            }
+        ],
+        "KeySchema": [
+            {"AttributeName": "Artist", "KeyType": "HASH"},
+            {"AttributeName": "SongTitle", "KeyType": "RANGE"}
+        ],
+        "SSESpecification": {
+            "Enabled": true,
+            "SSEType": "KMS"
+        },
+        "TableName": "Music"
+    }
+}

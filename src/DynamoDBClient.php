@@ -66,6 +66,8 @@ use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
+use Imper86\DynamoDBClient\Message\ImportTableRequest;
+use Imper86\DynamoDBClient\Message\ImportTableResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -288,6 +290,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function getResourcePolicy(GetResourcePolicyRequest $request): GetResourcePolicyResponse
     {
         return $this->sendRequest('DynamoDB_20120810.GetResourcePolicy', $request, GetResourcePolicyResponse::class);
+    }
+
+    public function importTable(ImportTableRequest $request): ImportTableResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ImportTable', $request, ImportTableResponse::class);
     }
 
     /**

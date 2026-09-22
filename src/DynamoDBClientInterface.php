@@ -57,6 +57,8 @@ use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
+use Imper86\DynamoDBClient\Message\ImportTableRequest;
+use Imper86\DynamoDBClient\Message\ImportTableResponse;
 
 interface DynamoDBClientInterface
 {
@@ -208,4 +210,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function getResourcePolicy(GetResourcePolicyRequest $request): GetResourcePolicyResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function importTable(ImportTableRequest $request): ImportTableResponse;
 }
