@@ -71,6 +71,8 @@ use Imper86\DynamoDBClient\Message\ListTablesRequest;
 use Imper86\DynamoDBClient\Message\ListTablesResponse;
 use Imper86\DynamoDBClient\Message\ListTagsOfResourceRequest;
 use Imper86\DynamoDBClient\Message\ListTagsOfResourceResponse;
+use Imper86\DynamoDBClient\Message\PutItemRequest;
+use Imper86\DynamoDBClient\Message\PutItemResponse;
 
 interface DynamoDBClientInterface
 {
@@ -259,4 +261,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function listTagsOfResource(ListTagsOfResourceRequest $request): ListTagsOfResourceResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function putItem(PutItemRequest $request): PutItemResponse;
 }
