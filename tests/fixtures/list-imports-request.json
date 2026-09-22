@@ -1,0 +1,5 @@
+{
+    "NextToken": "0123456789abcdef0123456789abcdf00123456789abcdf10123456789abcdf20123456789abcdf30123456789abcdf40123456789abcdf5",
+    "PageSize": 2,
+    "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+}

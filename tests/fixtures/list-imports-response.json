@@ -1,0 +1,30 @@
+{
+    "ImportSummaryList": [
+        {
+            "CloudWatchLogGroupArn": "arn:aws:logs:eu-central-1:123456789012:log-group:/aws-dynamodb/imports:*",
+            "EndTime": 1576624366.5,
+            "ImportArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/import/01576624066799-e5f6a7b8",
+            "ImportStatus": "COMPLETED",
+            "InputFormat": "CSV",
+            "S3BucketSource": {
+                "S3Bucket": "music-imports",
+                "S3BucketOwner": "123456789012",
+                "S3KeyPrefix": "imports/music"
+            },
+            "StartTime": 1576624070.25,
+            "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+        },
+        {
+            "CloudWatchLogGroupArn": "arn:aws:logs:eu-central-1:123456789012:log-group:/aws-dynamodb/imports:*",
+            "ImportArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/import/01576710466500-f6a7b8c9",
+            "ImportStatus": "IN_PROGRESS",
+            "InputFormat": "DYNAMODB_JSON",
+            "S3BucketSource": {
+                "S3Bucket": "music-imports"
+            },
+            "StartTime": 1576710470.5,
+            "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+        }
+    ],
+    "NextToken": "fedcba9876543210fedcba987654320ffedcba987654320efedcba987654320dfedcba987654320cfedcba987654320bfedcba987654320a"
+}
