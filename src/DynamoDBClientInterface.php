@@ -38,6 +38,8 @@ use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\DescribeLimitsResponse;
 use Imper86\DynamoDBClient\Message\DescribeTableRequest;
+use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingRequest;
+use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\DescribeTableResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
@@ -139,6 +141,13 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function describeTable(DescribeTableRequest $request): DescribeTableResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeTableReplicaAutoScaling(
+        DescribeTableReplicaAutoScalingRequest $request,
+    ): DescribeTableReplicaAutoScalingResponse;
 
     /**
      * @throws ExceptionInterface

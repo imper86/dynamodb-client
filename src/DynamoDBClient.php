@@ -47,6 +47,8 @@ use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\DescribeLimitsResponse;
 use Imper86\DynamoDBClient\Message\DescribeTableRequest;
+use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingRequest;
+use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\DescribeTableResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
@@ -203,6 +205,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function describeTable(DescribeTableRequest $request): DescribeTableResponse
     {
         return $this->sendRequest('DynamoDB_20120810.DescribeTable', $request, DescribeTableResponse::class);
+    }
+
+    public function describeTableReplicaAutoScaling(
+        DescribeTableReplicaAutoScalingRequest $request,
+    ): DescribeTableReplicaAutoScalingResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.DescribeTableReplicaAutoScaling',
+            $request,
+            DescribeTableReplicaAutoScalingResponse::class,
+        );
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse
