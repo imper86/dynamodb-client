@@ -13,7 +13,6 @@ use Psr\Http\Message\RequestInterface;
 use Webmozart\Assert\Assert;
 
 use function array_merge;
-use function class_exists;
 use function function_exists;
 use function getenv;
 use function implode;
@@ -209,10 +208,6 @@ final readonly class UserAgentPlugin implements Plugin
 
     private function packageVersion(): string
     {
-        if (!class_exists(InstalledVersions::class)) {
-            return self::UNKNOWN_VERSION;
-        }
-
         try {
             return InstalledVersions::getPrettyVersion(self::PACKAGE_NAME) ?? self::UNKNOWN_VERSION;
         } catch (OutOfBoundsException) {
