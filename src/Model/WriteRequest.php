@@ -23,4 +23,20 @@ final readonly class WriteRequest
             'A WriteRequest needs exactly one of DeleteRequest or PutRequest.',
         );
     }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public static function delete(AttributeValueMap $key): self
+    {
+        return new self(deleteRequest: new DeleteRequest($key));
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public static function put(AttributeValueMap $item): self
+    {
+        return new self(putRequest: new PutRequest($item));
+    }
 }

@@ -60,8 +60,8 @@ the normalizer knows what to build). They are immutable, validate in the constru
 
 ## Adding an API operation
 
-The three existing operations — `getItem`, `batchExecuteStatement`, `batchGetItem` — are the templates.
-Read one end to end before starting a fourth.
+The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `getItem` — are
+the templates. Read one end to end before starting another.
 
 **1. Read the AWS reference.** The docs are fetchable as Markdown:
 
@@ -86,7 +86,8 @@ response nullability on documented behaviour instead (see step 5).
 **3. Models** go in `src/Model`, named exactly after the AWS type (`KeysAndAttributes`,
 `BatchStatementError`). Enums are backed enums over the documented valid values
 (`ReturnValuesOnConditionCheckFailure`). Reuse what exists — `AttributeValue`, `AttributeValueMap`,
-`ConsumedCapacity`, `Capacity` already cover most nested shapes.
+`ConsumedCapacity`, `Capacity` already cover most nested shapes. Give the model named constructors
+where the rules below ask for them.
 
 **4. Collections** are `final readonly` classes extending `AbstractObjectList` / `AbstractObjectMap`,
 named `<ItemType>List` / `<ItemType>Map`. **Never repeat `Object` in a concrete collection's name** —
@@ -131,6 +132,36 @@ deserialize, and every validation rule. Note in the docblock if you had to corre
 some of them are not valid JSON.
 
 **9.** `composer fix && composer analyse`.
+
+## Named constructors
+
+The client takes request objects, so the request object is the API. That only stays pleasant if
+building the models inside it is short. **Whenever a new model makes the caller write `new` inside
+`new`, or makes them pick one of several mutually exclusive parameters, give it a named static
+constructor** — `AttributeValue::string('x')` instead of `new AttributeValue(string: 'x')`,
+`WriteRequest::put($item)` instead of `new WriteRequest(putRequest: new PutRequest($item))`.
+
+- **The constructor stays the only validation point.** A factory does nothing but build its arguments
+  and forward them, so every rule is enforced once and applies to deserialization too. A factory that
+  reaches the constructor still needs `@throws InvalidArgumentException`, even when its own arguments
+  cannot violate anything — PHPStan's `missingCheckedExceptionInThrows` counts the call.
+- **A factory takes the raw ingredients, the constructor takes the built objects.** `stringSet()`
+  takes `string ...$values`, `map()` takes `array<string, AttributeValue>`. Nothing is gained by an
+  overload for a collection the caller already holds — `new AttributeValue(map: $map)` is short
+  already. A variadic can arrive with string keys, so wrap it in `array_values()` before handing it
+  to a list or set.
+- **Accept what callers have, convert where the conversion is lossless.** `AttributeValue::number()`
+  takes `float|int|string` because DynamoDB's `N` is a string on the wire and nobody wants to write
+  the cast. It documents that a float converts with PHP's own precision.
+- **Name the factory after the thing it produces**, and order the factories the way the constructor
+  orders its properties (for `AttributeValue`, that is wire order: `B`, `BOOL`, `BS`, `L`, …). PHP
+  allows reserved words as method names, so `list()`, `null()`, `string()` and `bool()` are fine and
+  are the right names.
+- **Leave response-only models alone.** `ConsumedCapacity`, `BatchStatementError` and the like are
+  only ever deserialized, so a factory would be dead weight.
+- **Do not put a variadic `of()` on the collections.** `new AttributeValueList([$a, $b])` is already
+  flat, and the typed `list<T>` constructor parameter gives PHPStan more to check than
+  `mixed ...$items` would.
 
 ## Conventions and gotchas
 
