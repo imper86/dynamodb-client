@@ -13,6 +13,8 @@ use Imper86\DynamoDBClient\Message\BatchWriteItemRequest;
 use Imper86\DynamoDBClient\Message\BatchWriteItemResponse;
 use Imper86\DynamoDBClient\Message\CreateBackupRequest;
 use Imper86\DynamoDBClient\Message\CreateBackupResponse;
+use Imper86\DynamoDBClient\Message\CreateTableRequest;
+use Imper86\DynamoDBClient\Message\CreateTableResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -37,6 +39,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function createBackup(CreateBackupRequest $request): CreateBackupResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function createTable(CreateTableRequest $request): CreateTableResponse;
 
     /**
      * @throws ExceptionInterface

@@ -22,6 +22,8 @@ use Imper86\DynamoDBClient\Message\BatchWriteItemRequest;
 use Imper86\DynamoDBClient\Message\BatchWriteItemResponse;
 use Imper86\DynamoDBClient\Message\CreateBackupRequest;
 use Imper86\DynamoDBClient\Message\CreateBackupResponse;
+use Imper86\DynamoDBClient\Message\CreateTableRequest;
+use Imper86\DynamoDBClient\Message\CreateTableResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -88,6 +90,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function createBackup(CreateBackupRequest $request): CreateBackupResponse
     {
         return $this->sendRequest('DynamoDB_20120810.CreateBackup', $request, CreateBackupResponse::class);
+    }
+
+    public function createTable(CreateTableRequest $request): CreateTableResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.CreateTable', $request, CreateTableResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse

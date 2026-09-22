@@ -39,8 +39,9 @@ user agent is added *after* signing because it is not part of the signature.
 **Serialization** is Symfony Serializer, configured once in `SerializerFactory`:
 
 - `PascalCaseNameConverter` maps PHP `camelCase` to AWS `PascalCase` by plain `ucfirst`/`lcfirst`. A
-  property whose wire name does not follow from that (`AttributeValue`'s `B`, `BOOL`, `NS`, …) carries
-  a `#[SerializedName]` attribute instead.
+  property whose wire name does not follow from that carries a `#[SerializedName]` attribute instead:
+  `AttributeValue`'s `B`, `BOOL`, `NS`, …, and every member AWS spells with an acronym, since
+  `ucfirst` turns `sseDescription` into `SseDescription` and `kmsMasterKeyId` into `KmsMasterKeyId`.
 - `SKIP_NULL_VALUES` is on, so a null property is simply absent from the request body.
 - `DateTimeNormalizer` is configured with `'U.u'` and `CAST_KEY => 'float'`, because AWS puts a
   `Timestamp` on the wire as epoch seconds with a fractional part rather than as a date string. Type
@@ -64,7 +65,10 @@ the normalizer knows what to build). They are immutable, validate in the constru
 ## Adding an API operation
 
 The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `createBackup`,
-`getItem` — are the templates. Read one end to end before starting another.
+`createTable`, `getItem` — are the templates. Read one end to end before starting another.
+`createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
+`ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
+and `updateTable` will reuse.
 
 **1. Read the AWS reference.** The docs are fetchable as Markdown:
 
@@ -141,6 +145,11 @@ with a class docblock naming which documented example the fixtures come from. Fi
 documented round trip, each optional response element present and absent, a body that cannot
 deserialize, and every validation rule. Note in the docblock if you had to correct the AWS sample —
 some of them are not valid JSON.
+
+A rule the parameter type already carries has no test: PHPStan rejects `''` for a `non-empty-string`
+and `0` for a `positive-int` at the call site, so the only way to reach the `Assert` would be to hide
+the value from the analyser. Leave the assertion in — it still guards callers who do not run
+PHPStan — and test the rules a well-typed caller can actually break.
 
 **9.** `composer fix && composer analyse`.
 

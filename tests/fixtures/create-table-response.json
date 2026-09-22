@@ -1,0 +1,55 @@
+{
+    "TableDescription": {
+        "TableArn": "arn:aws:dynamodb:us-west-2:123456789012:table/Thread",
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "ForumName",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "LastPostDateTime",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "Subject",
+                "AttributeType": "S"
+            }
+        ],
+        "CreationDateTime": 1.36372808007E9,
+        "ItemCount": 0,
+        "KeySchema": [
+            {
+                "AttributeName": "ForumName",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "Subject",
+                "KeyType": "RANGE"
+            }
+        ],
+        "LocalSecondaryIndexes": [
+            {
+                "IndexArn": "arn:aws:dynamodb:us-west-2:123456789012:table/Thread/index/LastPostIndex",
+                "IndexName": "LastPostIndex",
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "KeySchema": [
+                    {
+                        "AttributeName": "ForumName",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "LastPostDateTime",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "KEYS_ONLY"
+                }
+            }
+        ],
+        "TableName": "Thread",
+        "TableSizeBytes": 0,
+        "TableStatus": "CREATING"
+    }
+}

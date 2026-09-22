@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Imper86\DynamoDBClient\Model;
+
+enum ReplicaStatus: string
+{
+    case ACTIVE = 'ACTIVE';
+    case ARCHIVED = 'ARCHIVED';
+    case ARCHIVING = 'ARCHIVING';
+    case CREATING = 'CREATING';
+    case CREATION_FAILED = 'CREATION_FAILED';
+    case DELETING = 'DELETING';
+    case INACCESSIBLE_ENCRYPTION_CREDENTIALS = 'INACCESSIBLE_ENCRYPTION_CREDENTIALS';
+    case REGION_DISABLED = 'REGION_DISABLED';
+    case REPLICATION_NOT_AUTHORIZED = 'REPLICATION_NOT_AUTHORIZED';
+    case UPDATING = 'UPDATING';
+}
