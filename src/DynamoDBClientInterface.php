@@ -41,6 +41,8 @@ use Imper86\DynamoDBClient\Message\DescribeTableRequest;
 use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingRequest;
 use Imper86\DynamoDBClient\Message\DescribeTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\DescribeTableResponse;
+use Imper86\DynamoDBClient\Message\DescribeTimeToLiveRequest;
+use Imper86\DynamoDBClient\Message\DescribeTimeToLiveResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -148,6 +150,11 @@ interface DynamoDBClientInterface
     public function describeTableReplicaAutoScaling(
         DescribeTableReplicaAutoScalingRequest $request,
     ): DescribeTableReplicaAutoScalingResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeTimeToLive(DescribeTimeToLiveRequest $request): DescribeTimeToLiveResponse;
 
     /**
      * @throws ExceptionInterface

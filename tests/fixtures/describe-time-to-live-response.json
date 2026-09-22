@@ -1,0 +1,6 @@
+{
+    "TimeToLiveDescription": {
+        "AttributeName": "ExpiresAt",
+        "TimeToLiveStatus": "ENABLED"
+    }
+}
