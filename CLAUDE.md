@@ -42,6 +42,9 @@ user agent is added *after* signing because it is not part of the signature.
   property whose wire name does not follow from that (`AttributeValue`'s `B`, `BOOL`, `NS`, …) carries
   a `#[SerializedName]` attribute instead.
 - `SKIP_NULL_VALUES` is on, so a null property is simply absent from the request body.
+- `DateTimeNormalizer` is configured with `'U.u'` and `CAST_KEY => 'float'`, because AWS puts a
+  `Timestamp` on the wire as epoch seconds with a fractional part rather than as a date string. Type
+  such a member as `DateTimeImmutable`; it comes back in UTC.
 - `CollectionNormalizer` handles everything implementing `ValueObject\CollectionInterface`, turning
   lists and sets into JSON arrays and maps into JSON objects (an empty map stays `{}`, not `[]`), and
   delegating items back to the serializer. Constructor validation failures surface as
@@ -60,8 +63,8 @@ the normalizer knows what to build). They are immutable, validate in the constru
 
 ## Adding an API operation
 
-The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `getItem` — are
-the templates. Read one end to end before starting another.
+The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `createBackup`,
+`getItem` — are the templates. Read one end to end before starting another.
 
 **1. Read the AWS reference.** The docs are fetchable as Markdown:
 
@@ -104,12 +107,20 @@ with promoted constructor properties. Nullability:
 | Request, optional parameter | nullable, `= null`, alphabetical after the required ones |
 | Response, scalar or object that may legitimately be absent | nullable, `= null` |
 | Response, collection the service always sends | non-nullable, `= new <Collection>()` |
+| Response, object the service always sends | still nullable, `= null` |
 
 The empty-collection default is the important one: it gives callers a non-null payload without turning
 an unexpectedly absent element into an exception that also discards the `ConsumedCapacity` that *did*
 arrive. Use it for a collection AWS always returns (`Responses`, `UnprocessedKeys`). Use `null` where
 absence carries meaning — `GetItemResponse::$item` is null precisely because that is how DynamoDB
 reports "no matching item".
+
+An object has no empty equivalent to default to, so it stays nullable even when the service always
+sends it — `CreateBackupResponse::$backupDetails` is the whole payload, and requiring it would answer
+an unexpectedly empty body with a deserialization failure instead of a response to inspect. Models
+that only ever arrive in a response (`ConsumedCapacity`, `BackupDetails`) make every property
+nullable with a `= null` default, in alphabetical order, and assert nothing: a constraint on a value
+the service chose can only turn its answer into an exception.
 
 Response properties are ordered payload first, `ConsumedCapacity` last, regardless of the order in the
 AWS response syntax.

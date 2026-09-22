@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Mapping\Loader\AttributeLoader;
 use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\BackedEnumNormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -35,6 +36,11 @@ final readonly class SerializerFactory
             [
                 new CollectionNormalizer(),
                 new BackedEnumNormalizer(),
+                // AWS puts timestamps on the wire as epoch seconds with a fractional part.
+                new DateTimeNormalizer([
+                    DateTimeNormalizer::FORMAT_KEY => 'U.u',
+                    DateTimeNormalizer::CAST_KEY => 'float',
+                ]),
                 new PropertyNormalizer(
                     $classMetadataFactory,
                     $nameConverter,
