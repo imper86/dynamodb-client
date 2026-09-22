@@ -1,0 +1,7 @@
+{
+    "NextToken": "eyJLZXkiOiJUZWFtIn0",
+    "Tags": [
+        {"Key": "Environment", "Value": "production"},
+        {"Key": "Team", "Value": ""}
+    ]
+}

@@ -1,0 +1,4 @@
+{
+    "NextToken": "eyJLZXkiOiJFbnZpcm9ubWVudCJ9",
+    "ResourceArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+}

@@ -78,6 +78,8 @@ use Imper86\DynamoDBClient\Message\ListImportsRequest;
 use Imper86\DynamoDBClient\Message\ListImportsResponse;
 use Imper86\DynamoDBClient\Message\ListTablesRequest;
 use Imper86\DynamoDBClient\Message\ListTablesResponse;
+use Imper86\DynamoDBClient\Message\ListTagsOfResourceRequest;
+use Imper86\DynamoDBClient\Message\ListTagsOfResourceResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -335,6 +337,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function listTables(ListTablesRequest $request = new ListTablesRequest()): ListTablesResponse
     {
         return $this->sendRequest('DynamoDB_20120810.ListTables', $request, ListTablesResponse::class);
+    }
+
+    public function listTagsOfResource(ListTagsOfResourceRequest $request): ListTagsOfResourceResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ListTagsOfResource', $request, ListTagsOfResourceResponse::class);
     }
 
     /**
