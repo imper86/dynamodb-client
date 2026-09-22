@@ -1,0 +1,20 @@
+{
+    "ConsumedCapacity": {
+        "CapacityUnits": 1,
+        "TableName": "Reply"
+    },
+    "Count": 2,
+    "Items": [
+        {
+            "ReplyDateTime": {"S": "2015-02-18T20:27:36.165Z"},
+            "PostedBy": {"S": "User A"},
+            "Id": {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
+        },
+        {
+            "ReplyDateTime": {"S": "2015-02-25T20:27:36.165Z"},
+            "PostedBy": {"S": "User B"},
+            "Id": {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
+        }
+    ],
+    "ScannedCount": 2
+}

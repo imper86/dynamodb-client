@@ -1,0 +1,14 @@
+{
+    "TableName": "Reply",
+    "IndexName": "PostedBy-Index",
+    "Limit": 3,
+    "ConsistentRead": true,
+    "ProjectionExpression": "Id, PostedBy, ReplyDateTime",
+    "KeyConditionExpression": "Id = :v1 AND PostedBy BETWEEN :v2a AND :v2b",
+    "ExpressionAttributeValues": {
+        ":v1": {"S": "Amazon DynamoDB#DynamoDB Thread 1"},
+        ":v2a": {"S": "User A"},
+        ":v2b": {"S": "User C"}
+    },
+    "ReturnConsumedCapacity": "TOTAL"
+}

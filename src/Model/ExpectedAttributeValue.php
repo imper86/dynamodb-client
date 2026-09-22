@@ -32,30 +32,7 @@ final readonly class ExpectedAttributeValue
                 'Value and Exists cannot be combined with ComparisonOperator and AttributeValueList.',
             );
 
-            $operands = count($this->attributeValueList ?? []);
-
-            match ($this->comparisonOperator) {
-                ComparisonOperator::NULL, ComparisonOperator::NOT_NULL => Assert::same(
-                    $operands,
-                    0,
-                    'Expected no AttributeValueList for ' . $this->comparisonOperator->value . '. Got %s values',
-                ),
-                ComparisonOperator::BETWEEN => Assert::same(
-                    $operands,
-                    2,
-                    'Expected 2 values in the AttributeValueList for BETWEEN. Got: %s',
-                ),
-                ComparisonOperator::IN => Assert::greaterThanEq(
-                    $operands,
-                    1,
-                    'Expected at least 1 value in the AttributeValueList for IN. Got: %s',
-                ),
-                default => Assert::same(
-                    $operands,
-                    1,
-                    'Expected 1 value in the AttributeValueList for ' . $this->comparisonOperator->value . '. Got: %s',
-                ),
-            };
+            $this->comparisonOperator->assertOperandCount(count($this->attributeValueList ?? []));
 
             return;
         }
