@@ -23,6 +23,7 @@ use Imper86\DynamoDBClient\Model\AttributeValueMap;
 use Imper86\DynamoDBClient\Model\ConsumedCapacity;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
+use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use Imper86\DynamoDBClient\ValueObject\StringSet;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -32,6 +33,7 @@ use RuntimeException;
 use Symfony\Component\Serializer\SerializerInterface;
 
 use function file_get_contents;
+use function str_repeat;
 
 /**
  * The messages exchanged here are the "Retrieve Item Attributes" example of the GetItem reference.
@@ -272,6 +274,33 @@ final class GetItemTest extends TestCase
         } catch (ClientInvalidArgumentException $exception) {
             self::assertSame('Unsupported method', $exception->getMessage());
         }
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function testRejectsATableNameLongerThanTheServiceAllows(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new GetItemRequest(
+            new AttributeValueMap(['ForumName' => AttributeValue::string('Amazon DynamoDB')]),
+            str_repeat('a', 1025),
+        );
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function testRejectsAnEmptyAttributesToGetList(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new GetItemRequest(
+            new AttributeValueMap(['ForumName' => AttributeValue::string('Amazon DynamoDB')]),
+            'Thread',
+            attributesToGet: new NonEmptyStringList(),
+        );
     }
 
     /**

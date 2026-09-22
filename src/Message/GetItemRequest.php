@@ -14,7 +14,7 @@ use Webmozart\Assert\Assert;
 final readonly class GetItemRequest
 {
     /**
-     * @param non-empty-string $tableName
+     * @param non-empty-string $tableName the table name or its ARN
      * @param null|non-empty-string $projectionExpression
      * @throws InvalidArgumentException
      */
@@ -28,6 +28,8 @@ final readonly class GetItemRequest
         public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
+        Assert::maxLength($this->tableName, 1024);
+        Assert::nullOrMinCount($this->attributesToGet, 1);
         Assert::nullOrStringNotEmpty($this->projectionExpression);
     }
 }
