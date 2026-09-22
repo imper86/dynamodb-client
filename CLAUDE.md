@@ -48,6 +48,8 @@ user agent is added *after* signing because it is not part of the signature.
   `AttributeValue`'s `B`, `BOOL`, `NS`, …, and every member AWS spells with an acronym, since
   `ucfirst` turns `sseDescription` into `SseDescription` and `kmsMasterKeyId` into `KmsMasterKeyId`.
 - `SKIP_NULL_VALUES` is on, so a null property is simply absent from the request body.
+  `PRESERVE_EMPTY_OBJECTS` is on too, so an object whose properties are all null still goes on the wire
+  as `{}` rather than `[]`.
 - `TimestampNormalizer` handles every date, because AWS puts a `Timestamp` on the wire as a JSON
   number of epoch seconds with a fractional part rather than as a date string. Symfony's
   `DateTimeNormalizer` cannot emit a number before 7.1 (`CAST_KEY`), so do not swap it back while

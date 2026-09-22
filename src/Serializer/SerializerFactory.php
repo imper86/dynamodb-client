@@ -50,6 +50,8 @@ final readonly class SerializerFactory
                     new ClassDiscriminatorFromClassMetadata($classMetadataFactory),
                     null,
                     [
+                        // An object whose members are all null would otherwise encode as `[]`, not `{}`.
+                        AbstractObjectNormalizer::PRESERVE_EMPTY_OBJECTS => true,
                         AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
                     ],
                 ),
