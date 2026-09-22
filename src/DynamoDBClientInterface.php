@@ -29,6 +29,7 @@ use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsResponse;
 use Imper86\DynamoDBClient\Message\DescribeContributorInsightsRequest;
 use Imper86\DynamoDBClient\Message\DescribeContributorInsightsResponse;
+use Imper86\DynamoDBClient\Message\DescribeEndpointsResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -97,6 +98,11 @@ interface DynamoDBClientInterface
     public function describeContributorInsights(
         DescribeContributorInsightsRequest $request,
     ): DescribeContributorInsightsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeEndpoints(): DescribeEndpointsResponse;
 
     /**
      * @throws ExceptionInterface

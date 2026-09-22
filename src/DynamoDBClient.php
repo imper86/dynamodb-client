@@ -38,6 +38,7 @@ use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsResponse;
 use Imper86\DynamoDBClient\Message\DescribeContributorInsightsRequest;
 use Imper86\DynamoDBClient\Message\DescribeContributorInsightsResponse;
+use Imper86\DynamoDBClient\Message\DescribeEndpointsResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -160,6 +161,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
         );
     }
 
+    public function describeEndpoints(): DescribeEndpointsResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.DescribeEndpoints', null, DescribeEndpointsResponse::class);
+    }
+
     public function getItem(GetItemRequest $request): GetItemResponse
     {
         return $this->sendRequest('DynamoDB_20120810.GetItem', $request, GetItemResponse::class);
@@ -182,15 +188,18 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
                 ->withHeader('X-Amz-Target', $target)
             ;
 
+            // An operation without parameters still sends a JSON object, just an empty one.
+            $body = '{}';
+
             if (null !== $payload) {
                 try {
                     $body = $this->serializer->serialize($payload, JsonEncoder::FORMAT);
                 } catch (Throwable $exception) {
                     throw new RequestSerializationException($payload, $exception);
                 }
-
-                $request = $request->withBody($this->streamFactory->createStream($body));
             }
+
+            $request = $request->withBody($this->streamFactory->createStream($body));
 
             try {
                 $response = $this->httpClient->sendRequest($request);

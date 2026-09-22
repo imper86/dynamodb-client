@@ -72,8 +72,8 @@ the normalizer knows what to build). They are immutable, validate in the constru
 
 The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `createBackup`,
 `createTable`, `deleteBackup`, `deleteItem`, `deleteResourcePolicy`, `deleteTable`, `describeBackup`,
-`describeContinuousBackups`, `describeContributorInsights`, `getItem` — are the templates. Read one end to
-end before starting another.
+`describeContinuousBackups`, `describeContributorInsights`, `describeEndpoints`, `getItem` — are the
+templates. Read one end to end before starting another.
 `createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
 `ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
 and `updateTable` will reuse.
@@ -136,6 +136,10 @@ the service chose can only turn its answer into an exception.
 
 Response properties are ordered payload first, `ConsumedCapacity` last, regardless of the order in the
 AWS response syntax.
+
+An operation with no request parameters (`DescribeEndpoints`) gets no request class — Symfony's
+`PropertyNormalizer` refuses an object without properties. Its client method takes no argument and passes
+`null` to `sendRequest()`, which then sends `{}`.
 
 **6. Validation** lives in the constructor of the object that owns the constraint, using
 `Webmozart\Assert\Assert` (`minCount`, `maxCount`, `maxLength`, `stringNotEmpty`, and the `nullOr*`
