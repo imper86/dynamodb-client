@@ -14,6 +14,7 @@ use Imper86\DynamoDBClient\ValueObject\NumberSet;
 use Imper86\DynamoDBClient\ValueObject\StringSet;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Exception\NotNormalizableValueException;
@@ -21,7 +22,7 @@ use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AttributeLoader;
 use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -39,7 +40,11 @@ final class CollectionNormalizerTest extends TestCase
         $this->serializer = new Serializer(
             [
                 new CollectionNormalizer(),
-                new ObjectNormalizer($metadataFactory, new MetadataAwareNameConverter($metadataFactory)),
+                new PropertyNormalizer(
+                    $metadataFactory,
+                    new MetadataAwareNameConverter($metadataFactory),
+                    new ReflectionExtractor(),
+                ),
             ],
             [new JsonEncoder()],
         );
