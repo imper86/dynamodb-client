@@ -1,0 +1,5 @@
+{
+    "MaxResults": 10,
+    "NextToken": "eyJUYWJsZU5hbWUiOiJNdXNpYyJ9",
+    "TableName": "Music"
+}

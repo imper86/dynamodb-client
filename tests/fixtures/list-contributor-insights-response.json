@@ -1,0 +1,16 @@
+{
+    "ContributorInsightsSummaries": [
+        {
+            "ContributorInsightsMode": "ACCESSED_AND_THROTTLED_KEYS",
+            "ContributorInsightsStatus": "ENABLED",
+            "TableName": "Music"
+        },
+        {
+            "ContributorInsightsMode": "THROTTLED_KEYS",
+            "ContributorInsightsStatus": "ENABLING",
+            "IndexName": "AlbumTitleIndex",
+            "TableName": "Music"
+        }
+    ],
+    "NextToken": "eyJUYWJsZU5hbWUiOiJNdXNpYyIsIkluZGV4TmFtZSI6IkFsYnVtVGl0bGVJbmRleCJ9"
+}

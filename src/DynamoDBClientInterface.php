@@ -61,6 +61,8 @@ use Imper86\DynamoDBClient\Message\ImportTableRequest;
 use Imper86\DynamoDBClient\Message\ImportTableResponse;
 use Imper86\DynamoDBClient\Message\ListBackupsRequest;
 use Imper86\DynamoDBClient\Message\ListBackupsResponse;
+use Imper86\DynamoDBClient\Message\ListContributorInsightsRequest;
+use Imper86\DynamoDBClient\Message\ListContributorInsightsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -222,4 +224,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function listBackups(ListBackupsRequest $request = new ListBackupsRequest()): ListBackupsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function listContributorInsights(
+        ListContributorInsightsRequest $request = new ListContributorInsightsRequest(),
+    ): ListContributorInsightsResponse;
 }
