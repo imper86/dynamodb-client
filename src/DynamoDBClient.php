@@ -32,6 +32,8 @@ use Imper86\DynamoDBClient\Message\DeleteResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\DeleteResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\DeleteTableRequest;
 use Imper86\DynamoDBClient\Message\DeleteTableResponse;
+use Imper86\DynamoDBClient\Message\DescribeBackupRequest;
+use Imper86\DynamoDBClient\Message\DescribeBackupResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -127,6 +129,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function deleteTable(DeleteTableRequest $request): DeleteTableResponse
     {
         return $this->sendRequest('DynamoDB_20120810.DeleteTable', $request, DeleteTableResponse::class);
+    }
+
+    public function describeBackup(DescribeBackupRequest $request): DescribeBackupResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.DescribeBackup', $request, DescribeBackupResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse
