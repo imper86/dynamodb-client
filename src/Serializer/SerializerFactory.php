@@ -6,6 +6,7 @@ namespace Imper86\DynamoDBClient\Serializer;
 
 use Imper86\DynamoDBClient\Serializer\NameConverter\PascalCaseNameConverter;
 use Imper86\DynamoDBClient\Serializer\Normalizer\CollectionNormalizer;
+use Imper86\DynamoDBClient\Serializer\Normalizer\ScalarRejectingDenormalizer;
 use Imper86\DynamoDBClient\Serializer\Normalizer\TimestampNormalizer;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -37,6 +38,7 @@ final readonly class SerializerFactory
                 new CollectionNormalizer(),
                 new BackedEnumNormalizer(),
                 new TimestampNormalizer(),
+                new ScalarRejectingDenormalizer(),
                 new PropertyNormalizer(
                     $classMetadataFactory,
                     $nameConverter,

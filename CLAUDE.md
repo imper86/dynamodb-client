@@ -58,6 +58,10 @@ user agent is added *after* signing because it is not part of the signature.
   lists and sets into JSON arrays and maps into JSON objects (an empty map stays `{}`, not `[]`), and
   delegating items back to the serializer. Constructor validation failures surface as
   `NotNormalizableValueException`, which `sendRequest()` then wraps.
+- `ScalarRejectingDenormalizer` sits just before `PropertyNormalizer` and rejects a scalar where an
+  object is expected. `PropertyNormalizer` would cast `"x"` to `["x"]` and build the object from its
+  defaults, so a malformed body would arrive as an empty value instead of an error. `null` still passes
+  through and reads as an absent member.
 
 Because deserialization goes through the constructor, **a required constructor parameter that the
 service omits turns the whole call into a `ResponseDeserializationException`**. This drives the

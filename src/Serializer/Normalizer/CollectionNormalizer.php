@@ -129,7 +129,9 @@ final class CollectionNormalizer implements
         ?string $format = null,
         array $context = [],
     ): bool {
-        return is_array($data) && is_a($type, CollectionInterface::class, true);
+        // Anything but null is claimed, so that a scalar is rejected by denormalize() instead of falling
+        // through to PropertyNormalizer, which would cast it to an array and build an empty collection.
+        return null !== $data && is_a($type, CollectionInterface::class, true);
     }
 
     public function getSupportedTypes(?string $format): array

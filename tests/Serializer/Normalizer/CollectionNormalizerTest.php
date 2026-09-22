@@ -98,4 +98,14 @@ final class CollectionNormalizerTest extends TestCase
 
         $this->serializer->deserialize('["a","a"]', StringSet::class, 'json');
     }
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function testRejectsAScalarWhereACollectionIsExpected(): void
+    {
+        $this->expectException(NotNormalizableValueException::class);
+
+        $this->serializer->deserialize('"a"', StringSet::class, 'json');
+    }
 }
