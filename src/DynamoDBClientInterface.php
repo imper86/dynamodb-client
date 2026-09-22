@@ -15,6 +15,8 @@ use Imper86\DynamoDBClient\Message\CreateBackupRequest;
 use Imper86\DynamoDBClient\Message\CreateBackupResponse;
 use Imper86\DynamoDBClient\Message\CreateTableRequest;
 use Imper86\DynamoDBClient\Message\CreateTableResponse;
+use Imper86\DynamoDBClient\Message\DeleteBackupRequest;
+use Imper86\DynamoDBClient\Message\DeleteBackupResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -44,6 +46,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function createTable(CreateTableRequest $request): CreateTableResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function deleteBackup(DeleteBackupRequest $request): DeleteBackupResponse;
 
     /**
      * @throws ExceptionInterface
