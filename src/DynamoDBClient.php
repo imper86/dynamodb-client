@@ -60,6 +60,8 @@ use Imper86\DynamoDBClient\Message\ExecuteStatementRequest;
 use Imper86\DynamoDBClient\Message\ExecuteStatementResponse;
 use Imper86\DynamoDBClient\Message\ExecuteTransactionRequest;
 use Imper86\DynamoDBClient\Message\ExecuteTransactionResponse;
+use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeRequest;
+use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -263,6 +265,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             'DynamoDB_20120810.ExecuteTransaction',
             $request,
             ExecuteTransactionResponse::class,
+        );
+    }
+
+    public function exportTableToPointInTime(
+        ExportTableToPointInTimeRequest $request,
+    ): ExportTableToPointInTimeResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.ExportTableToPointInTime',
+            $request,
+            ExportTableToPointInTimeResponse::class,
         );
     }
 

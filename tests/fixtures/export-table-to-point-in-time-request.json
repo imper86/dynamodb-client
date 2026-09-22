@@ -1,0 +1,12 @@
+{
+    "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music",
+    "ExportTime": 1576624066.799,
+    "ClientToken": "8f3b8f4e-0a6c-4b53-9d8e-2c1f6a7b9e10",
+    "S3Bucket": "music-exports",
+    "S3BucketOwner": "123456789012",
+    "S3Prefix": "exports/music",
+    "S3SseAlgorithm": "KMS",
+    "S3SseKmsKeyId": "arn:aws:kms:eu-central-1:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+    "ExportFormat": "DYNAMODB_JSON",
+    "ExportType": "FULL_EXPORT"
+}

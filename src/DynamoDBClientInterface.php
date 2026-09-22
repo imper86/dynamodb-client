@@ -51,6 +51,8 @@ use Imper86\DynamoDBClient\Message\ExecuteStatementRequest;
 use Imper86\DynamoDBClient\Message\ExecuteStatementResponse;
 use Imper86\DynamoDBClient\Message\ExecuteTransactionRequest;
 use Imper86\DynamoDBClient\Message\ExecuteTransactionResponse;
+use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeRequest;
+use Imper86\DynamoDBClient\Message\ExportTableToPointInTimeResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -187,6 +189,13 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function executeTransaction(ExecuteTransactionRequest $request): ExecuteTransactionResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function exportTableToPointInTime(
+        ExportTableToPointInTimeRequest $request,
+    ): ExportTableToPointInTimeResponse;
 
     /**
      * @throws ExceptionInterface
