@@ -78,7 +78,7 @@ The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWrite
 `describeImport`, `describeKinesisStreamingDestination`, `describeLimits`, `describeTable`,
 `describeTableReplicaAutoScaling`, `describeTimeToLive`, `disableKinesisStreamingDestination`,
 `enableKinesisStreamingDestination`, `executeStatement`, `executeTransaction`, `exportTableToPointInTime`, `getItem`,
-`getResourcePolicy`, `importTable` — are the templates.
+`getResourcePolicy`, `importTable`, `listBackups` — are the templates.
 Read one end to end before starting another.
 `createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
 `ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
@@ -146,6 +146,11 @@ AWS response syntax.
 An operation with no request parameters (`DescribeEndpoints`, `DescribeLimits`) gets no request class — Symfony's
 `PropertyNormalizer` refuses an object without properties. Its client method takes no argument and passes
 `null` to `sendRequest()`, which then sends `{}`.
+
+An operation whose request parameters are all optional (`ListBackups`, `ListTables`) does get a request
+class, and its client method defaults the argument to an empty one —
+`listTables(ListTablesRequest $request = new ListTablesRequest())` — so a caller who wants the defaults
+can write `$client->listTables()`.
 
 **6. Validation** lives in the constructor of the object that owns the constraint, using
 `Webmozart\Assert\Assert` (`minCount`, `maxCount`, `maxLength`, `stringNotEmpty`, and the `nullOr*`

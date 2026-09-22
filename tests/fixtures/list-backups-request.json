@@ -1,0 +1,8 @@
+{
+    "BackupType": "ALL",
+    "ExclusiveStartBackupArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576616366715-b4e58d3a",
+    "Limit": 2,
+    "TableName": "Music",
+    "TimeRangeLowerBound": 1575158400,
+    "TimeRangeUpperBound": 1577836800
+}

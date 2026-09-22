@@ -68,6 +68,8 @@ use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\ImportTableRequest;
 use Imper86\DynamoDBClient\Message\ImportTableResponse;
+use Imper86\DynamoDBClient\Message\ListBackupsRequest;
+use Imper86\DynamoDBClient\Message\ListBackupsResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -295,6 +297,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function importTable(ImportTableRequest $request): ImportTableResponse
     {
         return $this->sendRequest('DynamoDB_20120810.ImportTable', $request, ImportTableResponse::class);
+    }
+
+    public function listBackups(ListBackupsRequest $request = new ListBackupsRequest()): ListBackupsResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ListBackups', $request, ListBackupsResponse::class);
     }
 
     /**

@@ -59,6 +59,8 @@ use Imper86\DynamoDBClient\Message\GetResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\GetResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\ImportTableRequest;
 use Imper86\DynamoDBClient\Message\ImportTableResponse;
+use Imper86\DynamoDBClient\Message\ListBackupsRequest;
+use Imper86\DynamoDBClient\Message\ListBackupsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -215,4 +217,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function importTable(ImportTableRequest $request): ImportTableResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function listBackups(ListBackupsRequest $request = new ListBackupsRequest()): ListBackupsResponse;
 }
