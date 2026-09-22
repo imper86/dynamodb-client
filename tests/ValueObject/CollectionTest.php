@@ -17,6 +17,7 @@ use Imper86\DynamoDBClient\ValueObject\CollectionInterface;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Imper86\DynamoDBClient\ValueObject\NumberSet;
+use Imper86\DynamoDBClient\ValueObject\StringList;
 use Imper86\DynamoDBClient\ValueObject\StringSet;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -36,6 +37,7 @@ use function iterator_to_array;
 #[CoversClass(NonEmptyStringList::class)]
 #[CoversClass(NonEmptyStringMap::class)]
 #[CoversClass(NumberSet::class)]
+#[CoversClass(StringList::class)]
 #[CoversClass(StringSet::class)]
 final class CollectionTest extends TestCase
 {
@@ -102,6 +104,8 @@ final class CollectionTest extends TestCase
         yield 'blob set with non-string value' => [BlobSet::class, [1]];
 
         yield 'non-empty string list with empty string' => [NonEmptyStringList::class, ['']];
+
+        yield 'string list with non-string value' => [StringList::class, ['a', 1]];
 
         yield 'non-empty string map with empty string' => [NonEmptyStringMap::class, ['a' => '']];
     }

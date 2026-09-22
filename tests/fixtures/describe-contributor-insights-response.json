@@ -1,0 +1,11 @@
+{
+    "ContributorInsightsMode": "ACCESSED_AND_THROTTLED_KEYS",
+    "ContributorInsightsRuleList": [
+        "DynamoDBContributorInsights-PKC-Music-AlbumTitleIndex-1576623000500",
+        "DynamoDBContributorInsights-PKT-Music-AlbumTitleIndex-1576623000500"
+    ],
+    "ContributorInsightsStatus": "ENABLED",
+    "IndexName": "AlbumTitleIndex",
+    "LastUpdateDateTime": 1576624066.799,
+    "TableName": "Music"
+}

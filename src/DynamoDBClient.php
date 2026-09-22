@@ -36,6 +36,8 @@ use Imper86\DynamoDBClient\Message\DescribeBackupRequest;
 use Imper86\DynamoDBClient\Message\DescribeBackupResponse;
 use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\DescribeContinuousBackupsResponse;
+use Imper86\DynamoDBClient\Message\DescribeContributorInsightsRequest;
+use Imper86\DynamoDBClient\Message\DescribeContributorInsightsResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -145,6 +147,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             'DynamoDB_20120810.DescribeContinuousBackups',
             $request,
             DescribeContinuousBackupsResponse::class,
+        );
+    }
+
+    public function describeContributorInsights(
+        DescribeContributorInsightsRequest $request,
+    ): DescribeContributorInsightsResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.DescribeContributorInsights',
+            $request,
+            DescribeContributorInsightsResponse::class,
         );
     }
 

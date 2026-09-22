@@ -1,0 +1,4 @@
+{
+    "TableName": "Music",
+    "IndexName": "AlbumTitleIndex"
+}
