@@ -76,6 +76,8 @@ use Imper86\DynamoDBClient\Message\ListExportsRequest;
 use Imper86\DynamoDBClient\Message\ListExportsResponse;
 use Imper86\DynamoDBClient\Message\ListImportsRequest;
 use Imper86\DynamoDBClient\Message\ListImportsResponse;
+use Imper86\DynamoDBClient\Message\ListTablesRequest;
+use Imper86\DynamoDBClient\Message\ListTablesResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -328,6 +330,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function listImports(ListImportsRequest $request = new ListImportsRequest()): ListImportsResponse
     {
         return $this->sendRequest('DynamoDB_20120810.ListImports', $request, ListImportsResponse::class);
+    }
+
+    public function listTables(ListTablesRequest $request = new ListTablesRequest()): ListTablesResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ListTables', $request, ListTablesResponse::class);
     }
 
     /**

@@ -67,6 +67,8 @@ use Imper86\DynamoDBClient\Message\ListExportsRequest;
 use Imper86\DynamoDBClient\Message\ListExportsResponse;
 use Imper86\DynamoDBClient\Message\ListImportsRequest;
 use Imper86\DynamoDBClient\Message\ListImportsResponse;
+use Imper86\DynamoDBClient\Message\ListTablesRequest;
+use Imper86\DynamoDBClient\Message\ListTablesResponse;
 
 interface DynamoDBClientInterface
 {
@@ -245,4 +247,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function listImports(ListImportsRequest $request = new ListImportsRequest()): ListImportsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function listTables(ListTablesRequest $request = new ListTablesRequest()): ListTablesResponse;
 }
