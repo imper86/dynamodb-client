@@ -1,0 +1,16 @@
+{
+    "KinesisDataStreamDestinations": [
+        {
+            "ApproximateCreationDateTimePrecision": "MICROSECOND",
+            "DestinationStatus": "ACTIVE",
+            "StreamArn": "arn:aws:kinesis:eu-central-1:123456789012:stream/music-changes"
+        },
+        {
+            "ApproximateCreationDateTimePrecision": "MILLISECOND",
+            "DestinationStatus": "ENABLE_FAILED",
+            "DestinationStatusDescription": "User does not have a permission to put records to the Kinesis data stream",
+            "StreamArn": "arn:aws:kinesis:eu-central-1:123456789012:stream/music-audit"
+        }
+    ],
+    "TableName": "Music"
+}

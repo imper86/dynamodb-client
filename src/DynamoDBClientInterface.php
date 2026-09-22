@@ -34,6 +34,8 @@ use Imper86\DynamoDBClient\Message\DescribeExportRequest;
 use Imper86\DynamoDBClient\Message\DescribeExportResponse;
 use Imper86\DynamoDBClient\Message\DescribeImportRequest;
 use Imper86\DynamoDBClient\Message\DescribeImportResponse;
+use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationRequest;
+use Imper86\DynamoDBClient\Message\DescribeKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -117,6 +119,13 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function describeImport(DescribeImportRequest $request): DescribeImportResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeKinesisStreamingDestination(
+        DescribeKinesisStreamingDestinationRequest $request,
+    ): DescribeKinesisStreamingDestinationResponse;
 
     /**
      * @throws ExceptionInterface

@@ -75,7 +75,7 @@ the normalizer knows what to build). They are immutable, validate in the constru
 The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWriteItem`, `createBackup`,
 `createTable`, `deleteBackup`, `deleteItem`, `deleteResourcePolicy`, `deleteTable`, `describeBackup`,
 `describeContinuousBackups`, `describeContributorInsights`, `describeEndpoints`, `describeExport`,
-`describeImport`, `getItem` — are the templates. Read one end to end before starting another.
+`describeImport`, `describeKinesisStreamingDestination`, `getItem` — are the templates. Read one end to end before starting another.
 `createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
 `ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
 and `updateTable` will reuse.
