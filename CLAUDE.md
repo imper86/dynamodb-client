@@ -23,6 +23,11 @@ vendor/bin/phpunit --filter testReturnsTheDeserializedItem
 
 `composer analyse` also runs as a captainhook pre-commit action, so a commit fails on any violation.
 
+CI (`.github/workflows/ci.yml`) runs `composer analyse` on the newest dependencies, and PHPUnit alone on
+`--prefer-lowest` and on the newest Symfony 6.4 and 7.4 — PHPStan is only expected to pass against the
+newest Symfony. The lock file is not committed, so every CI run resolves afresh. When lowering a
+dependency floor, check it with `composer update --prefer-lowest` locally: nothing else exercises it.
+
 ## Architecture
 
 `DynamoDBClient` is the only entry point. Every operation is a three-line delegation to the private
