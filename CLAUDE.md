@@ -43,9 +43,10 @@ user agent is added *after* signing because it is not part of the signature.
   `AttributeValue`'s `B`, `BOOL`, `NS`, …, and every member AWS spells with an acronym, since
   `ucfirst` turns `sseDescription` into `SseDescription` and `kmsMasterKeyId` into `KmsMasterKeyId`.
 - `SKIP_NULL_VALUES` is on, so a null property is simply absent from the request body.
-- `DateTimeNormalizer` is configured with `'U.u'` and `CAST_KEY => 'float'`, because AWS puts a
-  `Timestamp` on the wire as epoch seconds with a fractional part rather than as a date string. Type
-  such a member as `DateTimeImmutable`; it comes back in UTC.
+- `TimestampNormalizer` handles every date, because AWS puts a `Timestamp` on the wire as a JSON
+  number of epoch seconds with a fractional part rather than as a date string. Symfony's
+  `DateTimeNormalizer` cannot emit a number before 7.1 (`CAST_KEY`), so do not swap it back while
+  Symfony 6.4 is supported. Type such a member as `DateTimeImmutable`; it comes back in UTC.
 - `CollectionNormalizer` handles everything implementing `ValueObject\CollectionInterface`, turning
   lists and sets into JSON arrays and maps into JSON objects (an empty map stays `{}`, not `[]`), and
   delegating items back to the serializer. Constructor validation failures surface as
