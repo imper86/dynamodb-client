@@ -1,0 +1,8 @@
+{
+    "DestinationStatus": "DISABLING",
+    "EnableKinesisStreamingConfiguration": {
+        "ApproximateCreationDateTimePrecision": "MICROSECOND"
+    },
+    "StreamArn": "arn:aws:kinesis:us-west-2:123456789012:stream/MusicStream",
+    "TableName": "Music"
+}
