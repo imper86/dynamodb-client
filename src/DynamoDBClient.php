@@ -41,6 +41,8 @@ use Imper86\DynamoDBClient\Message\DescribeContributorInsightsResponse;
 use Imper86\DynamoDBClient\Message\DescribeEndpointsResponse;
 use Imper86\DynamoDBClient\Message\DescribeExportRequest;
 use Imper86\DynamoDBClient\Message\DescribeExportResponse;
+use Imper86\DynamoDBClient\Message\DescribeImportRequest;
+use Imper86\DynamoDBClient\Message\DescribeImportResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -171,6 +173,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function describeExport(DescribeExportRequest $request): DescribeExportResponse
     {
         return $this->sendRequest('DynamoDB_20120810.DescribeExport', $request, DescribeExportResponse::class);
+    }
+
+    public function describeImport(DescribeImportRequest $request): DescribeImportResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.DescribeImport', $request, DescribeImportResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse

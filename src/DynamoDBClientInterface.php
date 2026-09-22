@@ -32,6 +32,8 @@ use Imper86\DynamoDBClient\Message\DescribeContributorInsightsResponse;
 use Imper86\DynamoDBClient\Message\DescribeEndpointsResponse;
 use Imper86\DynamoDBClient\Message\DescribeExportRequest;
 use Imper86\DynamoDBClient\Message\DescribeExportResponse;
+use Imper86\DynamoDBClient\Message\DescribeImportRequest;
+use Imper86\DynamoDBClient\Message\DescribeImportResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 
@@ -110,6 +112,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function describeExport(DescribeExportRequest $request): DescribeExportResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function describeImport(DescribeImportRequest $request): DescribeImportResponse;
 
     /**
      * @throws ExceptionInterface
