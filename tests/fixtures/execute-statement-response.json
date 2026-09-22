@@ -1,0 +1,39 @@
+{
+    "ConsumedCapacity": {
+        "CapacityUnits": 1,
+        "TableName": "Music"
+    },
+    "Items": [
+        {
+            "Artist": {
+                "S": "Acme Band"
+            },
+            "SongTitle": {
+                "S": "Happy Day"
+            },
+            "AlbumTitle": {
+                "S": "Songs About Life"
+            }
+        },
+        {
+            "Artist": {
+                "S": "Acme Band"
+            },
+            "SongTitle": {
+                "S": "PartiQL Rocks"
+            },
+            "Awards": {
+                "N": "10"
+            }
+        }
+    ],
+    "LastEvaluatedKey": {
+        "Artist": {
+            "S": "Acme Band"
+        },
+        "SongTitle": {
+            "S": "PartiQL Rocks"
+        }
+    },
+    "NextToken": "eyJ2IjoxLCJ0b2tlbiI6Ik11c2ljIn0="
+}

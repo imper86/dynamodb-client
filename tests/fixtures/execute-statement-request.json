@@ -1,0 +1,12 @@
+{
+    "Statement": "SELECT * FROM \"Music\" WHERE \"Artist\" = ?",
+    "Parameters": [
+        {
+            "S": "Acme Band"
+        }
+    ],
+    "ConsistentRead": true,
+    "Limit": 2,
+    "ReturnConsumedCapacity": "TOTAL",
+    "ReturnValuesOnConditionCheckFailure": "NONE"
+}

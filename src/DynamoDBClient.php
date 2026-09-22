@@ -56,6 +56,8 @@ use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\DisableKinesisStreamingDestinationResponse;
 use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\EnableKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\ExecuteStatementRequest;
+use Imper86\DynamoDBClient\Message\ExecuteStatementResponse;
 use Imper86\DynamoDBClient\Message\GetItemRequest;
 use Imper86\DynamoDBClient\Message\GetItemResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -246,6 +248,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             EnableKinesisStreamingDestinationResponse::class,
         );
+    }
+
+    public function executeStatement(ExecuteStatementRequest $request): ExecuteStatementResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ExecuteStatement', $request, ExecuteStatementResponse::class);
     }
 
     public function getItem(GetItemRequest $request): GetItemResponse
