@@ -72,6 +72,8 @@ use Imper86\DynamoDBClient\Message\ListBackupsRequest;
 use Imper86\DynamoDBClient\Message\ListBackupsResponse;
 use Imper86\DynamoDBClient\Message\ListContributorInsightsRequest;
 use Imper86\DynamoDBClient\Message\ListContributorInsightsResponse;
+use Imper86\DynamoDBClient\Message\ListExportsRequest;
+use Imper86\DynamoDBClient\Message\ListExportsResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -314,6 +316,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             ListContributorInsightsResponse::class,
         );
+    }
+
+    public function listExports(ListExportsRequest $request = new ListExportsRequest()): ListExportsResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.ListExports', $request, ListExportsResponse::class);
     }
 
     /**

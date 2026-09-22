@@ -1,0 +1,15 @@
+{
+    "ExportSummaries": [
+        {
+            "ExportArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/export/01576624066799-a1b2c3d4",
+            "ExportStatus": "COMPLETED",
+            "ExportType": "FULL_EXPORT"
+        },
+        {
+            "ExportArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/export/01576710466500-b2c3d4e5",
+            "ExportStatus": "IN_PROGRESS",
+            "ExportType": "INCREMENTAL_EXPORT"
+        }
+    ],
+    "NextToken": "eyJFeHBvcnRBcm4iOiJhcm46YXdzOmR5bmFtb2RiOmV1In0"
+}

@@ -1,0 +1,5 @@
+{
+    "MaxResults": 2,
+    "NextToken": "eyJFeHBvcnRBcm4iOiJhcm46YXdzOmR5bmFtb2RiIn0",
+    "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+}
