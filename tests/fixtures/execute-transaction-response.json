@@ -1,0 +1,28 @@
+{
+    "ConsumedCapacity": [
+        {
+            "CapacityUnits": 2,
+            "TableName": "Music"
+        },
+        {
+            "CapacityUnits": 2,
+            "TableName": "Music"
+        }
+    ],
+    "Responses": [
+        {
+            "Item": {
+                "Artist": {
+                    "S": "Acme Band"
+                },
+                "SongTitle": {
+                    "S": "Happy Day"
+                },
+                "AlbumTitle": {
+                    "S": "Songs About Life"
+                }
+            }
+        },
+        {}
+    ]
+}

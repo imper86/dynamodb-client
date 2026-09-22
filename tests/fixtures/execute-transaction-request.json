@@ -1,0 +1,29 @@
+{
+    "TransactStatements": [
+        {
+            "Statement": "SELECT * FROM \"Music\" WHERE \"Artist\" = ? AND \"SongTitle\" = ?",
+            "Parameters": [
+                {
+                    "S": "Acme Band"
+                },
+                {
+                    "S": "Happy Day"
+                }
+            ]
+        },
+        {
+            "Statement": "SELECT * FROM \"Music\" WHERE \"Artist\" = ? AND \"SongTitle\" = ?",
+            "Parameters": [
+                {
+                    "S": "Acme Band"
+                },
+                {
+                    "S": "PartiQL Rocks"
+                }
+            ],
+            "ReturnValuesOnConditionCheckFailure": "ALL_OLD"
+        }
+    ],
+    "ClientRequestToken": "5f2a4b1c-8d3e-4f60-9a7b-0c1d2e3f4a5b",
+    "ReturnConsumedCapacity": "TOTAL"
+}
