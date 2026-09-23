@@ -102,6 +102,8 @@ use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
 use Imper86\DynamoDBClient\Message\UntagResourceRequest;
 use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsResponse;
+use Imper86\DynamoDBClient\Message\UpdateContributorInsightsRequest;
+use Imper86\DynamoDBClient\Message\UpdateContributorInsightsResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -427,6 +429,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             'DynamoDB_20120810.UpdateContinuousBackups',
             $request,
             UpdateContinuousBackupsResponse::class,
+        );
+    }
+
+    public function updateContributorInsights(
+        UpdateContributorInsightsRequest $request,
+    ): UpdateContributorInsightsResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.UpdateContributorInsights',
+            $request,
+            UpdateContributorInsightsResponse::class,
         );
     }
 

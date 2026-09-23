@@ -93,6 +93,8 @@ use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
 use Imper86\DynamoDBClient\Message\UntagResourceRequest;
 use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsResponse;
+use Imper86\DynamoDBClient\Message\UpdateContributorInsightsRequest;
+use Imper86\DynamoDBClient\Message\UpdateContributorInsightsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -341,4 +343,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function updateContinuousBackups(UpdateContinuousBackupsRequest $request): UpdateContinuousBackupsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateContributorInsights(
+        UpdateContributorInsightsRequest $request,
+    ): UpdateContributorInsightsResponse;
 }

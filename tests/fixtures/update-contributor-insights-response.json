@@ -1,0 +1,6 @@
+{
+    "TableName": "Music",
+    "IndexName": "AlbumTitleIndex",
+    "ContributorInsightsStatus": "ENABLING",
+    "ContributorInsightsMode": "THROTTLED_KEYS"
+}
