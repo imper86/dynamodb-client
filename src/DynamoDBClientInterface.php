@@ -97,6 +97,8 @@ use Imper86\DynamoDBClient\Message\UpdateContributorInsightsRequest;
 use Imper86\DynamoDBClient\Message\UpdateContributorInsightsResponse;
 use Imper86\DynamoDBClient\Message\UpdateItemRequest;
 use Imper86\DynamoDBClient\Message\UpdateItemResponse;
+use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationRequest;
+use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationResponse;
 
 interface DynamoDBClientInterface
 {
@@ -357,4 +359,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function updateItem(UpdateItemRequest $request): UpdateItemResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateKinesisStreamingDestination(
+        UpdateKinesisStreamingDestinationRequest $request,
+    ): UpdateKinesisStreamingDestinationResponse;
 }
