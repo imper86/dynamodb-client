@@ -82,7 +82,7 @@ The existing operations — `batchExecuteStatement`, `batchGetItem`, `batchWrite
 `describeImport`, `describeKinesisStreamingDestination`, `describeLimits`, `describeTable`,
 `describeTableReplicaAutoScaling`, `describeTimeToLive`, `disableKinesisStreamingDestination`,
 `enableKinesisStreamingDestination`, `executeStatement`, `executeTransaction`, `exportTableToPointInTime`, `getItem`,
-`getResourcePolicy`, `importTable`, `listBackups`, `listContributorInsights`, `listExports`, `listImports`, `listTables`, `listTagsOfResource`, `putItem`, `putResourcePolicy`, `query`, `restoreTableFromBackup`, `restoreTableToPointInTime`, `scan`, `searchVectors` — are the templates.
+`getResourcePolicy`, `importTable`, `listBackups`, `listContributorInsights`, `listExports`, `listImports`, `listTables`, `listTagsOfResource`, `putItem`, `putResourcePolicy`, `query`, `restoreTableFromBackup`, `restoreTableToPointInTime`, `scan`, `searchVectors`, `tagResource` — are the templates.
 Read one end to end before starting another.
 `createTable` is the one with a large type tree; most of its models (`KeySchemaElement`, `Projection`,
 `ProvisionedThroughput`, `ReplicaDescription`, `TableDescription`, …) are the ones `describeTable`
@@ -155,6 +155,10 @@ An operation whose request parameters are all optional (`ListBackups`, `ListTabl
 class, and its client method defaults the argument to an empty one —
 `listTables(ListTablesRequest $request = new ListTablesRequest())` — so a caller who wants the defaults
 can write `$client->listTables()`.
+
+An operation whose response has an empty body (`TagResource`) gets no response class. Its client method
+returns `void` and passes no response type to `sendRequest()`, which then checks for the 200 and never
+reads the body. Its test has a request fixture only.
 
 **6. Validation** lives in the constructor of the object that owns the constraint, using
 `Webmozart\Assert\Assert` (`minCount`, `maxCount`, `maxLength`, `stringNotEmpty`, and the `nullOr*`

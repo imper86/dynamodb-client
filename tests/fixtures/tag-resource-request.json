@@ -1,0 +1,13 @@
+{
+    "ResourceArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music",
+    "Tags": [
+        {
+            "Key": "Environment",
+            "Value": "production"
+        },
+        {
+            "Key": "Owner",
+            "Value": "music-team"
+        }
+    ]
+}

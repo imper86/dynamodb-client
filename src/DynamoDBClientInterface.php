@@ -85,6 +85,7 @@ use Imper86\DynamoDBClient\Message\ScanRequest;
 use Imper86\DynamoDBClient\Message\ScanResponse;
 use Imper86\DynamoDBClient\Message\SearchVectorsRequest;
 use Imper86\DynamoDBClient\Message\SearchVectorsResponse;
+use Imper86\DynamoDBClient\Message\TagResourceRequest;
 
 interface DynamoDBClientInterface
 {
@@ -308,4 +309,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function searchVectors(SearchVectorsRequest $request): SearchVectorsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function tagResource(TagResourceRequest $request): void;
 }
