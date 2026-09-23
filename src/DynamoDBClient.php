@@ -86,6 +86,8 @@ use Imper86\DynamoDBClient\Message\PutResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\PutResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\QueryRequest;
 use Imper86\DynamoDBClient\Message\QueryResponse;
+use Imper86\DynamoDBClient\Message\RestoreTableFromBackupRequest;
+use Imper86\DynamoDBClient\Message\RestoreTableFromBackupResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -363,6 +365,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function query(QueryRequest $request): QueryResponse
     {
         return $this->sendRequest('DynamoDB_20120810.Query', $request, QueryResponse::class);
+    }
+
+    public function restoreTableFromBackup(RestoreTableFromBackupRequest $request): RestoreTableFromBackupResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.RestoreTableFromBackup', $request, RestoreTableFromBackupResponse::class);
     }
 
     /**

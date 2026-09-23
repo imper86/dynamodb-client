@@ -77,6 +77,8 @@ use Imper86\DynamoDBClient\Message\PutResourcePolicyRequest;
 use Imper86\DynamoDBClient\Message\PutResourcePolicyResponse;
 use Imper86\DynamoDBClient\Message\QueryRequest;
 use Imper86\DynamoDBClient\Message\QueryResponse;
+use Imper86\DynamoDBClient\Message\RestoreTableFromBackupRequest;
+use Imper86\DynamoDBClient\Message\RestoreTableFromBackupResponse;
 
 interface DynamoDBClientInterface
 {
@@ -280,4 +282,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function query(QueryRequest $request): QueryResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function restoreTableFromBackup(RestoreTableFromBackupRequest $request): RestoreTableFromBackupResponse;
 }

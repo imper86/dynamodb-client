@@ -1,0 +1,45 @@
+{
+    "TableDescription": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "Artist",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "SongTitle",
+                "AttributeType": "S"
+            }
+        ],
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST"
+        },
+        "CreationDateTime": 1576625000.123,
+        "ItemCount": 0,
+        "KeySchema": [
+            {
+                "AttributeName": "Artist",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "SongTitle",
+                "KeyType": "RANGE"
+            }
+        ],
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "RestoreSummary": {
+            "RestoreDateTime": 1576624066.799,
+            "RestoreInProgress": true,
+            "SourceBackupArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576624066799-c3f0dcd7",
+            "SourceTableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/Music"
+        },
+        "TableArn": "arn:aws:dynamodb:eu-central-1:123456789012:table/MusicRestored",
+        "TableId": "e3b0c442-98fc-1c14-9afb-f4c8996fb924",
+        "TableName": "MusicRestored",
+        "TableSizeBytes": 0,
+        "TableStatus": "CREATING"
+    }
+}
