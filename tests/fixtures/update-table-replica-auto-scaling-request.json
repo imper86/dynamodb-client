@@ -1,0 +1,43 @@
+{
+    "GlobalSecondaryIndexUpdates": [
+        {
+            "IndexName": "AlbumTitleIndex",
+            "ProvisionedWriteCapacityAutoScalingUpdate": {
+                "AutoScalingDisabled": true
+            }
+        }
+    ],
+    "ProvisionedWriteCapacityAutoScalingUpdate": {
+        "MaximumUnits": 80,
+        "MinimumUnits": 10
+    },
+    "ReplicaUpdates": [
+        {
+            "RegionName": "us-east-1",
+            "ReplicaGlobalSecondaryIndexUpdates": [
+                {
+                    "IndexName": "AlbumTitleIndex",
+                    "ProvisionedReadCapacityAutoScalingUpdate": {
+                        "MaximumUnits": 60,
+                        "MinimumUnits": 5
+                    }
+                }
+            ],
+            "ReplicaProvisionedReadCapacityAutoScalingUpdate": {
+                "AutoScalingRoleArn": "arn:aws:iam::123456789012:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable",
+                "MaximumUnits": 200,
+                "MinimumUnits": 5,
+                "ScalingPolicyUpdate": {
+                    "PolicyName": "DynamoDBReadCapacityUtilization:table/Music",
+                    "TargetTrackingScalingPolicyConfiguration": {
+                        "DisableScaleIn": false,
+                        "ScaleInCooldown": 60,
+                        "ScaleOutCooldown": 30,
+                        "TargetValue": 60.5
+                    }
+                }
+            }
+        }
+    ],
+    "TableName": "Music"
+}

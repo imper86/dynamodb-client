@@ -99,6 +99,8 @@ use Imper86\DynamoDBClient\Message\UpdateItemRequest;
 use Imper86\DynamoDBClient\Message\UpdateItemResponse;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingRequest;
+use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\UpdateTableRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableResponse;
 
@@ -373,4 +375,11 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function updateTable(UpdateTableRequest $request): UpdateTableResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateTableReplicaAutoScaling(
+        UpdateTableReplicaAutoScalingRequest $request,
+    ): UpdateTableReplicaAutoScalingResponse;
 }

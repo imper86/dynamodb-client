@@ -1,0 +1,48 @@
+{
+    "TableAutoScalingDescription": {
+        "Replicas": [
+            {
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "AlbumTitleIndex",
+                        "IndexStatus": "UPDATING",
+                        "ProvisionedReadCapacityAutoScalingSettings": {
+                            "AutoScalingDisabled": false,
+                            "MaximumUnits": 60,
+                            "MinimumUnits": 5
+                        },
+                        "ProvisionedWriteCapacityAutoScalingSettings": {
+                            "AutoScalingDisabled": true
+                        }
+                    }
+                ],
+                "RegionName": "us-east-1",
+                "ReplicaProvisionedReadCapacityAutoScalingSettings": {
+                    "AutoScalingDisabled": false,
+                    "AutoScalingRoleArn": "arn:aws:iam::123456789012:role/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable",
+                    "MaximumUnits": 200,
+                    "MinimumUnits": 5,
+                    "ScalingPolicies": [
+                        {
+                            "PolicyName": "DynamoDBReadCapacityUtilization:table/Music",
+                            "TargetTrackingScalingPolicyConfiguration": {
+                                "DisableScaleIn": false,
+                                "ScaleInCooldown": 60,
+                                "ScaleOutCooldown": 30,
+                                "TargetValue": 60.5
+                            }
+                        }
+                    ]
+                },
+                "ReplicaProvisionedWriteCapacityAutoScalingSettings": {
+                    "AutoScalingDisabled": false,
+                    "MaximumUnits": 80,
+                    "MinimumUnits": 10
+                },
+                "ReplicaStatus": "UPDATING"
+            }
+        ],
+        "TableName": "Music",
+        "TableStatus": "ACTIVE"
+    }
+}

@@ -108,6 +108,8 @@ use Imper86\DynamoDBClient\Message\UpdateItemRequest;
 use Imper86\DynamoDBClient\Message\UpdateItemResponse;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingRequest;
+use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\UpdateTableRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
@@ -466,6 +468,16 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function updateTable(UpdateTableRequest $request): UpdateTableResponse
     {
         return $this->sendRequest('DynamoDB_20120810.UpdateTable', $request, UpdateTableResponse::class);
+    }
+
+    public function updateTableReplicaAutoScaling(
+        UpdateTableReplicaAutoScalingRequest $request,
+    ): UpdateTableReplicaAutoScalingResponse {
+        return $this->sendRequest(
+            'DynamoDB_20120810.UpdateTableReplicaAutoScaling',
+            $request,
+            UpdateTableReplicaAutoScalingResponse::class,
+        );
     }
 
     /**
