@@ -21,7 +21,6 @@ use Imper86\DynamoDBClient\Model\ExportFormat;
 use Imper86\DynamoDBClient\Model\ExportStatus;
 use Imper86\DynamoDBClient\Model\ExportType;
 use Imper86\DynamoDBClient\Model\ExportViewType;
-use Imper86\DynamoDBClient\Model\IncrementalExportSpecification;
 use Imper86\DynamoDBClient\Model\S3SseAlgorithm;
 use JsonException;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -82,15 +81,12 @@ final class ExportTableToPointInTimeTest extends TestCase
         $httpClient = new MockClient();
         $httpClient->addResponse($this->documentedResponse());
 
-        $this->createClient($httpClient)->exportTableToPointInTime(new ExportTableToPointInTimeRequest(
+        $this->createClient($httpClient)->exportTableToPointInTime(ExportTableToPointInTimeRequest::incremental(
             s3Bucket: 'music-exports',
             tableArn: self::TABLE_ARN,
-            exportType: ExportType::INCREMENTAL_EXPORT,
-            incrementalExportSpecification: new IncrementalExportSpecification(
-                exportFromTime: new DateTimeImmutable('@1576537666'),
-                exportToTime: new DateTimeImmutable('@1576624066'),
-                exportViewType: ExportViewType::NEW_AND_OLD_IMAGES,
-            ),
+            exportFromTime: new DateTimeImmutable('@1576537666'),
+            exportToTime: new DateTimeImmutable('@1576624066'),
+            exportViewType: ExportViewType::NEW_AND_OLD_IMAGES,
         ));
 
         $sent = $httpClient->getLastRequest();
@@ -268,13 +264,12 @@ final class ExportTableToPointInTimeTest extends TestCase
      */
     private function documentedRequest(): ExportTableToPointInTimeRequest
     {
-        return new ExportTableToPointInTimeRequest(
+        return ExportTableToPointInTimeRequest::full(
             s3Bucket: 'music-exports',
             tableArn: self::TABLE_ARN,
             clientToken: '8f3b8f4e-0a6c-4b53-9d8e-2c1f6a7b9e10',
             exportFormat: ExportFormat::DYNAMODB_JSON,
             exportTime: new DateTimeImmutable('@1576624066.799'),
-            exportType: ExportType::FULL_EXPORT,
             s3BucketOwner: '123456789012',
             s3Prefix: 'exports/music',
             s3SseAlgorithm: S3SseAlgorithm::KMS,

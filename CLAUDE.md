@@ -187,10 +187,29 @@ PHPStan — and test the rules a well-typed caller can actually break.
 ## Named constructors
 
 The client takes request objects, so the request object is the API. That only stays pleasant if
-building the models inside it is short. **Whenever a new model makes the caller write `new` inside
-`new`, or makes them pick one of several mutually exclusive parameters, give it a named static
+building the models inside it is short. **Whenever a new model or request makes the caller write `new`
+inside `new`, or makes them pick one of several mutually exclusive parameters, give it a named static
 constructor** — `AttributeValue::string('x')` instead of `new AttributeValue(string: 'x')`,
 `WriteRequest::put($item)` instead of `new WriteRequest(putRequest: new PutRequest($item))`.
+
+Requests get them on the same terms. The requests that have them are the templates:
+
+- **One factory per mode**, when the request has exclusive ways of being sent:
+  `RestoreTableToPointInTimeRequest::at()` / `latest()`, `ExportTableToPointInTimeRequest::full()` /
+  `incremental()`, `ImportTableRequest::csv()` / `dynamoDbJson()` / `ion()`. The factory sets the
+  members that pick the mode and flattens the nested model the mode needs, such as
+  `IncrementalExportSpecification` or `S3BucketSource`, into plain parameters.
+- **A conversion factory**, when the natural input is a plain PHP array:
+  `SearchVectorsRequest::nearest()` takes the vector as numbers, `TagResourceRequest::tags()` takes a
+  key-to-value map.
+- **A request factory forwards every optional parameter that applies to its mode**, in the order the
+  constructor lists them, so that needing one more option never forces the caller back to the
+  constructor. It leaves out the ones its mode rules out (`exportTime` on an incremental export).
+- A request whose only nesting is a collection the caller builds anyway (`BatchGetItemRequest`,
+  `GetItemRequest`'s key) gets no factory: the one saved `new` is not worth a second signature.
+- Test request factories in `tests/Message/<Request>Test.php`, with `#[CoversClass]` on the request.
+  Have the operation test's `documentedRequest()` use the factory where one fits, so the fixture
+  proves what the factory puts on the wire.
 
 - **The constructor stays the only validation point.** A factory does nothing but build its arguments
   and forward them, so every rule is enforced once and applies to deserialization too. A factory that

@@ -355,11 +355,7 @@ final class RestoreTableToPointInTimeTest extends TestCase
      */
     private function documentedRequest(): RestoreTableToPointInTimeRequest
     {
-        return new RestoreTableToPointInTimeRequest(
-            targetTableName: 'MusicRestored',
-            sourceTableName: 'Music',
-            useLatestRestorableTime: true,
-        );
+        return RestoreTableToPointInTimeRequest::latest('Music', 'MusicRestored');
     }
 
     private function documentedResponse(): Response

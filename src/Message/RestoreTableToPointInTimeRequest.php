@@ -16,11 +16,14 @@ use Imper86\DynamoDBClient\Model\VectorIndexList;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
+use function str_contains;
+
 final readonly class RestoreTableToPointInTimeRequest
 {
     /**
      * Name the source table by `SourceTableArn` or by `SourceTableName`, and the point in time by
-     * `RestoreDateTime` or by `UseLatestRestorableTime`.
+     * `RestoreDateTime` or by `UseLatestRestorableTime`; {@see self::at()} and {@see self::latest()} make
+     * both choices for you.
      *
      * @param non-empty-string $targetTableName the name of the new table; it cannot be an ARN
      * @param null|GlobalSecondaryIndexList $globalSecondaryIndexOverride the indexes may not carry a
@@ -64,5 +67,92 @@ final readonly class RestoreTableToPointInTimeRequest
                 'RestoreTableToPointInTime does not accept a WarmThroughput on a global secondary index.',
             );
         }
+    }
+
+    /**
+     * Restores the table as it was at a point in the past.
+     *
+     * @param non-empty-string $sourceTable the name or the ARN of the table to restore
+     * @param non-empty-string $targetTableName the name of the new table; it cannot be an ARN
+     * @throws InvalidArgumentException
+     */
+    public static function at(
+        string $sourceTable,
+        string $targetTableName,
+        DateTimeImmutable $restoreDateTime,
+        ?BillingMode $billingModeOverride = null,
+        ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
+        ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
+        ?OnDemandThroughput $onDemandThroughputOverride = null,
+        ?ProvisionedThroughput $provisionedThroughputOverride = null,
+        ?SSESpecification $sseSpecificationOverride = null,
+        ?VectorIndexList $vectorIndexOverride = null,
+    ): self {
+        return new self(
+            targetTableName: $targetTableName,
+            billingModeOverride: $billingModeOverride,
+            globalSecondaryIndexOverride: $globalSecondaryIndexOverride,
+            localSecondaryIndexOverride: $localSecondaryIndexOverride,
+            onDemandThroughputOverride: $onDemandThroughputOverride,
+            provisionedThroughputOverride: $provisionedThroughputOverride,
+            restoreDateTime: $restoreDateTime,
+            sourceTableArn: self::sourceTableArn($sourceTable),
+            sourceTableName: self::sourceTableName($sourceTable),
+            sseSpecificationOverride: $sseSpecificationOverride,
+            vectorIndexOverride: $vectorIndexOverride,
+        );
+    }
+
+    /**
+     * Restores the table as it was at `LatestRestorableDateTime`, typically five minutes ago.
+     *
+     * @param non-empty-string $sourceTable the name or the ARN of the table to restore
+     * @param non-empty-string $targetTableName the name of the new table; it cannot be an ARN
+     * @throws InvalidArgumentException
+     */
+    public static function latest(
+        string $sourceTable,
+        string $targetTableName,
+        ?BillingMode $billingModeOverride = null,
+        ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
+        ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
+        ?OnDemandThroughput $onDemandThroughputOverride = null,
+        ?ProvisionedThroughput $provisionedThroughputOverride = null,
+        ?SSESpecification $sseSpecificationOverride = null,
+        ?VectorIndexList $vectorIndexOverride = null,
+    ): self {
+        return new self(
+            targetTableName: $targetTableName,
+            billingModeOverride: $billingModeOverride,
+            globalSecondaryIndexOverride: $globalSecondaryIndexOverride,
+            localSecondaryIndexOverride: $localSecondaryIndexOverride,
+            onDemandThroughputOverride: $onDemandThroughputOverride,
+            provisionedThroughputOverride: $provisionedThroughputOverride,
+            sourceTableArn: self::sourceTableArn($sourceTable),
+            sourceTableName: self::sourceTableName($sourceTable),
+            sseSpecificationOverride: $sseSpecificationOverride,
+            useLatestRestorableTime: true,
+            vectorIndexOverride: $vectorIndexOverride,
+        );
+    }
+
+    /**
+     * A table name cannot hold a colon and an ARN always does, so the colon tells the two apart.
+     *
+     * @param non-empty-string $sourceTable
+     * @return null|non-empty-string
+     */
+    private static function sourceTableArn(string $sourceTable): ?string
+    {
+        return str_contains($sourceTable, ':') ? $sourceTable : null;
+    }
+
+    /**
+     * @param non-empty-string $sourceTable
+     * @return null|non-empty-string
+     */
+    private static function sourceTableName(string $sourceTable): ?string
+    {
+        return str_contains($sourceTable, ':') ? null : $sourceTable;
     }
 }

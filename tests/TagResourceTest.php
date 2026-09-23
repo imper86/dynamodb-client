@@ -15,7 +15,6 @@ use Imper86\DynamoDBClient\Exception\ExceptionInterface;
 use Imper86\DynamoDBClient\Exception\MissingCredentialsException;
 use Imper86\DynamoDBClient\Message\TagResourceRequest;
 use Imper86\DynamoDBClient\Model\Credentials;
-use Imper86\DynamoDBClient\Model\Tag;
 use Imper86\DynamoDBClient\Model\TagList;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -125,12 +124,9 @@ final class TagResourceTest extends TestCase
      */
     private function documentedRequest(): TagResourceRequest
     {
-        return new TagResourceRequest(
-            resourceArn: 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music',
-            tags: new TagList([
-                new Tag(key: 'Environment', value: 'production'),
-                new Tag(key: 'Owner', value: 'music-team'),
-            ]),
+        return TagResourceRequest::tags(
+            'arn:aws:dynamodb:eu-central-1:123456789012:table/Music',
+            ['Environment' => 'production', 'Owner' => 'music-team'],
         );
     }
 }

@@ -22,7 +22,6 @@ use Imper86\DynamoDBClient\Model\ImportStatus;
 use Imper86\DynamoDBClient\Model\ImportTableDescription;
 use Imper86\DynamoDBClient\Model\InputCompressionType;
 use Imper86\DynamoDBClient\Model\InputFormat;
-use Imper86\DynamoDBClient\Model\InputFormatOptions;
 use Imper86\DynamoDBClient\Model\KeySchemaElement;
 use Imper86\DynamoDBClient\Model\KeySchemaElementList;
 use Imper86\DynamoDBClient\Model\KeyType;
@@ -95,9 +94,8 @@ final class ImportTableTest extends TestCase
         $httpClient = new MockClient();
         $httpClient->addResponse($this->documentedResponse());
 
-        $this->createClient($httpClient)->importTable(new ImportTableRequest(
-            inputFormat: InputFormat::DYNAMODB_JSON,
-            s3BucketSource: new S3BucketSource('music-imports'),
+        $this->createClient($httpClient)->importTable(ImportTableRequest::dynamoDbJson(
+            s3Bucket: 'music-imports',
             tableCreationParameters: new TableCreationParameters(
                 attributeDefinitions: new AttributeDefinitionList([
                     new AttributeDefinition('Artist', ScalarAttributeType::STRING),
@@ -247,13 +245,8 @@ final class ImportTableTest extends TestCase
      */
     private function documentedRequest(): ImportTableRequest
     {
-        return new ImportTableRequest(
-            inputFormat: InputFormat::CSV,
-            s3BucketSource: new S3BucketSource(
-                s3Bucket: 'music-imports',
-                s3BucketOwner: '123456789012',
-                s3KeyPrefix: 'imports/music',
-            ),
+        return ImportTableRequest::csv(
+            s3Bucket: 'music-imports',
             tableCreationParameters: new TableCreationParameters(
                 attributeDefinitions: new AttributeDefinitionList([
                     new AttributeDefinition('Artist', ScalarAttributeType::STRING),
@@ -276,8 +269,11 @@ final class ImportTableTest extends TestCase
                 sseSpecification: new SSESpecification(enabled: true, sseType: SSEType::KMS),
             ),
             clientToken: '3c9e1f0a-7b2d-4e8f-a6c5-1d0b9e8f7a6c',
+            delimiter: ';',
+            headerList: ['Artist', 'SongTitle', 'AlbumTitle'],
             inputCompressionType: InputCompressionType::GZIP,
-            inputFormatOptions: InputFormatOptions::csv(';', ['Artist', 'SongTitle', 'AlbumTitle']),
+            s3BucketOwner: '123456789012',
+            s3KeyPrefix: 'imports/music',
         );
     }
 

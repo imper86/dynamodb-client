@@ -307,9 +307,9 @@ final class SearchVectorsTest extends TestCase
      */
     private function documentedRequest(): SearchVectorsRequest
     {
-        return new SearchVectorsRequest(
+        return SearchVectorsRequest::nearest(
             indexName: 'LyricsIndex',
-            searchVector: $this->searchVector(),
+            searchVector: ['0.12', '-0.5', '0.83'],
             tableName: 'Music',
             topK: 2,
             returnConsumedCapacity: ReturnConsumedCapacity::TOTAL,
