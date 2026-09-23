@@ -1,4 +1,14 @@
-# DynamoDB Client
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.svg">
+    <img src=".github/assets/logo-light.svg" alt="dynamodb-client" width="480">
+  </picture>
+</p>
+
+<p align="center">
+  <a href="https://github.com/imper86/dynamodb-client/actions/workflows/ci.yml"><img src="https://github.com/imper86/dynamodb-client/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://codecov.io/gh/imper86/dynamodb-client"><img src="https://codecov.io/gh/imper86/dynamodb-client/graph/badge.svg" alt="Coverage"></a>
+</p>
 
 An object-oriented PHP client for the [Amazon DynamoDB API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/).
 
