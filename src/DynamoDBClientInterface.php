@@ -103,6 +103,8 @@ use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\UpdateTableRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableResponse;
+use Imper86\DynamoDBClient\Message\UpdateTimeToLiveRequest;
+use Imper86\DynamoDBClient\Message\UpdateTimeToLiveResponse;
 
 interface DynamoDBClientInterface
 {
@@ -382,4 +384,9 @@ interface DynamoDBClientInterface
     public function updateTableReplicaAutoScaling(
         UpdateTableReplicaAutoScalingRequest $request,
     ): UpdateTableReplicaAutoScalingResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateTimeToLive(UpdateTimeToLiveRequest $request): UpdateTimeToLiveResponse;
 }

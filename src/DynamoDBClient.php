@@ -112,6 +112,8 @@ use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableReplicaAutoScalingResponse;
 use Imper86\DynamoDBClient\Message\UpdateTableRequest;
 use Imper86\DynamoDBClient\Message\UpdateTableResponse;
+use Imper86\DynamoDBClient\Message\UpdateTimeToLiveRequest;
+use Imper86\DynamoDBClient\Message\UpdateTimeToLiveResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -478,6 +480,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             UpdateTableReplicaAutoScalingResponse::class,
         );
+    }
+
+    public function updateTimeToLive(UpdateTimeToLiveRequest $request): UpdateTimeToLiveResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.UpdateTimeToLive', $request, UpdateTimeToLiveResponse::class);
     }
 
     /**

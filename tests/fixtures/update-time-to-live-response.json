@@ -1,0 +1,6 @@
+{
+    "TimeToLiveSpecification": {
+        "AttributeName": "ExpiresAt",
+        "Enabled": true
+    }
+}

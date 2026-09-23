@@ -1,0 +1,7 @@
+{
+    "TableName": "Music",
+    "TimeToLiveSpecification": {
+        "AttributeName": "ExpiresAt",
+        "Enabled": true
+    }
+}
