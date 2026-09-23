@@ -79,6 +79,8 @@ use Imper86\DynamoDBClient\Message\QueryRequest;
 use Imper86\DynamoDBClient\Message\QueryResponse;
 use Imper86\DynamoDBClient\Message\RestoreTableFromBackupRequest;
 use Imper86\DynamoDBClient\Message\RestoreTableFromBackupResponse;
+use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeRequest;
+use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeResponse;
 
 interface DynamoDBClientInterface
 {
@@ -287,4 +289,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function restoreTableFromBackup(RestoreTableFromBackupRequest $request): RestoreTableFromBackupResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function restoreTableToPointInTime(RestoreTableToPointInTimeRequest $request): RestoreTableToPointInTimeResponse;
 }

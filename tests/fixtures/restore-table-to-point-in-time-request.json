@@ -1,0 +1,5 @@
+{
+    "SourceTableName": "Music",
+    "TargetTableName": "MusicRestored",
+    "UseLatestRestorableTime": true
+}
