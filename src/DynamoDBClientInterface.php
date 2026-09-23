@@ -90,6 +90,7 @@ use Imper86\DynamoDBClient\Message\TransactGetItemsRequest;
 use Imper86\DynamoDBClient\Message\TransactGetItemsResponse;
 use Imper86\DynamoDBClient\Message\TransactWriteItemsRequest;
 use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
+use Imper86\DynamoDBClient\Message\UntagResourceRequest;
 
 interface DynamoDBClientInterface
 {
@@ -328,4 +329,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function transactWriteItems(TransactWriteItemsRequest $request): TransactWriteItemsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function untagResource(UntagResourceRequest $request): void;
 }
