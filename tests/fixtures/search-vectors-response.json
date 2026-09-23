@@ -1,0 +1,21 @@
+{
+    "ConsumedCapacity": {
+        "VectorSearchRequestBytes": 12
+    },
+    "SearchResults": [
+        {
+            "Item": {
+                "Artist": {"S": "No One You Know"},
+                "SongTitle": {"S": "Call Me Today"}
+            },
+            "Score": 0.0421
+        },
+        {
+            "Item": {
+                "Artist": {"S": "Acme Band"},
+                "SongTitle": {"S": "Happy Day"}
+            },
+            "Score": 0.3187
+        }
+    ]
+}

@@ -83,6 +83,8 @@ use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeRequest;
 use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeResponse;
 use Imper86\DynamoDBClient\Message\ScanRequest;
 use Imper86\DynamoDBClient\Message\ScanResponse;
+use Imper86\DynamoDBClient\Message\SearchVectorsRequest;
+use Imper86\DynamoDBClient\Message\SearchVectorsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -301,4 +303,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function scan(ScanRequest $request): ScanResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function searchVectors(SearchVectorsRequest $request): SearchVectorsResponse;
 }

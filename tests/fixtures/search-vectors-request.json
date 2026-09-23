@@ -1,0 +1,11 @@
+{
+    "TableName": "Music",
+    "IndexName": "LyricsIndex",
+    "SearchVector": [
+        {"N": "0.12"},
+        {"N": "-0.5"},
+        {"N": "0.83"}
+    ],
+    "TopK": 2,
+    "ReturnConsumedCapacity": "TOTAL"
+}
