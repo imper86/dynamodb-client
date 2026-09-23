@@ -1,0 +1,22 @@
+{
+    "ConsumedCapacity": {
+        "CapacityUnits": 0.5,
+        "TableName": "Reply"
+    },
+    "Count": 2,
+    "Items": [
+        {
+            "PostedBy": {"S": "joe@example.com"},
+            "ReplyDateTime": {"S": "20130320115336"},
+            "Id": {"S": "Amazon DynamoDB#How do I update multiple items?"},
+            "Message": {"S": "Have you looked at BatchWriteItem?"}
+        },
+        {
+            "PostedBy": {"S": "joe@example.com"},
+            "ReplyDateTime": {"S": "20130320115347"},
+            "Id": {"S": "Amazon DynamoDB#How do I update multiple items?"},
+            "Message": {"S": "BatchWriteItem is documented in the Amazon DynamoDB API Reference."}
+        }
+    ],
+    "ScannedCount": 4
+}

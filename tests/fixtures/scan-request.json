@@ -1,0 +1,6 @@
+{
+    "TableName": "Reply",
+    "FilterExpression": "PostedBy = :val",
+    "ExpressionAttributeValues": {":val": {"S": "joe@example.com"}},
+    "ReturnConsumedCapacity": "TOTAL"
+}

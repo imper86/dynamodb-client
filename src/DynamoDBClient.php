@@ -90,6 +90,8 @@ use Imper86\DynamoDBClient\Message\RestoreTableFromBackupRequest;
 use Imper86\DynamoDBClient\Message\RestoreTableFromBackupResponse;
 use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeRequest;
 use Imper86\DynamoDBClient\Message\RestoreTableToPointInTimeResponse;
+use Imper86\DynamoDBClient\Message\ScanRequest;
+use Imper86\DynamoDBClient\Message\ScanResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -377,6 +379,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function restoreTableToPointInTime(RestoreTableToPointInTimeRequest $request): RestoreTableToPointInTimeResponse
     {
         return $this->sendRequest('DynamoDB_20120810.RestoreTableToPointInTime', $request, RestoreTableToPointInTimeResponse::class);
+    }
+
+    public function scan(ScanRequest $request): ScanResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.Scan', $request, ScanResponse::class);
     }
 
     /**
