@@ -1,0 +1,25 @@
+{
+    "Attributes": {
+        "LastPostedBy": {
+            "S": "alice@example.com"
+        },
+        "ForumName": {
+            "S": "Amazon DynamoDB"
+        },
+        "LastPostDateTime": {
+            "S": "20130320010350"
+        },
+        "Tags": {
+            "SS": ["Update","Multiple Items","HelpMe"]
+        },
+        "Subject": {
+            "S": "Maximum number of items?"
+        },
+        "Views": {
+            "N": "5"
+        },
+        "Message": {
+            "S": "I want to put 10 million data items to an Amazon DynamoDB table.  Is there an upper limit?"
+        }
+    }
+}

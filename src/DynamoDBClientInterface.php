@@ -95,6 +95,8 @@ use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsRequest;
 use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsResponse;
 use Imper86\DynamoDBClient\Message\UpdateContributorInsightsRequest;
 use Imper86\DynamoDBClient\Message\UpdateContributorInsightsResponse;
+use Imper86\DynamoDBClient\Message\UpdateItemRequest;
+use Imper86\DynamoDBClient\Message\UpdateItemResponse;
 
 interface DynamoDBClientInterface
 {
@@ -350,4 +352,9 @@ interface DynamoDBClientInterface
     public function updateContributorInsights(
         UpdateContributorInsightsRequest $request,
     ): UpdateContributorInsightsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateItem(UpdateItemRequest $request): UpdateItemResponse;
 }
