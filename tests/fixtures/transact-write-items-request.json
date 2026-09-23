@@ -1,0 +1,71 @@
+{
+    "TransactItems": [
+        {
+            "ConditionCheck": {
+                "TableName": "Artists",
+                "Key": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    }
+                },
+                "ConditionExpression": "attribute_exists(Artist)",
+                "ReturnValuesOnConditionCheckFailure": "ALL_OLD"
+            }
+        },
+        {
+            "Put": {
+                "TableName": "Music",
+                "Item": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    },
+                    "SongTitle": {
+                        "S": "PartiQL Rocks"
+                    },
+                    "AlbumTitle": {
+                        "S": "Songs About Life"
+                    }
+                },
+                "ConditionExpression": "attribute_not_exists(SongTitle)"
+            }
+        },
+        {
+            "Update": {
+                "TableName": "Music",
+                "Key": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    },
+                    "SongTitle": {
+                        "S": "Happy Day"
+                    }
+                },
+                "UpdateExpression": "SET #plays = #plays + :one",
+                "ExpressionAttributeNames": {
+                    "#plays": "Plays"
+                },
+                "ExpressionAttributeValues": {
+                    ":one": {
+                        "N": "1"
+                    }
+                }
+            }
+        },
+        {
+            "Delete": {
+                "TableName": "Music",
+                "Key": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    },
+                    "SongTitle": {
+                        "S": "Old Song"
+                    }
+                }
+            }
+        }
+    ],
+    "ClientRequestToken": "5f2a4b1c-8d3e-4f60-9a7b-0c1d2e3f4a5b",
+    "ReturnConsumedCapacity": "TOTAL",
+    "ReturnItemCollectionMetrics": "SIZE"
+}

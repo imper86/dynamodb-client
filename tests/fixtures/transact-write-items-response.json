@@ -1,0 +1,28 @@
+{
+    "ConsumedCapacity": [
+        {
+            "CapacityUnits": 2,
+            "ReadCapacityUnits": 2,
+            "TableName": "Artists"
+        },
+        {
+            "CapacityUnits": 12,
+            "TableName": "Music"
+        }
+    ],
+    "ItemCollectionMetrics": {
+        "Music": [
+            {
+                "ItemCollectionKey": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    }
+                },
+                "SizeEstimateRangeGB": [
+                    0,
+                    1
+                ]
+            }
+        ]
+    }
+}

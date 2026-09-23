@@ -88,6 +88,8 @@ use Imper86\DynamoDBClient\Message\SearchVectorsResponse;
 use Imper86\DynamoDBClient\Message\TagResourceRequest;
 use Imper86\DynamoDBClient\Message\TransactGetItemsRequest;
 use Imper86\DynamoDBClient\Message\TransactGetItemsResponse;
+use Imper86\DynamoDBClient\Message\TransactWriteItemsRequest;
+use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -321,4 +323,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function transactGetItems(TransactGetItemsRequest $request): TransactGetItemsResponse;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function transactWriteItems(TransactWriteItemsRequest $request): TransactWriteItemsResponse;
 }

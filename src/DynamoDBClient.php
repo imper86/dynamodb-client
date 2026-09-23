@@ -97,6 +97,8 @@ use Imper86\DynamoDBClient\Message\SearchVectorsResponse;
 use Imper86\DynamoDBClient\Message\TagResourceRequest;
 use Imper86\DynamoDBClient\Message\TransactGetItemsRequest;
 use Imper86\DynamoDBClient\Message\TransactGetItemsResponse;
+use Imper86\DynamoDBClient\Message\TransactWriteItemsRequest;
+use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -404,6 +406,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
     public function transactGetItems(TransactGetItemsRequest $request): TransactGetItemsResponse
     {
         return $this->sendRequest('DynamoDB_20120810.TransactGetItems', $request, TransactGetItemsResponse::class);
+    }
+
+    public function transactWriteItems(TransactWriteItemsRequest $request): TransactWriteItemsResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.TransactWriteItems', $request, TransactWriteItemsResponse::class);
     }
 
     /**
