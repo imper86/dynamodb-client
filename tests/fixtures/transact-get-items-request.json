@@ -1,0 +1,35 @@
+{
+    "TransactItems": [
+        {
+            "Get": {
+                "TableName": "Music",
+                "Key": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    },
+                    "SongTitle": {
+                        "S": "Happy Day"
+                    }
+                },
+                "ProjectionExpression": "#title, AlbumTitle",
+                "ExpressionAttributeNames": {
+                    "#title": "SongTitle"
+                }
+            }
+        },
+        {
+            "Get": {
+                "TableName": "Music",
+                "Key": {
+                    "Artist": {
+                        "S": "Acme Band"
+                    },
+                    "SongTitle": {
+                        "S": "PartiQL Rocks"
+                    }
+                }
+            }
+        }
+    ],
+    "ReturnConsumedCapacity": "TOTAL"
+}

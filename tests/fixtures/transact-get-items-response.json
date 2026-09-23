@@ -1,0 +1,22 @@
+{
+    "ConsumedCapacity": [
+        {
+            "CapacityUnits": 4,
+            "ReadCapacityUnits": 4,
+            "TableName": "Music"
+        }
+    ],
+    "Responses": [
+        {
+            "Item": {
+                "SongTitle": {
+                    "S": "Happy Day"
+                },
+                "AlbumTitle": {
+                    "S": "Songs About Life"
+                }
+            }
+        },
+        {}
+    ]
+}
