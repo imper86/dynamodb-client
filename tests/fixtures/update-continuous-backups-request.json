@@ -1,0 +1,7 @@
+{
+    "TableName": "Music",
+    "PointInTimeRecoverySpecification": {
+        "PointInTimeRecoveryEnabled": true,
+        "RecoveryPeriodInDays": 7
+    }
+}

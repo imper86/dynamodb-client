@@ -91,6 +91,8 @@ use Imper86\DynamoDBClient\Message\TransactGetItemsResponse;
 use Imper86\DynamoDBClient\Message\TransactWriteItemsRequest;
 use Imper86\DynamoDBClient\Message\TransactWriteItemsResponse;
 use Imper86\DynamoDBClient\Message\UntagResourceRequest;
+use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsRequest;
+use Imper86\DynamoDBClient\Message\UpdateContinuousBackupsResponse;
 
 interface DynamoDBClientInterface
 {
@@ -334,4 +336,9 @@ interface DynamoDBClientInterface
      * @throws ExceptionInterface
      */
     public function untagResource(UntagResourceRequest $request): void;
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function updateContinuousBackups(UpdateContinuousBackupsRequest $request): UpdateContinuousBackupsResponse;
 }
