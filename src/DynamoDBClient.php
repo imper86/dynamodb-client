@@ -108,6 +108,8 @@ use Imper86\DynamoDBClient\Message\UpdateItemRequest;
 use Imper86\DynamoDBClient\Message\UpdateItemResponse;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationRequest;
 use Imper86\DynamoDBClient\Message\UpdateKinesisStreamingDestinationResponse;
+use Imper86\DynamoDBClient\Message\UpdateTableRequest;
+use Imper86\DynamoDBClient\Message\UpdateTableResponse;
 use Imper86\DynamoDBClient\Model\Credentials;
 use Imper86\DynamoDBClient\PluginClient\PluginClientFactory;
 use Imper86\DynamoDBClient\Serializer\SerializerFactory;
@@ -459,6 +461,11 @@ final readonly class DynamoDBClient implements DynamoDBClientInterface
             $request,
             UpdateKinesisStreamingDestinationResponse::class,
         );
+    }
+
+    public function updateTable(UpdateTableRequest $request): UpdateTableResponse
+    {
+        return $this->sendRequest('DynamoDB_20120810.UpdateTable', $request, UpdateTableResponse::class);
     }
 
     /**
