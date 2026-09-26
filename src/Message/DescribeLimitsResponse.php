@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Message;
 
-final readonly class DescribeLimitsResponse
+final class DescribeLimitsResponse
 {
     /**
      * @param null|int $accountMaxReadCapacityUnits the read capacity the account may provision across all its
@@ -17,9 +17,9 @@ final readonly class DescribeLimitsResponse
      *                                             secondary indexes included
      */
     public function __construct(
-        public ?int $accountMaxReadCapacityUnits = null,
-        public ?int $accountMaxWriteCapacityUnits = null,
-        public ?int $tableMaxReadCapacityUnits = null,
-        public ?int $tableMaxWriteCapacityUnits = null,
+        public readonly ?int $accountMaxReadCapacityUnits = null,
+        public readonly ?int $accountMaxWriteCapacityUnits = null,
+        public readonly ?int $tableMaxReadCapacityUnits = null,
+        public readonly ?int $tableMaxWriteCapacityUnits = null,
     ) {}
 }

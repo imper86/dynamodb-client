@@ -44,9 +44,9 @@ use function range;
 #[CoversClass(DynamoDBClient::class)]
 final class BatchWriteItemTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-write-item-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-write-item-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-write-item-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-write-item-response.json';
 
     /**
      * @throws ExceptionInterface

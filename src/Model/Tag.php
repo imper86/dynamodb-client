@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class Tag
+final class Tag
 {
     /**
      * @param non-empty-string $key
@@ -15,8 +15,8 @@ final readonly class Tag
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $key,
-        public string $value,
+        public readonly string $key,
+        public readonly string $value,
     ) {
         Assert::stringNotEmpty($this->key);
         Assert::maxLength($this->key, 128);

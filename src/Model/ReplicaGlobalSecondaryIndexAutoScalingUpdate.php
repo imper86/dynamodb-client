@@ -7,15 +7,15 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ReplicaGlobalSecondaryIndexAutoScalingUpdate
+final class ReplicaGlobalSecondaryIndexAutoScalingUpdate
 {
     /**
      * @param null|non-empty-string $indexName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?string $indexName = null,
-        public ?AutoScalingSettingsUpdate $provisionedReadCapacityAutoScalingUpdate = null,
+        public readonly ?string $indexName = null,
+        public readonly ?AutoScalingSettingsUpdate $provisionedReadCapacityAutoScalingUpdate = null,
     ) {
         Assert::nullOrStringNotEmpty($this->indexName);
         Assert::nullOrMinLength($this->indexName, 3);

@@ -31,9 +31,9 @@ use function file_get_contents;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeEndpointsTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-endpoints-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-endpoints-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-endpoints-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-endpoints-response.json';
 
     /**
      * @throws ExceptionInterface

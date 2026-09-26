@@ -14,32 +14,32 @@ use Webmozart\Assert\Assert;
 use function array_map;
 use function array_values;
 
-final readonly class AttributeValue
+final class AttributeValue
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
         #[SerializedName('B')]
-        public ?string $blob = null,
+        public readonly ?string $blob = null,
         #[SerializedName('BOOL')]
-        public ?bool $bool = null,
+        public readonly ?bool $bool = null,
         #[SerializedName('BS')]
-        public ?BlobSet $blobSet = null,
+        public readonly ?BlobSet $blobSet = null,
         #[SerializedName('L')]
-        public ?AttributeValueList $list = null,
+        public readonly ?AttributeValueList $list = null,
         #[SerializedName('M')]
-        public ?AttributeValueMap $map = null,
+        public readonly ?AttributeValueMap $map = null,
         #[SerializedName('N')]
-        public ?string $number = null,
+        public readonly ?string $number = null,
         #[SerializedName('NS')]
-        public ?NumberSet $numberSet = null,
+        public readonly ?NumberSet $numberSet = null,
         #[SerializedName('NULL')]
-        public ?bool $null = null,
+        public readonly ?bool $null = null,
         #[SerializedName('S')]
-        public ?string $string = null,
+        public readonly ?string $string = null,
         #[SerializedName('SS')]
-        public ?StringSet $stringSet = null,
+        public readonly ?StringSet $stringSet = null,
     ) {
         Assert::nullOrNumeric($this->number);
     }

@@ -8,7 +8,7 @@ use Imper86\DynamoDBClient\Model\AttributeValueMap;
 use Imper86\DynamoDBClient\Model\ConsumedCapacity;
 use Imper86\DynamoDBClient\Model\ItemList;
 
-final readonly class ExecuteStatementResponse
+final class ExecuteStatementResponse
 {
     /**
      * @param ItemList $items the items a read returned; empty for a write
@@ -16,9 +16,9 @@ final readonly class ExecuteStatementResponse
      * @param null|string $nextToken the token to pass to the next request, or null when the result is complete
      */
     public function __construct(
-        public ItemList $items = new ItemList(),
-        public ?AttributeValueMap $lastEvaluatedKey = null,
-        public ?string $nextToken = null,
-        public ?ConsumedCapacity $consumedCapacity = null,
+        public readonly ItemList $items = new ItemList(),
+        public readonly ?AttributeValueMap $lastEvaluatedKey = null,
+        public readonly ?string $nextToken = null,
+        public readonly ?ConsumedCapacity $consumedCapacity = null,
     ) {}
 }

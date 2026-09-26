@@ -33,31 +33,31 @@ use function strtolower;
  *
  * @see https://docs.aws.amazon.com/sdkref/latest/guide/feature-appid.html
  */
-final readonly class UserAgentPlugin implements Plugin
+final class UserAgentPlugin implements Plugin
 {
     /**
      * Name this client reports itself under, the package name with the vendor separator replaced.
      */
-    public const string SDK_NAME = 'imper86-dynamodb-client';
+    public const SDK_NAME = 'imper86-dynamodb-client';
 
-    public const string PACKAGE_NAME = 'imper86/dynamodb-client';
+    public const PACKAGE_NAME = 'imper86/dynamodb-client';
 
     /**
      * Version of the AWS user agent format implemented here.
      */
-    public const string USER_AGENT_VERSION = '2.1';
+    public const USER_AGENT_VERSION = '2.1';
 
-    public const string APP_ID_ENV_VARIABLE = 'AWS_SDK_UA_APP_ID';
+    public const APP_ID_ENV_VARIABLE = 'AWS_SDK_UA_APP_ID';
 
-    public const string EXECUTION_ENV_VARIABLE = 'AWS_EXECUTION_ENV';
+    public const EXECUTION_ENV_VARIABLE = 'AWS_EXECUTION_ENV';
 
-    public const int APP_ID_MAX_LENGTH = 50;
+    public const APP_ID_MAX_LENGTH = 50;
 
-    private const string HEADER = 'User-Agent';
+    private const HEADER = 'User-Agent';
 
-    private const string SERVICE_ID = 'dynamodb';
+    private const SERVICE_ID = 'dynamodb';
 
-    private const string UNKNOWN_VERSION = 'unknown';
+    private const UNKNOWN_VERSION = 'unknown';
 
     /**
      * Operating systems AWS recognises, indexed by php's own family name. Anything else is
@@ -65,7 +65,7 @@ final readonly class UserAgentPlugin implements Plugin
      *
      * @var array<string, string>
      */
-    private const array OS_FAMILIES = [
+    private const OS_FAMILIES = [
         'Darwin' => 'macos',
         'Linux' => 'linux',
         'Windows' => 'windows',
@@ -74,11 +74,11 @@ final readonly class UserAgentPlugin implements Plugin
     /**
      * Characters AWS does not allow in a field, `#` is allowed in values only.
      */
-    private const string DISALLOWED_CHARACTERS = '/[^0-9A-Za-z!$%&\'*+\-.^_`|~,]/';
+    private const DISALLOWED_CHARACTERS = '/[^0-9A-Za-z!$%&\'*+\-.^_`|~,]/';
 
-    private const string DISALLOWED_CHARACTERS_IN_VALUE = '/[^0-9A-Za-z!$%&\'*+\-.^_`|~,#]/';
+    private const DISALLOWED_CHARACTERS_IN_VALUE = '/[^0-9A-Za-z!$%&\'*+\-.^_`|~,#]/';
 
-    private string $userAgent;
+    private readonly string $userAgent;
 
     /**
      * @param null|non-empty-string $appId an opaque identifier of your application, falls back to

@@ -43,11 +43,11 @@ use const JSON_THROW_ON_ERROR;
 #[CoversClass(DynamoDBClient::class)]
 final class ExportTableToPointInTimeTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/export-table-to-point-in-time-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/export-table-to-point-in-time-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/export-table-to-point-in-time-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/export-table-to-point-in-time-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws ExceptionInterface

@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<ReplicationGroupUpdate>
  */
-final readonly class ReplicationGroupUpdateList extends AbstractObjectList
+final class ReplicationGroupUpdateList extends AbstractObjectList
 {
     /**
      * @return class-string<ReplicationGroupUpdate>

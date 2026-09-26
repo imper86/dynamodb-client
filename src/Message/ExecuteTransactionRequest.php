@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\Model\ParameterizedStatementList;
 use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
 use Webmozart\Assert\Assert;
 
-final readonly class ExecuteTransactionRequest
+final class ExecuteTransactionRequest
 {
     /**
      * @param null|non-empty-string $clientRequestToken makes the call idempotent: repeating a request with
@@ -17,9 +17,9 @@ final readonly class ExecuteTransactionRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ParameterizedStatementList $transactStatements,
-        public ?string $clientRequestToken = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ParameterizedStatementList $transactStatements,
+        public readonly ?string $clientRequestToken = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
     ) {
         Assert::minCount($this->transactStatements, 1);
         Assert::maxCount($this->transactStatements, 100);

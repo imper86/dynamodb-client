@@ -70,7 +70,7 @@ final class CollectionTest extends TestCase
         self::assertNull($map->get('missing'));
         self::assertSame(['id'], $map->keys());
         self::assertSame(['id' => $value], iterator_to_array($map));
-        self::assertTrue(new AttributeValueMap()->isEmpty());
+        self::assertTrue((new AttributeValueMap())->isEmpty());
     }
 
     /**

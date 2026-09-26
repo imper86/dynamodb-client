@@ -32,7 +32,7 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class TagResourceTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/tag-resource-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/tag-resource-request.json';
 
     /**
      * @throws ExceptionInterface

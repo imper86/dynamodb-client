@@ -12,7 +12,7 @@ use Imper86\DynamoDBClient\Model\TableCreationParameters;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ImportTableRequest
+final class ImportTableRequest
 {
     /**
      * {@see self::csv()}, {@see self::dynamoDbJson()} and {@see self::ion()} pick the format, and only the
@@ -24,12 +24,12 @@ final readonly class ImportTableRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public InputFormat $inputFormat,
-        public S3BucketSource $s3BucketSource,
-        public TableCreationParameters $tableCreationParameters,
-        public ?string $clientToken = null,
-        public ?InputCompressionType $inputCompressionType = null,
-        public ?InputFormatOptions $inputFormatOptions = null,
+        public readonly InputFormat $inputFormat,
+        public readonly S3BucketSource $s3BucketSource,
+        public readonly TableCreationParameters $tableCreationParameters,
+        public readonly ?string $clientToken = null,
+        public readonly ?InputCompressionType $inputCompressionType = null,
+        public readonly ?InputFormatOptions $inputFormatOptions = null,
     ) {
         Assert::nullOrRegex($this->clientToken, '/^[^$]+$/');
     }

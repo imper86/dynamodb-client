@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\Model\BackupTypeFilter;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ListBackupsRequest
+final class ListBackupsRequest
 {
     /**
      * @param null|BackupTypeFilter $backupType which backups to list; DynamoDB lists USER backups by default
@@ -21,12 +21,12 @@ final readonly class ListBackupsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?BackupTypeFilter $backupType = null,
-        public ?string $exclusiveStartBackupArn = null,
-        public ?int $limit = null,
-        public ?string $tableName = null,
-        public ?DateTimeImmutable $timeRangeLowerBound = null,
-        public ?DateTimeImmutable $timeRangeUpperBound = null,
+        public readonly ?BackupTypeFilter $backupType = null,
+        public readonly ?string $exclusiveStartBackupArn = null,
+        public readonly ?int $limit = null,
+        public readonly ?string $tableName = null,
+        public readonly ?DateTimeImmutable $timeRangeLowerBound = null,
+        public readonly ?DateTimeImmutable $timeRangeUpperBound = null,
     ) {
         Assert::nullOrStringNotEmpty($this->exclusiveStartBackupArn);
         Assert::nullOrMinLength($this->exclusiveStartBackupArn, 37);

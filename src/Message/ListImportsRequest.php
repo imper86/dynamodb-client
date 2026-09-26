@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ListImportsRequest
+final class ListImportsRequest
 {
     /**
      * @param null|non-empty-string $nextToken the `NextToken` of the previous page
@@ -16,9 +16,9 @@ final readonly class ListImportsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?string $nextToken = null,
-        public ?int $pageSize = null,
-        public ?string $tableArn = null,
+        public readonly ?string $nextToken = null,
+        public readonly ?int $pageSize = null,
+        public readonly ?string $tableArn = null,
     ) {
         Assert::nullOrStringNotEmpty($this->nextToken);
         Assert::nullOrMinLength($this->nextToken, 112);

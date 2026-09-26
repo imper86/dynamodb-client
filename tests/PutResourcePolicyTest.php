@@ -31,13 +31,13 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class PutResourcePolicyTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/put-resource-policy-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/put-resource-policy-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/put-resource-policy-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/put-resource-policy-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:us-west-2:123456789012:table/Thread';
+    private const TABLE_ARN = 'arn:aws:dynamodb:us-west-2:123456789012:table/Thread';
 
-    private const string POLICY = '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Principal":{"AWS":['
+    private const POLICY = '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Principal":{"AWS":['
         . '"arn:aws:iam::111122223333:root","arn:aws:iam::444455556666:root"]},"Action":["dynamodb:GetItem"],'
         . '"Resource":"arn:aws:dynamodb:us-west-2:123456789012:table/Thread"}}';
 

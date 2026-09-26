@@ -78,6 +78,28 @@ final class TimestampNormalizerTest extends TestCase
     /**
      * @throws ExceptionInterface
      */
+    public function testCountsTheFractionOfANegativeTimestampForwards(): void
+    {
+        $dateTime = $this->serializer->deserialize('-1.5', DateTimeImmutable::class, 'json');
+
+        self::assertInstanceOf(DateTimeImmutable::class, $dateTime);
+        self::assertSame('1969-12-31T23:59:58.500000+00:00', $dateTime->format('Y-m-d\TH:i:s.uP'));
+    }
+
+    /**
+     * @throws ExceptionInterface
+     */
+    public function testRoundsAFractionToTheNearestMicrosecond(): void
+    {
+        $dateTime = $this->serializer->deserialize('1579733999.9999997', DateTimeImmutable::class, 'json');
+
+        self::assertInstanceOf(DateTimeImmutable::class, $dateTime);
+        self::assertSame('2020-01-22T23:00:00.000000+00:00', $dateTime->format('Y-m-d\TH:i:s.uP'));
+    }
+
+    /**
+     * @throws ExceptionInterface
+     */
     public function testDeserializesTheInterfaceToAnImmutableDateTime(): void
     {
         $dateTime = $this->serializer->deserialize('1579734000', DateTimeInterface::class, 'json');
@@ -91,7 +113,7 @@ final class TimestampNormalizerTest extends TestCase
     public function testRejectsATimestampThatIsNotANumber(): void
     {
         $this->expectException(NotNormalizableValueException::class);
-        $this->expectExceptionMessageIsOrContains('A timestamp must be a number of epoch seconds, "string" given.');
+        $this->expectExceptionMessageMatches('/A timestamp must be a number of epoch seconds, "string" given\./');
 
         $this->serializer->deserialize('"2019-12-17T23:07:46Z"', DateTimeImmutable::class, 'json');
     }
@@ -113,11 +135,11 @@ final class TimestampNormalizerTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        new TimestampNormalizer()->normalize('2019-12-17');
+        (new TimestampNormalizer())->normalize('2019-12-17');
     }
 
     public function testLeavesMutableDateTimeToOtherDenormalizers(): void
     {
-        self::assertFalse(new TimestampNormalizer()->supportsDenormalization(1579734000, DateTime::class));
+        self::assertFalse((new TimestampNormalizer())->supportsDenormalization(1579734000, DateTime::class));
     }
 }

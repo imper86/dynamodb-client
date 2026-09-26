@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ExportSummary
+final class ExportSummary
 {
     public function __construct(
-        public ?string $exportArn = null,
-        public ?ExportStatus $exportStatus = null,
-        public ?ExportType $exportType = null,
+        public readonly ?string $exportArn = null,
+        public readonly ?ExportStatus $exportStatus = null,
+        public readonly ?ExportType $exportType = null,
     ) {}
 }

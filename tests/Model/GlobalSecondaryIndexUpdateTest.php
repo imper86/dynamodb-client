@@ -138,9 +138,7 @@ final class GlobalSecondaryIndexUpdateTest extends TestCase
     public function testRejectsAnUpdateWithoutAnyAction(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A GlobalSecondaryIndexUpdate needs exactly one of Create, Delete or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A GlobalSecondaryIndexUpdate needs exactly one of Create, Delete or Update\./');
 
         new GlobalSecondaryIndexUpdate();
     }
@@ -151,9 +149,7 @@ final class GlobalSecondaryIndexUpdateTest extends TestCase
     public function testRejectsAnUpdateWithTwoActions(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A GlobalSecondaryIndexUpdate needs exactly one of Create, Delete or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A GlobalSecondaryIndexUpdate needs exactly one of Create, Delete or Update\./');
 
         new GlobalSecondaryIndexUpdate(
             delete: new DeleteGlobalSecondaryIndexAction('ObsoleteIndex'),

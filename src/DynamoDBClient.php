@@ -128,12 +128,12 @@ use Throwable;
 use function get_debug_type;
 use function sprintf;
 
-final readonly class DynamoDBClient implements DynamoDBClientInterface
+final class DynamoDBClient implements DynamoDBClientInterface
 {
-    private ClientInterface $httpClient;
-    private RequestFactoryInterface $requestFactory;
-    private StreamFactoryInterface $streamFactory;
-    private SerializerInterface $serializer;
+    private readonly ClientInterface $httpClient;
+    private readonly RequestFactoryInterface $requestFactory;
+    private readonly StreamFactoryInterface $streamFactory;
+    private readonly SerializerInterface $serializer;
 
     /**
      * @param non-empty-string $region

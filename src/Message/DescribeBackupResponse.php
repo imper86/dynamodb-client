@@ -6,13 +6,13 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\BackupDescription;
 
-final readonly class DescribeBackupResponse
+final class DescribeBackupResponse
 {
     /**
      * The description is the whole payload: requiring it would turn an unexpectedly empty body into a
      * deserialization failure instead of a response the caller can inspect.
      */
     public function __construct(
-        public ?BackupDescription $backupDescription = null,
+        public readonly ?BackupDescription $backupDescription = null,
     ) {}
 }

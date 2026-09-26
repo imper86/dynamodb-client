@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ItemResponse
+final class ItemResponse
 {
     public function __construct(
-        public ?AttributeValueMap $item = null,
+        public readonly ?AttributeValueMap $item = null,
     ) {}
 }

@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Imper86\DynamoDBClient\Model\PointInTimeRecoverySpecification;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateContinuousBackupsRequest
+final class UpdateContinuousBackupsRequest
 {
     /**
      * {@see self::enable()} and {@see self::disable()} build the specification for you.
@@ -17,8 +17,8 @@ final readonly class UpdateContinuousBackupsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public PointInTimeRecoverySpecification $pointInTimeRecoverySpecification,
-        public string $tableName,
+        public readonly PointInTimeRecoverySpecification $pointInTimeRecoverySpecification,
+        public readonly string $tableName,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

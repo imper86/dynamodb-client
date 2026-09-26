@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<AutoScalingPolicyDescription>
  */
-final readonly class AutoScalingPolicyDescriptionList extends AbstractObjectList
+final class AutoScalingPolicyDescriptionList extends AbstractObjectList
 {
     /**
      * @return class-string<AutoScalingPolicyDescription>

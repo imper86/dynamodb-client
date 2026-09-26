@@ -37,11 +37,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ListBackupsTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/list-backups-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/list-backups-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-backups-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-backups-response.json';
 
-    private const string LAST_EVALUATED_BACKUP_ARN =
+    private const LAST_EVALUATED_BACKUP_ARN =
         'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576702766500-d6a7af5c';
 
     /**

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class AutoScalingSettingsDescription
+final class AutoScalingSettingsDescription
 {
     public function __construct(
-        public ?bool $autoScalingDisabled = null,
-        public ?string $autoScalingRoleArn = null,
-        public ?int $maximumUnits = null,
-        public ?int $minimumUnits = null,
-        public ?AutoScalingPolicyDescriptionList $scalingPolicies = null,
+        public readonly ?bool $autoScalingDisabled = null,
+        public readonly ?string $autoScalingRoleArn = null,
+        public readonly ?int $maximumUnits = null,
+        public readonly ?int $minimumUnits = null,
+        public readonly ?AutoScalingPolicyDescriptionList $scalingPolicies = null,
     ) {}
 }

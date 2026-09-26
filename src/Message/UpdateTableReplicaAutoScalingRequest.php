@@ -10,17 +10,17 @@ use Imper86\DynamoDBClient\Model\ReplicaAutoScalingUpdateList;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateTableReplicaAutoScalingRequest
+final class UpdateTableReplicaAutoScalingRequest
 {
     /**
      * @param non-empty-string $tableName the global table name or its ARN
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public ?GlobalSecondaryIndexAutoScalingUpdateList $globalSecondaryIndexUpdates = null,
-        public ?AutoScalingSettingsUpdate $provisionedWriteCapacityAutoScalingUpdate = null,
-        public ?ReplicaAutoScalingUpdateList $replicaUpdates = null,
+        public readonly string $tableName,
+        public readonly ?GlobalSecondaryIndexAutoScalingUpdateList $globalSecondaryIndexUpdates = null,
+        public readonly ?AutoScalingSettingsUpdate $provisionedWriteCapacityAutoScalingUpdate = null,
+        public readonly ?ReplicaAutoScalingUpdateList $replicaUpdates = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

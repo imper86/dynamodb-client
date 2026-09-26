@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<LocalSecondaryIndexDescription>
  */
-final readonly class LocalSecondaryIndexDescriptionList extends AbstractObjectList
+final class LocalSecondaryIndexDescriptionList extends AbstractObjectList
 {
     /**
      * @return class-string<LocalSecondaryIndexDescription>

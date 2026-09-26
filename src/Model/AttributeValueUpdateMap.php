@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
 /**
  * @extends AbstractObjectMap<AttributeValueUpdate>
  */
-final readonly class AttributeValueUpdateMap extends AbstractObjectMap
+final class AttributeValueUpdateMap extends AbstractObjectMap
 {
     /**
      * @return class-string<AttributeValueUpdate>

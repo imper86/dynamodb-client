@@ -98,7 +98,7 @@ final class VectorIndexUpdateTest extends TestCase
     public function testRejectsAnUpdateWithoutAnyAction(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('A VectorIndexUpdate needs exactly one of Create or Delete.');
+        $this->expectExceptionMessageMatches('/A VectorIndexUpdate needs exactly one of Create or Delete\./');
 
         new VectorIndexUpdate();
     }
@@ -109,7 +109,7 @@ final class VectorIndexUpdateTest extends TestCase
     public function testRejectsAnUpdateWithBothActions(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('A VectorIndexUpdate needs exactly one of Create or Delete.');
+        $this->expectExceptionMessageMatches('/A VectorIndexUpdate needs exactly one of Create or Delete\./');
 
         new VectorIndexUpdate(
             create: VectorIndexUpdate::create(

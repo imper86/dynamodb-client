@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class CreateBackupRequest
+final class CreateBackupRequest
 {
     /**
      * @param non-empty-string $backupName
@@ -15,8 +15,8 @@ final readonly class CreateBackupRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $backupName,
-        public string $tableName,
+        public readonly string $backupName,
+        public readonly string $tableName,
     ) {
         Assert::stringNotEmpty($this->backupName);
         Assert::minLength($this->backupName, 3);

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ConsumedCapacity
+final class ConsumedCapacity
 {
     public function __construct(
-        public ?float $capacityUnits = null,
-        public ?ConsumedCapacityMap $globalSecondaryIndexes = null,
-        public ?ConsumedCapacityMap $localSecondaryIndexes = null,
-        public ?float $readCapacityUnits = null,
-        public ?string $table = null,
-        public ?string $tableName = null,
+        public readonly ?float $capacityUnits = null,
+        public readonly ?ConsumedCapacityMap $globalSecondaryIndexes = null,
+        public readonly ?ConsumedCapacityMap $localSecondaryIndexes = null,
+        public readonly ?float $readCapacityUnits = null,
+        public readonly ?string $table = null,
+        public readonly ?string $tableName = null,
     ) {}
 }

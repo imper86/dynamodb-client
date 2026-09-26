@@ -7,15 +7,15 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class AutoScalingPolicyUpdate
+final class AutoScalingPolicyUpdate
 {
     /**
      * @param null|non-empty-string $policyName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AutoScalingTargetTrackingScalingPolicyConfigurationUpdate $targetTrackingScalingPolicyConfiguration,
-        public ?string $policyName = null,
+        public readonly AutoScalingTargetTrackingScalingPolicyConfigurationUpdate $targetTrackingScalingPolicyConfiguration,
+        public readonly ?string $policyName = null,
     ) {
         Assert::nullOrStringNotEmpty($this->policyName);
         Assert::nullOrMaxLength($this->policyName, 256);

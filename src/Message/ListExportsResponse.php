@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\ExportSummaryList;
 
-final readonly class ListExportsResponse
+final class ListExportsResponse
 {
     /**
      * An account without exports answers with an empty `ExportSummaries` list, so it defaults to empty
@@ -15,7 +15,7 @@ final readonly class ListExportsResponse
      * @param null|string $nextToken where the next page starts; absent on the last page
      */
     public function __construct(
-        public ExportSummaryList $exportSummaries = new ExportSummaryList(),
-        public ?string $nextToken = null,
+        public readonly ExportSummaryList $exportSummaries = new ExportSummaryList(),
+        public readonly ?string $nextToken = null,
     ) {}
 }

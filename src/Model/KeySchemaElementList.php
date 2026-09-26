@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
  *
  * @extends AbstractObjectList<KeySchemaElement>
  */
-final readonly class KeySchemaElementList extends AbstractObjectList
+final class KeySchemaElementList extends AbstractObjectList
 {
     /**
      * @return class-string<KeySchemaElement>

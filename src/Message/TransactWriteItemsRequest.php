@@ -10,7 +10,7 @@ use Imper86\DynamoDBClient\Model\ReturnItemCollectionMetrics;
 use Imper86\DynamoDBClient\Model\TransactWriteItemList;
 use Webmozart\Assert\Assert;
 
-final readonly class TransactWriteItemsRequest
+final class TransactWriteItemsRequest
 {
     /**
      * @param TransactWriteItemList $transactItems the actions to run atomically; no two may target the same item
@@ -19,10 +19,10 @@ final readonly class TransactWriteItemsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public TransactWriteItemList $transactItems,
-        public ?string $clientRequestToken = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
+        public readonly TransactWriteItemList $transactItems,
+        public readonly ?string $clientRequestToken = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
     ) {
         Assert::minCount($this->transactItems, 1);
         Assert::maxCount($this->transactItems, 100);

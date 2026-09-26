@@ -7,13 +7,13 @@ namespace Imper86\DynamoDBClient\Message;
 use Imper86\DynamoDBClient\Model\SearchResultItemList;
 use Imper86\DynamoDBClient\Model\VectorCapacity;
 
-final readonly class SearchVectorsResponse
+final class SearchVectorsResponse
 {
     /**
      * @param SearchResultItemList $searchResults the most similar item first
      */
     public function __construct(
-        public SearchResultItemList $searchResults = new SearchResultItemList(),
-        public ?VectorCapacity $consumedCapacity = null,
+        public readonly SearchResultItemList $searchResults = new SearchResultItemList(),
+        public readonly ?VectorCapacity $consumedCapacity = null,
     ) {}
 }

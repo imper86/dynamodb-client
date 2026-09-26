@@ -13,7 +13,7 @@ use Imper86\DynamoDBClient\Model\IncrementalExportSpecification;
 use Imper86\DynamoDBClient\Model\S3SseAlgorithm;
 use Webmozart\Assert\Assert;
 
-final readonly class ExportTableToPointInTimeRequest
+final class ExportTableToPointInTimeRequest
 {
     /**
      * An `INCREMENTAL_EXPORT` needs the `IncrementalExportSpecification` that says which period to export;
@@ -30,17 +30,17 @@ final readonly class ExportTableToPointInTimeRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $s3Bucket,
-        public string $tableArn,
-        public ?string $clientToken = null,
-        public ?ExportFormat $exportFormat = null,
-        public ?DateTimeImmutable $exportTime = null,
-        public ?ExportType $exportType = null,
-        public ?IncrementalExportSpecification $incrementalExportSpecification = null,
-        public ?string $s3BucketOwner = null,
-        public ?string $s3Prefix = null,
-        public ?S3SseAlgorithm $s3SseAlgorithm = null,
-        public ?string $s3SseKmsKeyId = null,
+        public readonly string $s3Bucket,
+        public readonly string $tableArn,
+        public readonly ?string $clientToken = null,
+        public readonly ?ExportFormat $exportFormat = null,
+        public readonly ?DateTimeImmutable $exportTime = null,
+        public readonly ?ExportType $exportType = null,
+        public readonly ?IncrementalExportSpecification $incrementalExportSpecification = null,
+        public readonly ?string $s3BucketOwner = null,
+        public readonly ?string $s3Prefix = null,
+        public readonly ?S3SseAlgorithm $s3SseAlgorithm = null,
+        public readonly ?string $s3SseKmsKeyId = null,
     ) {
         Assert::stringNotEmpty($this->s3Bucket);
         Assert::maxLength($this->s3Bucket, 255);

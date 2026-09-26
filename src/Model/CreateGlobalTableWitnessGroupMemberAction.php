@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class CreateGlobalTableWitnessGroupMemberAction
+final class CreateGlobalTableWitnessGroupMemberAction
 {
     /**
      * @param non-empty-string $regionName the Region to add a witness in
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $regionName,
+        public readonly string $regionName,
     ) {
         Assert::stringNotEmpty($this->regionName);
     }

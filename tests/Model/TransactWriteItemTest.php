@@ -125,9 +125,7 @@ final class TransactWriteItemTest extends TestCase
     public function testRejectsATransactWriteItemWithoutAnyAction(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A TransactWriteItem needs exactly one of ConditionCheck, Delete, Put or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A TransactWriteItem needs exactly one of ConditionCheck, Delete, Put or Update\./');
 
         new TransactWriteItem();
     }
@@ -138,9 +136,7 @@ final class TransactWriteItemTest extends TestCase
     public function testRejectsATransactWriteItemWithTwoActions(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A TransactWriteItem needs exactly one of ConditionCheck, Delete, Put or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A TransactWriteItem needs exactly one of ConditionCheck, Delete, Put or Update\./');
 
         new TransactWriteItem(
             delete: TransactWriteItem::delete($this->key(), 'Music')->delete,

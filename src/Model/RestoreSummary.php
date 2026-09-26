@@ -6,12 +6,12 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class RestoreSummary
+final class RestoreSummary
 {
     public function __construct(
-        public ?DateTimeImmutable $restoreDateTime = null,
-        public ?bool $restoreInProgress = null,
-        public ?string $sourceBackupArn = null,
-        public ?string $sourceTableArn = null,
+        public readonly ?DateTimeImmutable $restoreDateTime = null,
+        public readonly ?bool $restoreInProgress = null,
+        public readonly ?string $sourceBackupArn = null,
+        public readonly ?string $sourceTableArn = null,
     ) {}
 }

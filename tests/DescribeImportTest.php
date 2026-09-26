@@ -58,12 +58,12 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeImportTest extends TestCase
 {
-    private const string IMPORT_ARN =
+    private const IMPORT_ARN =
         'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/import/01576624066799-e5f6a7b8';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-import-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-import-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-import-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-import-response.json';
 
     /**
      * @throws ExceptionInterface

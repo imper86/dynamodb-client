@@ -35,24 +35,24 @@ use function usort;
  *
  * @see https://docs.aws.amazon.com/IAM/latest/UserGuide/create-signed-request.html
  */
-final readonly class SignatureV4
+final class SignatureV4
 {
-    public const string ALGORITHM = 'AWS4-HMAC-SHA256';
+    public const ALGORITHM = 'AWS4-HMAC-SHA256';
 
-    private const string HASH_ALGORITHM = 'sha256';
+    private const HASH_ALGORITHM = 'sha256';
 
-    private const string REQUEST_TYPE = 'aws4_request';
+    private const REQUEST_TYPE = 'aws4_request';
 
-    private const string DATE_FORMAT = 'Ymd\THis\Z';
+    private const DATE_FORMAT = 'Ymd\THis\Z';
 
-    private const string DATE_STAMP_FORMAT = 'Ymd';
+    private const DATE_STAMP_FORMAT = 'Ymd';
 
     /**
      * Headers that are either hop-by-hop or rewritten by clients and proxies, signing them would break the signature.
      *
      * @var list<string>
      */
-    private const array UNSIGNED_HEADERS = [
+    private const UNSIGNED_HEADERS = [
         'authorization',
         'connection',
         'content-length',
@@ -73,9 +73,9 @@ final readonly class SignatureV4
      * @throws InvalidArgumentException
      */
     public function __construct(
-        private Credentials $credentials,
-        private string $region,
-        private string $service,
+        private readonly Credentials $credentials,
+        private readonly string $region,
+        private readonly string $service,
     ) {
         Assert::stringNotEmpty($this->region);
         Assert::stringNotEmpty($this->service);

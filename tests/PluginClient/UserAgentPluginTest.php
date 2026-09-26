@@ -134,7 +134,9 @@ final class UserAgentPluginTest extends TestCase
         $plugin->handleRequest(
             $request ?? new Request('POST', 'https://dynamodb.eu-central-1.amazonaws.com/'),
             $next,
-            static fn(): never => self::fail('Must not restart the chain.'),
+            static function (): never {
+                self::fail('Must not restart the chain.');
+            },
         );
 
         self::assertInstanceOf(RequestInterface::class, $handled);

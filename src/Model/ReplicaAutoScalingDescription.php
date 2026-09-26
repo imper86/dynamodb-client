@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ReplicaAutoScalingDescription
+final class ReplicaAutoScalingDescription
 {
     public function __construct(
-        public ?ReplicaGlobalSecondaryIndexAutoScalingDescriptionList $globalSecondaryIndexes = null,
-        public ?string $regionName = null,
-        public ?AutoScalingSettingsDescription $replicaProvisionedReadCapacityAutoScalingSettings = null,
-        public ?AutoScalingSettingsDescription $replicaProvisionedWriteCapacityAutoScalingSettings = null,
-        public ?ReplicaStatus $replicaStatus = null,
+        public readonly ?ReplicaGlobalSecondaryIndexAutoScalingDescriptionList $globalSecondaryIndexes = null,
+        public readonly ?string $regionName = null,
+        public readonly ?AutoScalingSettingsDescription $replicaProvisionedReadCapacityAutoScalingSettings = null,
+        public readonly ?AutoScalingSettingsDescription $replicaProvisionedWriteCapacityAutoScalingSettings = null,
+        public readonly ?ReplicaStatus $replicaStatus = null,
     ) {}
 }

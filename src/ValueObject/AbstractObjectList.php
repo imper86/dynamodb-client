@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  * @extends AbstractList<T>
  * @implements ObjectCollectionInterface<int, T>
  */
-abstract readonly class AbstractObjectList extends AbstractList implements ObjectCollectionInterface
+abstract class AbstractObjectList extends AbstractList implements ObjectCollectionInterface
 {
     final protected static function validate(array $items): void
     {

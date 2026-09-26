@@ -43,9 +43,9 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class QueryTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/query-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/query-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/query-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/query-response.json';
 
     /**
      * @throws ExceptionInterface

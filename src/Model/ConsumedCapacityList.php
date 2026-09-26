@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<ConsumedCapacity>
  */
-final readonly class ConsumedCapacityList extends AbstractObjectList
+final class ConsumedCapacityList extends AbstractObjectList
 {
     /**
      * @return class-string<ConsumedCapacity>

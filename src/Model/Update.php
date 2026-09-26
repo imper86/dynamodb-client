@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class Update
+final class Update
 {
     /**
      * @param AttributeValueMap $key the primary key of the item to update
@@ -18,13 +18,13 @@ final readonly class Update
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AttributeValueMap $key,
-        public string $tableName,
-        public string $updateExpression,
-        public ?string $conditionExpression = null,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly AttributeValueMap $key,
+        public readonly string $tableName,
+        public readonly string $updateExpression,
+        public readonly ?string $conditionExpression = null,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

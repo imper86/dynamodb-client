@@ -17,8 +17,8 @@ An object-oriented PHP client for the [Amazon DynamoDB API](https://docs.aws.ama
 - **It maps the AWS API one to one.** Every operation takes a request object and returns a response
   object, and each class and property is named after the matching type and member in the AWS API
   reference. You can read the AWS docs and know which class to use.
-- **It uses typed, immutable value objects.** Requests, responses and models are `final readonly`
-  classes, and every fixed set of values is a backed enum. The code passes PHPStan at level 10, so
+- **It uses typed, immutable value objects.** Requests, responses and models are `final` classes
+  with `readonly` properties, and every fixed set of values is a backed enum. The code passes PHPStan at level 10, so
   your IDE and static analyser can check your calls too.
 - **It is built on PSR standards and has few dependencies.** It works with any PSR-18 HTTP client and
   any PSR-17 factories. It signs requests with Signature V4 itself, so you do not need the AWS SDK.
@@ -29,7 +29,7 @@ An object-oriented PHP client for the [Amazon DynamoDB API](https://docs.aws.ama
 composer require imper86/dynamodb-client
 ```
 
-You need PHP 8.4 or newer, plus a PSR-18 HTTP client and PSR-17 factories. If your project has none
+You need PHP 8.1 or newer, plus a PSR-18 HTTP client and PSR-17 factories. If your project has none
 yet, install one, for example:
 
 ```bash

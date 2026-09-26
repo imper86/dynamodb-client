@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class PutResourcePolicyRequest
+final class PutResourcePolicyRequest
 {
     /**
      * @param non-empty-string $policy the resource-based policy document, as JSON
@@ -19,10 +19,10 @@ final readonly class PutResourcePolicyRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $policy,
-        public string $resourceArn,
-        public ?bool $confirmRemoveSelfResourceAccess = null,
-        public ?string $expectedRevisionId = null,
+        public readonly string $policy,
+        public readonly string $resourceArn,
+        public readonly ?bool $confirmRemoveSelfResourceAccess = null,
+        public readonly ?string $expectedRevisionId = null,
     ) {
         Assert::stringNotEmpty($this->policy);
         Assert::stringNotEmpty($this->resourceArn);

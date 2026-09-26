@@ -45,9 +45,7 @@ final class GlobalTableWitnessGroupUpdateTest extends TestCase
     public function testRejectsAnUpdateWithoutAnyAction(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A GlobalTableWitnessGroupUpdate needs exactly one of Create or Delete.',
-        );
+        $this->expectExceptionMessageMatches('/A GlobalTableWitnessGroupUpdate needs exactly one of Create or Delete\./');
 
         new GlobalTableWitnessGroupUpdate();
     }
@@ -58,9 +56,7 @@ final class GlobalTableWitnessGroupUpdateTest extends TestCase
     public function testRejectsAnUpdateWithBothActions(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A GlobalTableWitnessGroupUpdate needs exactly one of Create or Delete.',
-        );
+        $this->expectExceptionMessageMatches('/A GlobalTableWitnessGroupUpdate needs exactly one of Create or Delete\./');
 
         new GlobalTableWitnessGroupUpdate(
             create: new CreateGlobalTableWitnessGroupMemberAction('us-east-2'),

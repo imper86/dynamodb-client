@@ -7,15 +7,15 @@ namespace Imper86\DynamoDBClient\Message;
 use Imper86\DynamoDBClient\Model\DestinationStatus;
 use Imper86\DynamoDBClient\Model\UpdateKinesisStreamingConfiguration;
 
-final readonly class UpdateKinesisStreamingDestinationResponse
+final class UpdateKinesisStreamingDestinationResponse
 {
     /**
      * @param null|DestinationStatus $destinationStatus typically `UPDATING` while the change takes effect
      */
     public function __construct(
-        public ?DestinationStatus $destinationStatus = null,
-        public ?string $streamArn = null,
-        public ?string $tableName = null,
-        public ?UpdateKinesisStreamingConfiguration $updateKinesisStreamingConfiguration = null,
+        public readonly ?DestinationStatus $destinationStatus = null,
+        public readonly ?string $streamArn = null,
+        public readonly ?string $tableName = null,
+        public readonly ?UpdateKinesisStreamingConfiguration $updateKinesisStreamingConfiguration = null,
     ) {}
 }

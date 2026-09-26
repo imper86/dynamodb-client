@@ -8,18 +8,18 @@ use InvalidArgumentException;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class SSESpecification
+final class SSESpecification
 {
     /**
      * @param null|non-empty-string $kmsMasterKeyId
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?bool $enabled = null,
+        public readonly ?bool $enabled = null,
         #[SerializedName('KMSMasterKeyId')]
-        public ?string $kmsMasterKeyId = null,
+        public readonly ?string $kmsMasterKeyId = null,
         #[SerializedName('SSEType')]
-        public ?SSEType $sseType = null,
+        public readonly ?SSEType $sseType = null,
     ) {
         Assert::nullOrStringNotEmpty($this->kmsMasterKeyId);
     }

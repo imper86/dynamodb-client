@@ -24,9 +24,9 @@ use function sprintf;
 #[CoversClass(SignatureV4::class)]
 final class SignatureV4Test extends TestCase
 {
-    private const string KEY = 'AKIDEXAMPLE';
+    private const KEY = 'AKIDEXAMPLE';
 
-    private const string SECRET = 'wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY';
+    private const SECRET = 'wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY';
 
     /**
      * @return iterable<string, array{RequestInterface, string, string}>

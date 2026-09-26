@@ -8,7 +8,7 @@ use Imper86\DynamoDBClient\Model\AttributeValueMap;
 use Imper86\DynamoDBClient\Model\ConsumedCapacity;
 use Imper86\DynamoDBClient\Model\ItemList;
 
-final readonly class ScanResponse
+final class ScanResponse
 {
     /**
      * A scan that matches nothing, or one that asks for `COUNT`, answers without `Items`, so they default
@@ -20,10 +20,10 @@ final readonly class ScanResponse
      * @param null|AttributeValueMap $lastEvaluatedKey where the next page starts; absent on the last page
      */
     public function __construct(
-        public ItemList $items = new ItemList(),
-        public ?int $count = null,
-        public ?int $scannedCount = null,
-        public ?AttributeValueMap $lastEvaluatedKey = null,
-        public ?ConsumedCapacity $consumedCapacity = null,
+        public readonly ItemList $items = new ItemList(),
+        public readonly ?int $count = null,
+        public readonly ?int $scannedCount = null,
+        public readonly ?AttributeValueMap $lastEvaluatedKey = null,
+        public readonly ?ConsumedCapacity $consumedCapacity = null,
     ) {}
 }

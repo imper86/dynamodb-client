@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(UpdateKinesisStreamingDestinationRequest::class)]
 final class UpdateKinesisStreamingDestinationRequestTest extends TestCase
 {
-    private const string STREAM_ARN = 'arn:aws:kinesis:us-west-2:123456789012:stream/MusicStream';
+    private const STREAM_ARN = 'arn:aws:kinesis:us-west-2:123456789012:stream/MusicStream';
 
     /**
      * @throws InvalidArgumentException

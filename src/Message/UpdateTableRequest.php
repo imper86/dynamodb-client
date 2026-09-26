@@ -22,7 +22,7 @@ use Imper86\DynamoDBClient\Model\WarmThroughput;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateTableRequest
+final class UpdateTableRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
@@ -33,23 +33,23 @@ final readonly class UpdateTableRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public ?AttributeDefinitionList $attributeDefinitions = null,
-        public ?BillingMode $billingMode = null,
-        public ?bool $deletionProtectionEnabled = null,
-        public ?GlobalSecondaryIndexUpdateList $globalSecondaryIndexUpdates = null,
-        public ?GlobalTableSettingsReplicationMode $globalTableSettingsReplicationMode = null,
-        public ?GlobalTableWitnessGroupUpdateList $globalTableWitnessUpdates = null,
-        public ?MultiRegionConsistency $multiRegionConsistency = null,
-        public ?OnDemandThroughput $onDemandThroughput = null,
-        public ?ProvisionedThroughput $provisionedThroughput = null,
-        public ?ReplicationGroupUpdateList $replicaUpdates = null,
+        public readonly string $tableName,
+        public readonly ?AttributeDefinitionList $attributeDefinitions = null,
+        public readonly ?BillingMode $billingMode = null,
+        public readonly ?bool $deletionProtectionEnabled = null,
+        public readonly ?GlobalSecondaryIndexUpdateList $globalSecondaryIndexUpdates = null,
+        public readonly ?GlobalTableSettingsReplicationMode $globalTableSettingsReplicationMode = null,
+        public readonly ?GlobalTableWitnessGroupUpdateList $globalTableWitnessUpdates = null,
+        public readonly ?MultiRegionConsistency $multiRegionConsistency = null,
+        public readonly ?OnDemandThroughput $onDemandThroughput = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughput = null,
+        public readonly ?ReplicationGroupUpdateList $replicaUpdates = null,
         #[SerializedName('SSESpecification')]
-        public ?SSESpecification $sseSpecification = null,
-        public ?StreamSpecification $streamSpecification = null,
-        public ?TableClass $tableClass = null,
-        public ?VectorIndexUpdateList $vectorIndexUpdates = null,
-        public ?WarmThroughput $warmThroughput = null,
+        public readonly ?SSESpecification $sseSpecification = null,
+        public readonly ?StreamSpecification $streamSpecification = null,
+        public readonly ?TableClass $tableClass = null,
+        public readonly ?VectorIndexUpdateList $vectorIndexUpdates = null,
+        public readonly ?WarmThroughput $warmThroughput = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

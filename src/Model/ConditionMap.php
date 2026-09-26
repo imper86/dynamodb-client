@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
 /**
  * @extends AbstractObjectMap<Condition>
  */
-final readonly class ConditionMap extends AbstractObjectMap
+final class ConditionMap extends AbstractObjectMap
 {
     /**
      * @return class-string<Condition>

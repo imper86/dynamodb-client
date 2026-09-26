@@ -15,7 +15,7 @@ use function is_int;
  *
  * @extends AbstractList<float|int>
  */
-final readonly class DoubleList extends AbstractList
+final class DoubleList extends AbstractList
 {
     protected static function validate(array $items): void
     {

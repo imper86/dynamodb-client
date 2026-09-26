@@ -37,16 +37,16 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ListImportsTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/list-imports-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/list-imports-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-imports-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-imports-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * Seven blocks of sixteen hexadecimal digits, the shortest token the pattern allows.
      */
-    private const string NEXT_TOKEN = '0123456789abcdef0123456789abcdf00123456789abcdf10123456789abcdf2'
+    private const NEXT_TOKEN = '0123456789abcdef0123456789abcdf00123456789abcdf10123456789abcdf2'
         . '0123456789abcdf30123456789abcdf40123456789abcdf5';
 
     /**

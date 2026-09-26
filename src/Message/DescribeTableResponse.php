@@ -6,9 +6,9 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\TableDescription;
 
-final readonly class DescribeTableResponse
+final class DescribeTableResponse
 {
     public function __construct(
-        public ?TableDescription $table = null,
+        public readonly ?TableDescription $table = null,
     ) {}
 }

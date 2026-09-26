@@ -45,7 +45,9 @@ final class AuthorizationPluginTest extends TestCase
             return new FulfilledPromise(new Response());
         };
 
-        $plugin->handleRequest($request, $next, static fn(): never => self::fail('Must not restart the chain.'));
+        $plugin->handleRequest($request, $next, static function (): never {
+            self::fail('Must not restart the chain.');
+        });
 
         self::assertInstanceOf(RequestInterface::class, $signed);
         self::assertMatchesRegularExpression(
@@ -82,7 +84,9 @@ final class AuthorizationPluginTest extends TestCase
         $plugin->handleRequest(
             new Request('POST', 'https://dynamodb.eu-central-1.amazonaws.com/'),
             $next,
-            static fn(): never => self::fail('Must not restart the chain.'),
+            static function (): never {
+                self::fail('Must not restart the chain.');
+            },
         );
 
         self::assertInstanceOf(RequestInterface::class, $signed);

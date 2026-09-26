@@ -58,9 +58,9 @@ use const JSON_THROW_ON_ERROR;
 #[CoversClass(DynamoDBClient::class)]
 final class ImportTableTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/import-table-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/import-table-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/import-table-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/import-table-response.json';
 
     /**
      * @throws ExceptionInterface

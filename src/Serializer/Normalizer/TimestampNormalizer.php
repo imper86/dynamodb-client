@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Serializer\Normalizer;
 
-use DateRangeError;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException as SerializerInvalidArgumentException;
@@ -67,19 +66,19 @@ final class TimestampNormalizer implements NormalizerInterface, DenormalizerInte
             );
         }
 
-        try {
-            return DateTimeImmutable::createFromTimestamp($data);
-        } catch (DateRangeError $e) {
+        $dateTime = $this->fromTimestamp($data);
+
+        if (!$dateTime instanceof DateTimeImmutable) {
             throw NotNormalizableValueException::createForUnexpectedDataType(
-                $e->getMessage(),
+                sprintf('A timestamp must be a finite number between %d and %d, %s given.', PHP_INT_MIN, PHP_INT_MAX, $data),
                 $data,
                 ['int', 'float'],
                 $this->path($context),
                 true,
-                0,
-                $e,
             );
         }
+
+        return $dateTime;
     }
 
     /**
@@ -100,6 +99,36 @@ final class TimestampNormalizer implements NormalizerInterface, DenormalizerInte
             DateTimeInterface::class => true,
             DateTimeImmutable::class => true,
         ];
+    }
+
+    /**
+     * What DateTimeImmutable::createFromTimestamp() does from PHP 8.4 on: the fraction is rounded to
+     * microseconds and always counted forwards, so -1.5 is half a second after -2.
+     */
+    private function fromTimestamp(float|int $timestamp): ?DateTimeImmutable
+    {
+        if (is_int($timestamp)) {
+            $seconds = $timestamp;
+            $microseconds = 0;
+        } else {
+            $whole = floor($timestamp);
+
+            // (float) PHP_INT_MAX rounds up to 2^63, which is already out of range.
+            if (!is_finite($whole) || $whole < PHP_INT_MIN || $whole >= PHP_INT_MAX) {
+                return null;
+            }
+
+            $seconds = (int) $whole;
+            $microseconds = (int) round(($timestamp - $whole) * 1_000_000);
+
+            if (1_000_000 === $microseconds) {
+                ++$seconds;
+                $microseconds = 0;
+            }
+        }
+
+        // setTime() carries any number of seconds over into the date, so this counts from the epoch.
+        return (new DateTimeImmutable('@0'))->setTime(0, 0, $seconds, $microseconds);
     }
 
     /**

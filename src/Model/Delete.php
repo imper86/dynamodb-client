@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class Delete
+final class Delete
 {
     /**
      * @param AttributeValueMap $key the primary key of the item to delete
@@ -17,12 +17,12 @@ final readonly class Delete
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AttributeValueMap $key,
-        public string $tableName,
-        public ?string $conditionExpression = null,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly AttributeValueMap $key,
+        public readonly string $tableName,
+        public readonly ?string $conditionExpression = null,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

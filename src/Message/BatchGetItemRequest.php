@@ -9,14 +9,14 @@ use Imper86\DynamoDBClient\Model\KeysAndAttributesMap;
 use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
 use Webmozart\Assert\Assert;
 
-final readonly class BatchGetItemRequest
+final class BatchGetItemRequest
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public KeysAndAttributesMap $requestItems,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly KeysAndAttributesMap $requestItems,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
     ) {
         Assert::minCount($this->requestItems, 1);
         Assert::maxCount($this->requestItems, 100);

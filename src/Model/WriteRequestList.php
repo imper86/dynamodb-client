@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
  *
  * @extends AbstractObjectList<WriteRequest>
  */
-final readonly class WriteRequestList extends AbstractObjectList
+final class WriteRequestList extends AbstractObjectList
 {
     /**
      * @return class-string<WriteRequest>

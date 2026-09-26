@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Serializer\NameConverter;
 
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 
-final readonly class PascalCaseNameConverter implements NameConverterInterface
+final class PascalCaseNameConverter implements NameConverterInterface
 {
     public function normalize(
         string $propertyName,

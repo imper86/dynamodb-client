@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class IncrementalExportSpecification
+final class IncrementalExportSpecification
 {
     /**
      * @param null|DateTimeImmutable $exportFromTime the start of the exported period, inclusive
@@ -14,8 +14,8 @@ final readonly class IncrementalExportSpecification
      * @param null|ExportViewType $exportViewType which images of a changed item the export holds
      */
     public function __construct(
-        public ?DateTimeImmutable $exportFromTime = null,
-        public ?DateTimeImmutable $exportToTime = null,
-        public ?ExportViewType $exportViewType = null,
+        public readonly ?DateTimeImmutable $exportFromTime = null,
+        public readonly ?DateTimeImmutable $exportToTime = null,
+        public readonly ?ExportViewType $exportViewType = null,
     ) {}
 }

@@ -14,16 +14,16 @@ use function count;
  * A legacy condition on one attribute, in one of two exclusive forms: a `Value` (optionally with `Exists`),
  * or a `ComparisonOperator` with the `AttributeValueList` it compares against.
  */
-final readonly class ExpectedAttributeValue
+final class ExpectedAttributeValue
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?AttributeValueList $attributeValueList = null,
-        public ?ComparisonOperator $comparisonOperator = null,
-        public ?bool $exists = null,
-        public ?AttributeValue $value = null,
+        public readonly ?AttributeValueList $attributeValueList = null,
+        public readonly ?ComparisonOperator $comparisonOperator = null,
+        public readonly ?bool $exists = null,
+        public readonly ?AttributeValue $value = null,
     ) {
         if ($this->comparisonOperator instanceof ComparisonOperator || $this->attributeValueList instanceof AttributeValueList) {
             Assert::notNull($this->comparisonOperator, 'An AttributeValueList needs a ComparisonOperator.');

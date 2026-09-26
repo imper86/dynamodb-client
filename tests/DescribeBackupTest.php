@@ -40,12 +40,12 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeBackupTest extends TestCase
 {
-    private const string BACKUP_ARN =
+    private const BACKUP_ARN =
         'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576624066799-c3f0dcd7';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-backup-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-backup-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-backup-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-backup-response.json';
 
     /**
      * @throws ExceptionInterface

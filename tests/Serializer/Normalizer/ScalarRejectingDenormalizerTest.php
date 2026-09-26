@@ -35,7 +35,7 @@ final class ScalarRejectingDenormalizerTest extends TestCase
 
     public function testLeavesTypesThatAreNotClassesToOtherDenormalizers(): void
     {
-        self::assertFalse(new ScalarRejectingDenormalizer()->supportsDenormalization('x', 'string'));
+        self::assertFalse((new ScalarRejectingDenormalizer())->supportsDenormalization('x', 'string'));
     }
 
     /**
@@ -46,7 +46,7 @@ final class ScalarRejectingDenormalizerTest extends TestCase
         $this->expectException(NotNormalizableValueException::class);
 
         try {
-            new ScalarRejectingDenormalizer()->denormalize(
+            (new ScalarRejectingDenormalizer())->denormalize(
                 'x',
                 ConsumedCapacity::class,
                 'json',

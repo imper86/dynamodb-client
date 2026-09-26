@@ -10,7 +10,7 @@ use Webmozart\Assert\Assert;
 use function array_filter;
 use function count;
 
-final readonly class GlobalSecondaryIndexUpdate
+final class GlobalSecondaryIndexUpdate
 {
     /**
      * Exactly one of the three actions must be given.
@@ -18,9 +18,9 @@ final readonly class GlobalSecondaryIndexUpdate
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?CreateGlobalSecondaryIndexAction $create = null,
-        public ?DeleteGlobalSecondaryIndexAction $delete = null,
-        public ?UpdateGlobalSecondaryIndexAction $update = null,
+        public readonly ?CreateGlobalSecondaryIndexAction $create = null,
+        public readonly ?DeleteGlobalSecondaryIndexAction $delete = null,
+        public readonly ?UpdateGlobalSecondaryIndexAction $update = null,
     ) {
         Assert::same(
             count(array_filter(

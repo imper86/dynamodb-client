@@ -7,16 +7,16 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ReplicaGlobalSecondaryIndex
+final class ReplicaGlobalSecondaryIndex
 {
     /**
      * @param non-empty-string $indexName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $indexName,
-        public ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
-        public ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
+        public readonly string $indexName,
+        public readonly ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
+        public readonly ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
     ) {
         Assert::stringNotEmpty($this->indexName);
         Assert::minLength($this->indexName, 3);

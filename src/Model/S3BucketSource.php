@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class S3BucketSource
+final class S3BucketSource
 {
     /**
      * @param non-empty-string $s3Bucket
@@ -17,9 +17,9 @@ final readonly class S3BucketSource
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $s3Bucket,
-        public ?string $s3BucketOwner = null,
-        public ?string $s3KeyPrefix = null,
+        public readonly string $s3Bucket,
+        public readonly ?string $s3BucketOwner = null,
+        public readonly ?string $s3KeyPrefix = null,
     ) {
         Assert::stringNotEmpty($this->s3Bucket);
         Assert::maxLength($this->s3Bucket, 255);

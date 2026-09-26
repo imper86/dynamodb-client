@@ -10,7 +10,7 @@ use Imper86\DynamoDBClient\Model\ContributorInsightsStatus;
 use Imper86\DynamoDBClient\Model\FailureException;
 use Imper86\DynamoDBClient\ValueObject\StringList;
 
-final readonly class DescribeContributorInsightsResponse
+final class DescribeContributorInsightsResponse
 {
     /**
      * The rule list is left null rather than empty because a table that never had Contributor Insights
@@ -20,12 +20,12 @@ final readonly class DescribeContributorInsightsResponse
      * @param null|DateTimeImmutable $lastUpdateDateTime the last time the status changed
      */
     public function __construct(
-        public ?ContributorInsightsMode $contributorInsightsMode = null,
-        public ?StringList $contributorInsightsRuleList = null,
-        public ?ContributorInsightsStatus $contributorInsightsStatus = null,
-        public ?FailureException $failureException = null,
-        public ?string $indexName = null,
-        public ?DateTimeImmutable $lastUpdateDateTime = null,
-        public ?string $tableName = null,
+        public readonly ?ContributorInsightsMode $contributorInsightsMode = null,
+        public readonly ?StringList $contributorInsightsRuleList = null,
+        public readonly ?ContributorInsightsStatus $contributorInsightsStatus = null,
+        public readonly ?FailureException $failureException = null,
+        public readonly ?string $indexName = null,
+        public readonly ?DateTimeImmutable $lastUpdateDateTime = null,
+        public readonly ?string $tableName = null,
     ) {}
 }

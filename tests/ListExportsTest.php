@@ -35,11 +35,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ListExportsTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/list-exports-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/list-exports-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-exports-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-exports-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws ExceptionInterface

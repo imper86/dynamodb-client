@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class VectorIndexUpdate
+final class VectorIndexUpdate
 {
     /**
      * Exactly one of the two actions must be given.
@@ -15,8 +15,8 @@ final readonly class VectorIndexUpdate
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?CreateVectorIndexAction $create = null,
-        public ?DeleteVectorIndexAction $delete = null,
+        public readonly ?CreateVectorIndexAction $create = null,
+        public readonly ?DeleteVectorIndexAction $delete = null,
     ) {
         Assert::true(
             (!$this->create instanceof CreateVectorIndexAction) !== (!$this->delete instanceof DeleteVectorIndexAction),

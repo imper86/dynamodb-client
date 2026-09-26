@@ -55,9 +55,9 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class RestoreTableToPointInTimeTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/restore-table-to-point-in-time-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/restore-table-to-point-in-time-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/restore-table-to-point-in-time-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/restore-table-to-point-in-time-response.json';
 
     /**
      * @throws ExceptionInterface

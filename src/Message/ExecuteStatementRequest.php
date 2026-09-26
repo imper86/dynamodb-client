@@ -10,7 +10,7 @@ use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
 use Imper86\DynamoDBClient\Model\ReturnValuesOnConditionCheckFailure;
 use Webmozart\Assert\Assert;
 
-final readonly class ExecuteStatementRequest
+final class ExecuteStatementRequest
 {
     /**
      * @param non-empty-string $statement the PartiQL statement to run
@@ -19,13 +19,13 @@ final readonly class ExecuteStatementRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $statement,
-        public ?bool $consistentRead = null,
-        public ?int $limit = null,
-        public ?string $nextToken = null,
-        public ?AttributeValueList $parameters = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly string $statement,
+        public readonly ?bool $consistentRead = null,
+        public readonly ?int $limit = null,
+        public readonly ?string $nextToken = null,
+        public readonly ?AttributeValueList $parameters = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->statement);
         Assert::maxLength($this->statement, 8192);

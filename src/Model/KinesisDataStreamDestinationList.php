@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<KinesisDataStreamDestination>
  */
-final readonly class KinesisDataStreamDestinationList extends AbstractObjectList
+final class KinesisDataStreamDestinationList extends AbstractObjectList
 {
     /**
      * @return class-string<KinesisDataStreamDestination>

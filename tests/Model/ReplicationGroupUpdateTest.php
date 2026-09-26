@@ -123,9 +123,7 @@ final class ReplicationGroupUpdateTest extends TestCase
     public function testRejectsAnUpdateWithoutAnyAction(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A ReplicationGroupUpdate needs exactly one of Create, Delete or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A ReplicationGroupUpdate needs exactly one of Create, Delete or Update\./');
 
         new ReplicationGroupUpdate();
     }
@@ -136,9 +134,7 @@ final class ReplicationGroupUpdateTest extends TestCase
     public function testRejectsAnUpdateWithTwoActions(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'A ReplicationGroupUpdate needs exactly one of Create, Delete or Update.',
-        );
+        $this->expectExceptionMessageMatches('/A ReplicationGroupUpdate needs exactly one of Create, Delete or Update\./');
 
         new ReplicationGroupUpdate(
             create: new CreateReplicationGroupMemberAction('eu-west-1'),

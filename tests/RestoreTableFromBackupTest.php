@@ -54,11 +54,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class RestoreTableFromBackupTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/restore-table-from-backup-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/restore-table-from-backup-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/restore-table-from-backup-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/restore-table-from-backup-response.json';
 
-    private const string BACKUP_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576624066799-c3f0dcd7';
+    private const BACKUP_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/backup/01576624066799-c3f0dcd7';
 
     /**
      * @throws ExceptionInterface

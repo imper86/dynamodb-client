@@ -8,7 +8,7 @@ use Imper86\DynamoDBClient\Model\ConsumedCapacityList;
 use Imper86\DynamoDBClient\Model\ItemCollectionMetricsListMap;
 use Imper86\DynamoDBClient\Model\WriteRequestListMap;
 
-final readonly class BatchWriteItemResponse
+final class BatchWriteItemResponse
 {
     /**
      * A fully processed batch answers with an empty `UnprocessedItems` map rather than omitting the
@@ -16,8 +16,8 @@ final readonly class BatchWriteItemResponse
      * when the request asked for it.
      */
     public function __construct(
-        public WriteRequestListMap $unprocessedItems = new WriteRequestListMap(),
-        public ?ItemCollectionMetricsListMap $itemCollectionMetrics = null,
-        public ?ConsumedCapacityList $consumedCapacity = null,
+        public readonly WriteRequestListMap $unprocessedItems = new WriteRequestListMap(),
+        public readonly ?ItemCollectionMetricsListMap $itemCollectionMetrics = null,
+        public readonly ?ConsumedCapacityList $consumedCapacity = null,
     ) {}
 }

@@ -40,11 +40,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ExecuteTransactionTest extends TestCase
 {
-    private const string STATEMENT = 'SELECT * FROM "Music" WHERE "Artist" = ? AND "SongTitle" = ?';
+    private const STATEMENT = 'SELECT * FROM "Music" WHERE "Artist" = ? AND "SongTitle" = ?';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/execute-transaction-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/execute-transaction-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/execute-transaction-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/execute-transaction-response.json';
 
     /**
      * @throws ExceptionInterface

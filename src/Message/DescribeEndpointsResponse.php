@@ -6,9 +6,9 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\EndpointList;
 
-final readonly class DescribeEndpointsResponse
+final class DescribeEndpointsResponse
 {
     public function __construct(
-        public EndpointList $endpoints = new EndpointList(),
+        public readonly EndpointList $endpoints = new EndpointList(),
     ) {}
 }

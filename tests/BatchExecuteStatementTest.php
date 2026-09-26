@@ -40,11 +40,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class BatchExecuteStatementTest extends TestCase
 {
-    private const string STATEMENT = 'SELECT * FROM "Thread" WHERE "ForumName" = ? AND "Subject" = ?';
+    private const STATEMENT = 'SELECT * FROM "Thread" WHERE "ForumName" = ? AND "Subject" = ?';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-execute-statement-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-execute-statement-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-execute-statement-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-execute-statement-response.json';
 
     /**
      * @throws ExceptionInterface

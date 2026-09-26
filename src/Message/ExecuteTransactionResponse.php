@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use Imper86\DynamoDBClient\Model\ConsumedCapacityList;
 use Imper86\DynamoDBClient\Model\ItemResponseList;
 
-final readonly class ExecuteTransactionResponse
+final class ExecuteTransactionResponse
 {
     /**
      * @param ItemResponseList $responses one response per statement of a read transaction, in statement
@@ -15,7 +15,7 @@ final readonly class ExecuteTransactionResponse
      * @param null|ConsumedCapacityList $consumedCapacity the capacity each statement consumed, in statement order
      */
     public function __construct(
-        public ItemResponseList $responses = new ItemResponseList(),
-        public ?ConsumedCapacityList $consumedCapacity = null,
+        public readonly ItemResponseList $responses = new ItemResponseList(),
+        public readonly ?ConsumedCapacityList $consumedCapacity = null,
     ) {}
 }

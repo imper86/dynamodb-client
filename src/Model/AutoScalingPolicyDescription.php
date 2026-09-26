@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class AutoScalingPolicyDescription
+final class AutoScalingPolicyDescription
 {
     public function __construct(
-        public ?string $policyName = null,
-        public ?AutoScalingTargetTrackingScalingPolicyConfigurationDescription $targetTrackingScalingPolicyConfiguration = null,
+        public readonly ?string $policyName = null,
+        public readonly ?AutoScalingTargetTrackingScalingPolicyConfigurationDescription $targetTrackingScalingPolicyConfiguration = null,
     ) {}
 }

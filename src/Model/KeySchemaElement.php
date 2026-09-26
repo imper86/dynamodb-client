@@ -7,15 +7,15 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class KeySchemaElement
+final class KeySchemaElement
 {
     /**
      * @param non-empty-string $attributeName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $attributeName,
-        public KeyType $keyType,
+        public readonly string $attributeName,
+        public readonly KeyType $keyType,
     ) {
         Assert::stringNotEmpty($this->attributeName);
         Assert::maxLength($this->attributeName, 255);
