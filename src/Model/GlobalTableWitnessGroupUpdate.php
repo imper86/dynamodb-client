@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class GlobalTableWitnessGroupUpdate
+final class GlobalTableWitnessGroupUpdate
 {
     /**
      * Exactly one of the two actions must be given.
@@ -15,8 +15,8 @@ final readonly class GlobalTableWitnessGroupUpdate
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?CreateGlobalTableWitnessGroupMemberAction $create = null,
-        public ?DeleteGlobalTableWitnessGroupMemberAction $delete = null,
+        public readonly ?CreateGlobalTableWitnessGroupMemberAction $create = null,
+        public readonly ?DeleteGlobalTableWitnessGroupMemberAction $delete = null,
     ) {
         Assert::true(
             (!$this->create instanceof CreateGlobalTableWitnessGroupMemberAction)

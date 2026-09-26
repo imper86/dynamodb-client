@@ -7,10 +7,10 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 
-final readonly class TransactGetItem
+final class TransactGetItem
 {
     public function __construct(
-        public Get $get,
+        public readonly Get $get,
     ) {}
 
     /**

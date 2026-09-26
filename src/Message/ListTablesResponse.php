@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\ValueObject\StringList;
 
-final readonly class ListTablesResponse
+final class ListTablesResponse
 {
     /**
      * An account without tables answers with an empty `TableNames` list, so it defaults to empty instead
@@ -15,7 +15,7 @@ final readonly class ListTablesResponse
      * @param null|string $lastEvaluatedTableName where the next page starts; absent on the last page
      */
     public function __construct(
-        public StringList $tableNames = new StringList(),
-        public ?string $lastEvaluatedTableName = null,
+        public readonly StringList $tableNames = new StringList(),
+        public readonly ?string $lastEvaluatedTableName = null,
     ) {}
 }

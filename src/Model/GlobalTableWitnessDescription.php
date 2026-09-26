@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class GlobalTableWitnessDescription
+final class GlobalTableWitnessDescription
 {
     public function __construct(
-        public ?string $regionName = null,
-        public ?WitnessStatus $witnessStatus = null,
+        public readonly ?string $regionName = null,
+        public readonly ?WitnessStatus $witnessStatus = null,
     ) {}
 }

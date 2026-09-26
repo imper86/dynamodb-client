@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\Model\UpdateKinesisStreamingConfiguration;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateKinesisStreamingDestinationRequest
+final class UpdateKinesisStreamingDestinationRequest
 {
     /**
      * @param non-empty-string $streamArn the ARN of the Kinesis data stream the table streams to
@@ -17,9 +17,9 @@ final readonly class UpdateKinesisStreamingDestinationRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $streamArn,
-        public string $tableName,
-        public ?UpdateKinesisStreamingConfiguration $updateKinesisStreamingConfiguration = null,
+        public readonly string $streamArn,
+        public readonly string $tableName,
+        public readonly ?UpdateKinesisStreamingConfiguration $updateKinesisStreamingConfiguration = null,
     ) {
         Assert::stringNotEmpty($this->streamArn);
         Assert::minLength($this->streamArn, 37);

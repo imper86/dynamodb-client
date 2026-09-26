@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<BatchStatementResponse>
  */
-final readonly class BatchStatementResponseList extends AbstractObjectList
+final class BatchStatementResponseList extends AbstractObjectList
 {
     /**
      * @return class-string<BatchStatementResponse>

@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  * @extends AbstractMap<T>
  * @implements ObjectCollectionInterface<string, T>
  */
-abstract readonly class AbstractObjectMap extends AbstractMap implements ObjectCollectionInterface
+abstract class AbstractObjectMap extends AbstractMap implements ObjectCollectionInterface
 {
     final protected static function validate(array $items): void
     {

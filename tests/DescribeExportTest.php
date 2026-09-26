@@ -40,12 +40,12 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeExportTest extends TestCase
 {
-    private const string EXPORT_ARN =
+    private const EXPORT_ARN =
         'arn:aws:dynamodb:eu-central-1:123456789012:table/Music/export/01576624066799-a1b2c3d4';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-export-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-export-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-export-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-export-response.json';
 
     /**
      * @throws ExceptionInterface

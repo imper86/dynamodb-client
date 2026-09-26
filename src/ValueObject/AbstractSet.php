@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  * @template T
  * @extends AbstractList<T>
  */
-abstract readonly class AbstractSet extends AbstractList
+abstract class AbstractSet extends AbstractList
 {
     final protected static function validate(array $items): void
     {

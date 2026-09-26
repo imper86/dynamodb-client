@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ListContributorInsightsRequest
+final class ListContributorInsightsRequest
 {
     /**
      * @param null|positive-int $maxResults the maximum number of summaries to return, at most 100
@@ -16,9 +16,9 @@ final readonly class ListContributorInsightsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?int $maxResults = null,
-        public ?string $nextToken = null,
-        public ?string $tableName = null,
+        public readonly ?int $maxResults = null,
+        public readonly ?string $nextToken = null,
+        public readonly ?string $tableName = null,
     ) {
         Assert::nullOrRange($this->maxResults, 1, 100);
         Assert::nullOrStringNotEmpty($this->nextToken);

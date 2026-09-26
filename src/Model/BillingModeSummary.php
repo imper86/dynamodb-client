@@ -6,10 +6,10 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class BillingModeSummary
+final class BillingModeSummary
 {
     public function __construct(
-        public ?BillingMode $billingMode = null,
-        public ?DateTimeImmutable $lastUpdateToPayPerRequestDateTime = null,
+        public readonly ?BillingMode $billingMode = null,
+        public readonly ?DateTimeImmutable $lastUpdateToPayPerRequestDateTime = null,
     ) {}
 }

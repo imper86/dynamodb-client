@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class GetItemRequest
+final class GetItemRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
@@ -19,13 +19,13 @@ final readonly class GetItemRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AttributeValueMap $key,
-        public string $tableName,
-        public ?NonEmptyStringList $attributesToGet = null,
-        public ?bool $consistentRead = null,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?string $projectionExpression = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly AttributeValueMap $key,
+        public readonly string $tableName,
+        public readonly ?NonEmptyStringList $attributesToGet = null,
+        public readonly ?bool $consistentRead = null,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?string $projectionExpression = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

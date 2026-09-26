@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteVectorIndexAction
+final class DeleteVectorIndexAction
 {
     /**
      * @param non-empty-string $indexName the vector index to remove
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $indexName,
+        public readonly string $indexName,
     ) {
         Assert::stringNotEmpty($this->indexName);
         Assert::minLength($this->indexName, 3);

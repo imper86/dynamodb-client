@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class Capacity
+final class Capacity
 {
     public function __construct(
-        public ?float $capacityUnits = null,
-        public ?float $readCapacityUnits = null,
-        public ?float $writeCapacityUnits = null,
+        public readonly ?float $capacityUnits = null,
+        public readonly ?float $readCapacityUnits = null,
+        public readonly ?float $writeCapacityUnits = null,
     ) {}
 }

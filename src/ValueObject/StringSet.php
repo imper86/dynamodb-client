@@ -9,7 +9,7 @@ use Webmozart\Assert\Assert;
 /**
  * @extends AbstractSet<string>
  */
-final readonly class StringSet extends AbstractSet
+final class StringSet extends AbstractSet
 {
     protected static function validateItems(array $items): void
     {

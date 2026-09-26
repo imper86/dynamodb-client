@@ -7,15 +7,15 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class TimeToLiveSpecification
+final class TimeToLiveSpecification
 {
     /**
      * @param non-empty-string $attributeName the attribute that holds each item's expiry, in epoch seconds
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $attributeName,
-        public bool $enabled,
+        public readonly string $attributeName,
+        public readonly bool $enabled,
     ) {
         Assert::stringNotEmpty($this->attributeName);
         Assert::maxLength($this->attributeName, 255);

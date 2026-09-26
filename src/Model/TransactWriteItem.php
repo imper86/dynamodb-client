@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
 use function array_filter;
 use function count;
 
-final readonly class TransactWriteItem
+final class TransactWriteItem
 {
     /**
      * Exactly one of the four actions must be given; each action on an item needs its own TransactWriteItem.
@@ -19,10 +19,10 @@ final readonly class TransactWriteItem
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?ConditionCheck $conditionCheck = null,
-        public ?Delete $delete = null,
-        public ?Put $put = null,
-        public ?Update $update = null,
+        public readonly ?ConditionCheck $conditionCheck = null,
+        public readonly ?Delete $delete = null,
+        public readonly ?Put $put = null,
+        public readonly ?Update $update = null,
     ) {
         Assert::same(
             count(array_filter(

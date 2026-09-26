@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ProvisionedThroughputOverride
+final class ProvisionedThroughputOverride
 {
     public function __construct(
-        public ?int $readCapacityUnits = null,
+        public readonly ?int $readCapacityUnits = null,
     ) {}
 }

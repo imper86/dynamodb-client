@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
  *
  * @extends AbstractObjectList<ItemCollectionMetrics>
  */
-final readonly class ItemCollectionMetricsList extends AbstractObjectList
+final class ItemCollectionMetricsList extends AbstractObjectList
 {
     /**
      * @return class-string<ItemCollectionMetrics>

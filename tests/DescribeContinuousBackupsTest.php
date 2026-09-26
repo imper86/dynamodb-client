@@ -37,9 +37,9 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeContinuousBackupsTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-continuous-backups-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/describe-continuous-backups-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-continuous-backups-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/describe-continuous-backups-response.json';
 
     /**
      * @throws ExceptionInterface

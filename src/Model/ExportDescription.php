@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class ExportDescription
+final class ExportDescription
 {
     /**
      * @param null|DateTimeImmutable $endTime the moment the export finished; absent while it is in progress
@@ -17,26 +17,26 @@ final readonly class ExportDescription
      *                                                                            incremental export carries it
      */
     public function __construct(
-        public ?int $billedSizeBytes = null,
-        public ?string $clientToken = null,
-        public ?DateTimeImmutable $endTime = null,
-        public ?string $exportArn = null,
-        public ?ExportFormat $exportFormat = null,
-        public ?string $exportManifest = null,
-        public ?ExportStatus $exportStatus = null,
-        public ?DateTimeImmutable $exportTime = null,
-        public ?ExportType $exportType = null,
-        public ?string $failureCode = null,
-        public ?string $failureMessage = null,
-        public ?IncrementalExportSpecification $incrementalExportSpecification = null,
-        public ?int $itemCount = null,
-        public ?string $s3Bucket = null,
-        public ?string $s3BucketOwner = null,
-        public ?string $s3Prefix = null,
-        public ?S3SseAlgorithm $s3SseAlgorithm = null,
-        public ?string $s3SseKmsKeyId = null,
-        public ?DateTimeImmutable $startTime = null,
-        public ?string $tableArn = null,
-        public ?string $tableId = null,
+        public readonly ?int $billedSizeBytes = null,
+        public readonly ?string $clientToken = null,
+        public readonly ?DateTimeImmutable $endTime = null,
+        public readonly ?string $exportArn = null,
+        public readonly ?ExportFormat $exportFormat = null,
+        public readonly ?string $exportManifest = null,
+        public readonly ?ExportStatus $exportStatus = null,
+        public readonly ?DateTimeImmutable $exportTime = null,
+        public readonly ?ExportType $exportType = null,
+        public readonly ?string $failureCode = null,
+        public readonly ?string $failureMessage = null,
+        public readonly ?IncrementalExportSpecification $incrementalExportSpecification = null,
+        public readonly ?int $itemCount = null,
+        public readonly ?string $s3Bucket = null,
+        public readonly ?string $s3BucketOwner = null,
+        public readonly ?string $s3Prefix = null,
+        public readonly ?S3SseAlgorithm $s3SseAlgorithm = null,
+        public readonly ?string $s3SseKmsKeyId = null,
+        public readonly ?DateTimeImmutable $startTime = null,
+        public readonly ?string $tableArn = null,
+        public readonly ?string $tableId = null,
     ) {}
 }

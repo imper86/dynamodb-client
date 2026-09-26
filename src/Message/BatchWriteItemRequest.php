@@ -12,7 +12,7 @@ use Webmozart\Assert\Assert;
 
 use function count;
 
-final readonly class BatchWriteItemRequest
+final class BatchWriteItemRequest
 {
     /**
      * The 25-request limit applies to the batch as a whole, not to each table.
@@ -20,9 +20,9 @@ final readonly class BatchWriteItemRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public WriteRequestListMap $requestItems,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
+        public readonly WriteRequestListMap $requestItems,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
     ) {
         Assert::minCount($this->requestItems, 1);
         Assert::maxCount($this->requestItems, 25);

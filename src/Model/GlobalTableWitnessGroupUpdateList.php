@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<GlobalTableWitnessGroupUpdate>
  */
-final readonly class GlobalTableWitnessGroupUpdateList extends AbstractObjectList
+final class GlobalTableWitnessGroupUpdateList extends AbstractObjectList
 {
     /**
      * @return class-string<GlobalTableWitnessGroupUpdate>

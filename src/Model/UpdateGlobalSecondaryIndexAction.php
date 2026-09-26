@@ -7,17 +7,17 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateGlobalSecondaryIndexAction
+final class UpdateGlobalSecondaryIndexAction
 {
     /**
      * @param non-empty-string $indexName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $indexName,
-        public ?OnDemandThroughput $onDemandThroughput = null,
-        public ?ProvisionedThroughput $provisionedThroughput = null,
-        public ?WarmThroughput $warmThroughput = null,
+        public readonly string $indexName,
+        public readonly ?OnDemandThroughput $onDemandThroughput = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughput = null,
+        public readonly ?WarmThroughput $warmThroughput = null,
     ) {
         Assert::stringNotEmpty($this->indexName);
         Assert::minLength($this->indexName, 3);

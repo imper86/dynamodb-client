@@ -15,7 +15,7 @@ use Imper86\DynamoDBClient\Model\ReturnValuesOnConditionCheckFailure;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteItemRequest
+final class DeleteItemRequest
 {
     /**
      * `ReturnValue` is shared with PutItem and UpdateItem, but DeleteItem accepts only `NONE` and `ALL_OLD`.
@@ -25,17 +25,17 @@ final readonly class DeleteItemRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AttributeValueMap $key,
-        public string $tableName,
-        public ?ConditionalOperator $conditionalOperator = null,
-        public ?string $conditionExpression = null,
-        public ?ExpectedAttributeValueMap $expected = null,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
-        public ?ReturnValue $returnValues = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly AttributeValueMap $key,
+        public readonly string $tableName,
+        public readonly ?ConditionalOperator $conditionalOperator = null,
+        public readonly ?string $conditionExpression = null,
+        public readonly ?ExpectedAttributeValueMap $expected = null,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?ReturnItemCollectionMetrics $returnItemCollectionMetrics = null,
+        public readonly ?ReturnValue $returnValues = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

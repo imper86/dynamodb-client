@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class WarmThroughput
+final class WarmThroughput
 {
     public function __construct(
-        public ?int $readUnitsPerSecond = null,
-        public ?int $writeUnitsPerSecond = null,
+        public readonly ?int $readUnitsPerSecond = null,
+        public readonly ?int $writeUnitsPerSecond = null,
     ) {}
 }

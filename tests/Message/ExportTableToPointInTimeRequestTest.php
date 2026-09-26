@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ExportTableToPointInTimeRequest::class)]
 final class ExportTableToPointInTimeRequestTest extends TestCase
 {
-    private const string TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws InvalidArgumentException

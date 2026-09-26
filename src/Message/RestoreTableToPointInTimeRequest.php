@@ -18,7 +18,7 @@ use Webmozart\Assert\Assert;
 
 use function str_contains;
 
-final readonly class RestoreTableToPointInTimeRequest
+final class RestoreTableToPointInTimeRequest
 {
     /**
      * Name the source table by `SourceTableArn` or by `SourceTableName`, and the point in time by
@@ -36,19 +36,19 @@ final readonly class RestoreTableToPointInTimeRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $targetTableName,
-        public ?BillingMode $billingModeOverride = null,
-        public ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
-        public ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
-        public ?OnDemandThroughput $onDemandThroughputOverride = null,
-        public ?ProvisionedThroughput $provisionedThroughputOverride = null,
-        public ?DateTimeImmutable $restoreDateTime = null,
-        public ?string $sourceTableArn = null,
-        public ?string $sourceTableName = null,
+        public readonly string $targetTableName,
+        public readonly ?BillingMode $billingModeOverride = null,
+        public readonly ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
+        public readonly ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
+        public readonly ?OnDemandThroughput $onDemandThroughputOverride = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughputOverride = null,
+        public readonly ?DateTimeImmutable $restoreDateTime = null,
+        public readonly ?string $sourceTableArn = null,
+        public readonly ?string $sourceTableName = null,
         #[SerializedName('SSESpecificationOverride')]
-        public ?SSESpecification $sseSpecificationOverride = null,
-        public ?bool $useLatestRestorableTime = null,
-        public ?VectorIndexList $vectorIndexOverride = null,
+        public readonly ?SSESpecification $sseSpecificationOverride = null,
+        public readonly ?bool $useLatestRestorableTime = null,
+        public readonly ?VectorIndexList $vectorIndexOverride = null,
     ) {
         Assert::stringNotEmpty($this->targetTableName);
         Assert::minLength($this->targetTableName, 3);

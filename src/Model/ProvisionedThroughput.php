@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ProvisionedThroughput
+final class ProvisionedThroughput
 {
     /**
      * @param positive-int $readCapacityUnits
@@ -15,8 +15,8 @@ final readonly class ProvisionedThroughput
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public int $readCapacityUnits,
-        public int $writeCapacityUnits,
+        public readonly int $readCapacityUnits,
+        public readonly int $writeCapacityUnits,
     ) {
         Assert::positiveInteger($this->readCapacityUnits);
         Assert::positiveInteger($this->writeCapacityUnits);

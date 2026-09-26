@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ListExportsRequest
+final class ListExportsRequest
 {
     /**
      * @param null|positive-int $maxResults the maximum number of exports to return, at most 25
@@ -16,9 +16,9 @@ final readonly class ListExportsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?int $maxResults = null,
-        public ?string $nextToken = null,
-        public ?string $tableArn = null,
+        public readonly ?int $maxResults = null,
+        public readonly ?string $nextToken = null,
+        public readonly ?string $tableArn = null,
     ) {
         Assert::nullOrRange($this->maxResults, 1, 25);
         Assert::nullOrStringNotEmpty($this->nextToken);

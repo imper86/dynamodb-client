@@ -49,7 +49,7 @@ final class WriteRequestTest extends TestCase
     public function testRejectsAWriteRequestWithoutAnyRequest(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('A WriteRequest needs exactly one of DeleteRequest or PutRequest.');
+        $this->expectExceptionMessageMatches('/A WriteRequest needs exactly one of DeleteRequest or PutRequest\./');
 
         new WriteRequest();
     }
@@ -62,7 +62,7 @@ final class WriteRequestTest extends TestCase
         $item = new AttributeValueMap(['Name' => AttributeValue::string('Amazon ElastiCache')]);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('A WriteRequest needs exactly one of DeleteRequest or PutRequest.');
+        $this->expectExceptionMessageMatches('/A WriteRequest needs exactly one of DeleteRequest or PutRequest\./');
 
         new WriteRequest(
             deleteRequest: WriteRequest::delete($item)->deleteRequest,

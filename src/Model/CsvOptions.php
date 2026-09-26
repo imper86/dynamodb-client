@@ -8,7 +8,7 @@ use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class CsvOptions
+final class CsvOptions
 {
     /**
      * @param null|non-empty-string $delimiter a single character: comma, semicolon, colon, pipe, tab or space;
@@ -18,8 +18,8 @@ final readonly class CsvOptions
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?string $delimiter = null,
-        public ?NonEmptyStringList $headerList = null,
+        public readonly ?string $delimiter = null,
+        public readonly ?NonEmptyStringList $headerList = null,
     ) {
         Assert::nullOrRegex($this->delimiter, '/^[,;:|\t ]$/');
         Assert::nullOrMinCount($this->headerList, 1);

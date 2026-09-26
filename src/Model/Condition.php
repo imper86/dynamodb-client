@@ -12,14 +12,14 @@ use function count;
 /**
  * A legacy condition on one attribute: a `ComparisonOperator` and the values it compares against.
  */
-final readonly class Condition
+final class Condition
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ComparisonOperator $comparisonOperator,
-        public ?AttributeValueList $attributeValueList = null,
+        public readonly ComparisonOperator $comparisonOperator,
+        public readonly ?AttributeValueList $attributeValueList = null,
     ) {
         $this->comparisonOperator->assertOperandCount(count($this->attributeValueList ?? []));
     }

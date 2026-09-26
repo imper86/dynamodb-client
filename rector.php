@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector;
+use Rector\Carbon\Rector\MethodCall\DateTimeMethodCallToCarbonRector;
 use Rector\Carbon\Rector\New_\DateTimeInstanceToCarbonRector;
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
 use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
@@ -35,7 +36,7 @@ return RectorConfig::configure()
         symfonyCodeQuality: true,
         symfonyConfigs: true,
     )
-    ->withPhpSets(php85: true)
+    ->withPhpSets(php81: true)
     ->withComposerBased(
         doctrine: true,
         phpunit: true,
@@ -46,6 +47,7 @@ return RectorConfig::configure()
             CatchExceptionNameMatchingTypeRector::class,
             // The project does not depend on nesbot/carbon.
             DateTimeInstanceToCarbonRector::class,
+            DateTimeMethodCallToCarbonRector::class,
             RenameParamToMatchTypeRector::class,
             RenameVariableToMatchNewTypeRector::class,
             RenamePropertyToMatchTypeRector::class,

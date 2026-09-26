@@ -8,23 +8,23 @@ use InvalidArgumentException;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class TableCreationParameters
+final class TableCreationParameters
 {
     /**
      * @param non-empty-string $tableName the name of the table to create; an ARN is not accepted here
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public AttributeDefinitionList $attributeDefinitions,
-        public KeySchemaElementList $keySchema,
-        public string $tableName,
-        public ?BillingMode $billingMode = null,
-        public ?GlobalSecondaryIndexList $globalSecondaryIndexes = null,
-        public ?OnDemandThroughput $onDemandThroughput = null,
-        public ?ProvisionedThroughput $provisionedThroughput = null,
+        public readonly AttributeDefinitionList $attributeDefinitions,
+        public readonly KeySchemaElementList $keySchema,
+        public readonly string $tableName,
+        public readonly ?BillingMode $billingMode = null,
+        public readonly ?GlobalSecondaryIndexList $globalSecondaryIndexes = null,
+        public readonly ?OnDemandThroughput $onDemandThroughput = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughput = null,
         #[SerializedName('SSESpecification')]
-        public ?SSESpecification $sseSpecification = null,
-        public ?VectorIndexList $vectorIndexes = null,
+        public readonly ?SSESpecification $sseSpecification = null,
+        public readonly ?VectorIndexList $vectorIndexes = null,
     ) {
         Assert::minCount($this->keySchema, 1);
         Assert::stringNotEmpty($this->tableName);

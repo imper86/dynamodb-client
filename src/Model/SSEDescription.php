@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Model;
 use DateTimeImmutable;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-final readonly class SSEDescription
+final class SSEDescription
 {
     public function __construct(
-        public ?DateTimeImmutable $inaccessibleEncryptionDateTime = null,
+        public readonly ?DateTimeImmutable $inaccessibleEncryptionDateTime = null,
         #[SerializedName('KMSMasterKeyArn')]
-        public ?string $kmsMasterKeyArn = null,
+        public readonly ?string $kmsMasterKeyArn = null,
         #[SerializedName('SSEType')]
-        public ?SSEType $sseType = null,
-        public ?SSEStatus $status = null,
+        public readonly ?SSEType $sseType = null,
+        public readonly ?SSEStatus $status = null,
     ) {}
 }

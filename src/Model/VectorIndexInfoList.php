@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<VectorIndexInfo>
  */
-final readonly class VectorIndexInfoList extends AbstractObjectList
+final class VectorIndexInfoList extends AbstractObjectList
 {
     /**
      * @return class-string<VectorIndexInfo>

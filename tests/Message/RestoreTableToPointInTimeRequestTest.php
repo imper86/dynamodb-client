@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(RestoreTableToPointInTimeRequest::class)]
 final class RestoreTableToPointInTimeRequestTest extends TestCase
 {
-    private const string SOURCE_TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const SOURCE_TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws InvalidArgumentException

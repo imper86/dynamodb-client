@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteReplicationGroupMemberAction
+final class DeleteReplicationGroupMemberAction
 {
     /**
      * @param non-empty-string $regionName the Region to remove the replica from
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $regionName,
+        public readonly string $regionName,
     ) {
         Assert::stringNotEmpty($this->regionName);
     }

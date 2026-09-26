@@ -88,7 +88,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAnEmptyExpectation(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('Expected a Value, a ComparisonOperator, or Exists set to false.');
+        $this->expectExceptionMessageMatches('/Expected a Value, a ComparisonOperator, or Exists set to false\./');
 
         new ExpectedAttributeValue();
     }
@@ -99,7 +99,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAnExistingAttributeWithoutAValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('Expected a Value, a ComparisonOperator, or Exists set to false.');
+        $this->expectExceptionMessageMatches('/Expected a Value, a ComparisonOperator, or Exists set to false\./');
 
         new ExpectedAttributeValue(exists: true);
     }
@@ -110,7 +110,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAValueExpectedNotToExist(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('A Value cannot be expected when Exists is false.');
+        $this->expectExceptionMessageMatches('/A Value cannot be expected when Exists is false\./');
 
         new ExpectedAttributeValue(exists: false, value: AttributeValue::string('Available'));
     }
@@ -121,7 +121,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAnAttributeValueListWithoutAComparisonOperator(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('An AttributeValueList needs a ComparisonOperator.');
+        $this->expectExceptionMessageMatches('/An AttributeValueList needs a ComparisonOperator\./');
 
         new ExpectedAttributeValue(attributeValueList: new AttributeValueList([AttributeValue::string('Available')]));
     }
@@ -132,9 +132,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAComparisonCombinedWithAValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'Value and Exists cannot be combined with ComparisonOperator and AttributeValueList.',
-        );
+        $this->expectExceptionMessageMatches('/Value and Exists cannot be combined with ComparisonOperator and AttributeValueList\./');
 
         new ExpectedAttributeValue(
             comparisonOperator: ComparisonOperator::NOT_NULL,
@@ -148,9 +146,7 @@ final class ExpectedAttributeValueTest extends TestCase
     public function testRejectsAComparisonCombinedWithExists(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains(
-            'Value and Exists cannot be combined with ComparisonOperator and AttributeValueList.',
-        );
+        $this->expectExceptionMessageMatches('/Value and Exists cannot be combined with ComparisonOperator and AttributeValueList\./');
 
         new ExpectedAttributeValue(comparisonOperator: ComparisonOperator::NULL, exists: false);
     }

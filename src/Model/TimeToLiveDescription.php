@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class TimeToLiveDescription
+final class TimeToLiveDescription
 {
     public function __construct(
-        public ?string $attributeName = null,
-        public ?TimeToLiveStatus $timeToLiveStatus = null,
+        public readonly ?string $attributeName = null,
+        public readonly ?TimeToLiveStatus $timeToLiveStatus = null,
     ) {}
 }

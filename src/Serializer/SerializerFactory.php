@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\Normalizer\BackedEnumNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-final readonly class SerializerFactory
+final class SerializerFactory
 {
     public static function create(): Serializer
     {

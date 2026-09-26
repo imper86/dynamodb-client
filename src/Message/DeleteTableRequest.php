@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteTableRequest
+final class DeleteTableRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
+        public readonly string $tableName,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

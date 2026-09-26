@@ -41,11 +41,11 @@ use const JSON_THROW_ON_ERROR;
 #[CoversClass(DynamoDBClient::class)]
 final class ExecuteStatementTest extends TestCase
 {
-    private const string STATEMENT = 'SELECT * FROM "Music" WHERE "Artist" = ?';
+    private const STATEMENT = 'SELECT * FROM "Music" WHERE "Artist" = ?';
 
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/execute-statement-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/execute-statement-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/execute-statement-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/execute-statement-response.json';
 
     /**
      * @throws ExceptionInterface

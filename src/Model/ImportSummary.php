@@ -6,19 +6,19 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class ImportSummary
+final class ImportSummary
 {
     /**
      * @param null|DateTimeImmutable $endTime the moment the import finished; absent while it is in progress
      */
     public function __construct(
-        public ?string $cloudWatchLogGroupArn = null,
-        public ?DateTimeImmutable $endTime = null,
-        public ?string $importArn = null,
-        public ?ImportStatus $importStatus = null,
-        public ?InputFormat $inputFormat = null,
-        public ?S3BucketSource $s3BucketSource = null,
-        public ?DateTimeImmutable $startTime = null,
-        public ?string $tableArn = null,
+        public readonly ?string $cloudWatchLogGroupArn = null,
+        public readonly ?DateTimeImmutable $endTime = null,
+        public readonly ?string $importArn = null,
+        public readonly ?ImportStatus $importStatus = null,
+        public readonly ?InputFormat $inputFormat = null,
+        public readonly ?S3BucketSource $s3BucketSource = null,
+        public readonly ?DateTimeImmutable $startTime = null,
+        public readonly ?string $tableArn = null,
     ) {}
 }

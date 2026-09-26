@@ -15,7 +15,7 @@ use Webmozart\Assert\Assert;
 use function array_map;
 use function array_values;
 
-final readonly class SearchVectorsRequest
+final class SearchVectorsRequest
 {
     /**
      * The reference caps `TopK` at 100 in prose while the service model sets no maximum, so the cap is
@@ -30,15 +30,15 @@ final readonly class SearchVectorsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $indexName,
-        public AttributeValueList $searchVector,
-        public string $tableName,
-        public int $topK,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?string $projectionExpression = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?string $searchConditionExpression = null,
+        public readonly string $indexName,
+        public readonly AttributeValueList $searchVector,
+        public readonly string $tableName,
+        public readonly int $topK,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?string $projectionExpression = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?string $searchConditionExpression = null,
     ) {
         Assert::stringNotEmpty($this->indexName);
         Assert::minLength($this->indexName, 3);

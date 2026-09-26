@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class VectorIndex
+final class VectorIndex
 {
     /**
      * @param positive-int $dimensions
@@ -15,12 +15,12 @@ final readonly class VectorIndex
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public int $dimensions,
-        public VectorDistanceFunction $distanceFunction,
-        public string $indexName,
-        public Projection $projection,
-        public VectorAttributeDefinition $vectorAttribute,
-        public ?SearchSchemaElementList $searchSchema = null,
+        public readonly int $dimensions,
+        public readonly VectorDistanceFunction $distanceFunction,
+        public readonly string $indexName,
+        public readonly Projection $projection,
+        public readonly VectorAttributeDefinition $vectorAttribute,
+        public readonly ?SearchSchemaElementList $searchSchema = null,
     ) {
         Assert::positiveInteger($this->dimensions);
         Assert::stringNotEmpty($this->indexName);

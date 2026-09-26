@@ -11,14 +11,14 @@ use Webmozart\Assert\Assert;
  * A legacy update of one attribute. `Action` defaults to `PUT` on the service side; only a `DELETE` may go
  * without a `Value`, in which case it removes the whole attribute.
  */
-final readonly class AttributeValueUpdate
+final class AttributeValueUpdate
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?AttributeAction $action = null,
-        public ?AttributeValue $value = null,
+        public readonly ?AttributeAction $action = null,
+        public readonly ?AttributeValue $value = null,
     ) {
         if (AttributeAction::DELETE !== $this->action) {
             Assert::notNull($this->value, 'Only a DELETE can go without a Value.');

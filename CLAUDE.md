@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 An object-oriented PHP client for the DynamoDB JSON API. It maps the AWS API reference one-to-one onto
-readonly value objects, signs requests itself, and speaks PSR-7/17/18 throughout. PHP >= 8.4.
+readonly value objects, signs requests itself, and speaks PSR-7/17/18 throughout. PHP >= 8.1.
 
 ## Commands
 
@@ -23,10 +23,11 @@ vendor/bin/phpunit --filter testReturnsTheDeserializedItem
 
 `composer analyse` also runs as a captainhook pre-commit action, so a commit fails on any violation.
 
-CI (`.github/workflows/ci.yml`) runs `composer analyse` on the newest dependencies, and PHPUnit alone on
-`--prefer-lowest` and on the newest Symfony 6.4 and 7.4 — PHPStan is only expected to pass against the
-newest Symfony. The lock file is not committed, so every CI run resolves afresh. When lowering a
-dependency floor, check it with `composer update --prefer-lowest` locally: nothing else exercises it.
+CI (`.github/workflows/ci.yml`) runs `composer analyse` on PHP 8.4+ with the newest dependencies, and
+PHPUnit alone on PHP 8.1–8.5 with `--prefer-lowest` and with the newest Symfony 6.4 and 7.4 — PHPStan is
+only expected to pass against the newest Symfony, which needs PHP 8.4. The lock file is not committed,
+so every CI run resolves afresh. When lowering a dependency floor, check it with
+`composer update --prefer-lowest` locally: nothing else exercises it.
 
 ## Architecture
 
@@ -114,14 +115,14 @@ response nullability on documented behaviour instead (see step 5).
 `ConsumedCapacity`, `Capacity` already cover most nested shapes. Give the model named constructors
 where the rules below ask for them.
 
-**4. Collections** are `final readonly` classes extending `AbstractObjectList` / `AbstractObjectMap`,
+**4. Collections** are `final` classes extending `AbstractObjectList` / `AbstractObjectMap`,
 named `<ItemType>List` / `<ItemType>Map`. **Never repeat `Object` in a concrete collection's name** —
 `BatchStatementRequestList`, not `BatchStatementRequestObjectList`. Only the abstract bases carry it.
 Where a literal reading would give a double suffix (`Responses` in BatchGetItem is a map of lists),
 name the inner list for what it holds — `ItemList`, then `ItemListMap`.
 
-**5. Messages** go in `src/Message` as `<Operation>Request` / `<Operation>Response`, `final readonly`
-with promoted constructor properties. Nullability:
+**5. Messages** go in `src/Message` as `<Operation>Request` / `<Operation>Response`, `final`
+with promoted `readonly` constructor properties. Nullability:
 
 | | |
 |---|---|
@@ -242,11 +243,19 @@ Requests get them on the same terms. The requests that have them are the templat
   `self::assertCount(2, $x ?? [])`, PHPStan knows the subject is non-null and then flags every later
   `?->` on it as `nullsafe.neverNull`. Assign to a local, `assertInstanceOf`, and use plain `->` from
   there — see `BatchGetItemTest::testReturnsTheConsumedCapacityOfEveryTable`.
-- Classes are `final readonly` with promoted properties; call multi-argument constructors with named
-  arguments.
+- Classes are `final` with promoted `public readonly` properties; call multi-argument constructors with
+  named arguments.
+- **The floor is PHP 8.1**, because Symfony 6.4 supports it. The code runs on 8.4 in development, so
+  watch for what 8.1 lacks: `readonly` classes (8.2 — mark each property `readonly` instead), typed
+  class constants (8.3), `new Foo()->bar()` without parentheses (8.4), and newer built-ins such as
+  `DateTimeImmutable::createFromTimestamp()` or `array_find()`. PHPStan reads the floor from
+  `composer.json` and catches most of it; `php -l` on 8.1 catches the rest of the syntax.
+- **Tests run on PHPUnit 10.5 through 13.** Use only API all of them share: `expectExceptionMessage()`
+  is deprecated in 13 and `expectExceptionMessageIsOrContains()` does not exist in 10, so match
+  messages with `expectExceptionMessageMatches()`.
 - php-cs-fixer enforces `@Symfony` + `@PER-CS2.0` plus global namespace imports, so `use function`
   every global function and keep the import list sorted (`composer fix` does it).
-- Rector runs with a wide set of prepared sets and a php85 target; check `rector.php` before fighting
+- Rector runs with a wide set of prepared sets and a php81 target; check `rector.php` before fighting
   one of its rules.
 - **`composer fix` can need two runs.** It runs php-cs-fixer *before* Rector, so a Rector rewrite — say,
   `null !== $x` into `$x instanceof \Fully\Qualified\Name` — leaves a file that `cs:check` then rejects.

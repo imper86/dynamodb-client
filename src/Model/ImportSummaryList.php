@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<ImportSummary>
  */
-final readonly class ImportSummaryList extends AbstractObjectList
+final class ImportSummaryList extends AbstractObjectList
 {
     /**
      * @return class-string<ImportSummary>

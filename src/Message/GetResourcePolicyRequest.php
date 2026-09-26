@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class GetResourcePolicyRequest
+final class GetResourcePolicyRequest
 {
     /**
      * @param non-empty-string $resourceArn the ARN of the table or stream whose policy to read
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $resourceArn,
+        public readonly string $resourceArn,
     ) {
         Assert::stringNotEmpty($this->resourceArn);
         Assert::maxLength($this->resourceArn, 1283);

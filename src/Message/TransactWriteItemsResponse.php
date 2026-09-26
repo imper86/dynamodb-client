@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use Imper86\DynamoDBClient\Model\ConsumedCapacityList;
 use Imper86\DynamoDBClient\Model\ItemCollectionMetricsListMap;
 
-final readonly class TransactWriteItemsResponse
+final class TransactWriteItemsResponse
 {
     /**
      * Both elements only come back when the request asked for them.
@@ -17,7 +17,7 @@ final readonly class TransactWriteItemsResponse
      * @param null|ConsumedCapacityList $consumedCapacity the capacity consumed, in the order of the actions
      */
     public function __construct(
-        public ?ItemCollectionMetricsListMap $itemCollectionMetrics = null,
-        public ?ConsumedCapacityList $consumedCapacity = null,
+        public readonly ?ItemCollectionMetricsListMap $itemCollectionMetrics = null,
+        public readonly ?ConsumedCapacityList $consumedCapacity = null,
     ) {}
 }

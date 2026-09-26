@@ -11,13 +11,13 @@ use Webmozart\Assert\Assert;
 use function getenv;
 use function is_string;
 
-final readonly class Credentials
+final class Credentials
 {
-    public const string KEY_ENV_VARIABLE = 'AWS_ACCESS_KEY_ID';
+    public const KEY_ENV_VARIABLE = 'AWS_ACCESS_KEY_ID';
 
-    public const string SECRET_ENV_VARIABLE = 'AWS_SECRET_ACCESS_KEY';
+    public const SECRET_ENV_VARIABLE = 'AWS_SECRET_ACCESS_KEY';
 
-    public const string TOKEN_ENV_VARIABLE = 'AWS_SESSION_TOKEN';
+    public const TOKEN_ENV_VARIABLE = 'AWS_SESSION_TOKEN';
 
     /**
      * @param non-empty-string $key
@@ -26,9 +26,9 @@ final readonly class Credentials
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $key,
-        public string $secret,
-        public ?string $token = null,
+        public readonly string $key,
+        public readonly string $secret,
+        public readonly ?string $token = null,
     ) {
         Assert::stringNotEmpty($this->key);
         Assert::stringNotEmpty($this->secret);

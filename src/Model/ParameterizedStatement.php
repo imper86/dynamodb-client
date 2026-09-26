@@ -7,16 +7,16 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ParameterizedStatement
+final class ParameterizedStatement
 {
     /**
      * @param non-empty-string $statement
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $statement,
-        public ?AttributeValueList $parameters = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly string $statement,
+        public readonly ?AttributeValueList $parameters = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->statement);
         Assert::maxLength($this->statement, 8192);

@@ -18,7 +18,7 @@ use Psr\Http\Client\ClientInterface;
 
 use function sprintf;
 
-final readonly class PluginClientFactory
+final class PluginClientFactory
 {
     /**
      * @param non-empty-string $region
@@ -37,7 +37,7 @@ final readonly class PluginClientFactory
         $uriFactory = Psr17FactoryDiscovery::findUriFactory();
         $baseUri = $uriFactory->createUri(sprintf('https://dynamodb.%s.amazonaws.com', $region));
 
-        return new PluginClientBuilder()
+        return (new PluginClientBuilder())
             ->addPlugin(new BaseUriPlugin($baseUri))
             ->addPlugin(new HeaderDefaultsPlugin([
                 'Accept-Encoding' => 'identity',

@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class CreateReplicationGroupMemberAction
+final class CreateReplicationGroupMemberAction
 {
     /**
      * @param non-empty-string $regionName
@@ -18,13 +18,13 @@ final readonly class CreateReplicationGroupMemberAction
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $regionName,
-        public ?ReplicaGlobalSecondaryIndexList $globalSecondaryIndexes = null,
+        public readonly string $regionName,
+        public readonly ?ReplicaGlobalSecondaryIndexList $globalSecondaryIndexes = null,
         #[SerializedName('KMSMasterKeyId')]
-        public ?string $kmsMasterKeyId = null,
-        public ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
-        public ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
-        public ?TableClass $tableClassOverride = null,
+        public readonly ?string $kmsMasterKeyId = null,
+        public readonly ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
+        public readonly ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
+        public readonly ?TableClass $tableClassOverride = null,
     ) {
         Assert::stringNotEmpty($this->regionName);
         Assert::nullOrMinCount($this->globalSecondaryIndexes, 1);

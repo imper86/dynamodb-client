@@ -15,7 +15,7 @@ use Imper86\DynamoDBClient\Model\VectorIndexList;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class RestoreTableFromBackupRequest
+final class RestoreTableFromBackupRequest
 {
     /**
      * The overrides replace what the backup holds: an index left out of an index override is not restored,
@@ -26,16 +26,16 @@ final readonly class RestoreTableFromBackupRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $backupArn,
-        public string $targetTableName,
-        public ?BillingMode $billingModeOverride = null,
-        public ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
-        public ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
-        public ?OnDemandThroughput $onDemandThroughputOverride = null,
-        public ?ProvisionedThroughput $provisionedThroughputOverride = null,
+        public readonly string $backupArn,
+        public readonly string $targetTableName,
+        public readonly ?BillingMode $billingModeOverride = null,
+        public readonly ?GlobalSecondaryIndexList $globalSecondaryIndexOverride = null,
+        public readonly ?LocalSecondaryIndexList $localSecondaryIndexOverride = null,
+        public readonly ?OnDemandThroughput $onDemandThroughputOverride = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughputOverride = null,
         #[SerializedName('SSESpecificationOverride')]
-        public ?SSESpecification $sseSpecificationOverride = null,
-        public ?VectorIndexList $vectorIndexOverride = null,
+        public readonly ?SSESpecification $sseSpecificationOverride = null,
+        public readonly ?VectorIndexList $vectorIndexOverride = null,
     ) {
         Assert::stringNotEmpty($this->backupArn);
         Assert::minLength($this->backupArn, 37);

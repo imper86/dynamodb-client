@@ -7,16 +7,16 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class LocalSecondaryIndex
+final class LocalSecondaryIndex
 {
     /**
      * @param non-empty-string $indexName
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $indexName,
-        public KeySchemaElementList $keySchema,
-        public Projection $projection,
+        public readonly string $indexName,
+        public readonly KeySchemaElementList $keySchema,
+        public readonly Projection $projection,
     ) {
         Assert::stringNotEmpty($this->indexName);
         Assert::minLength($this->indexName, 3);

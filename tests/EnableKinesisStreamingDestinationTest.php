@@ -38,11 +38,11 @@ use const JSON_THROW_ON_ERROR;
 #[CoversClass(DynamoDBClient::class)]
 final class EnableKinesisStreamingDestinationTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/enable-kinesis-streaming-destination-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/enable-kinesis-streaming-destination-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/enable-kinesis-streaming-destination-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/enable-kinesis-streaming-destination-response.json';
 
-    private const string STREAM_ARN = 'arn:aws:kinesis:us-west-2:123456789012:stream/MusicStream';
+    private const STREAM_ARN = 'arn:aws:kinesis:us-west-2:123456789012:stream/MusicStream';
 
     /**
      * @throws ExceptionInterface

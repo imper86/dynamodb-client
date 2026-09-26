@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<TransactWriteItem>
  */
-final readonly class TransactWriteItemList extends AbstractObjectList
+final class TransactWriteItemList extends AbstractObjectList
 {
     /**
      * @return class-string<TransactWriteItem>

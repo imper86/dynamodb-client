@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\Model\ContributorInsightsAction;
 use Imper86\DynamoDBClient\Model\ContributorInsightsMode;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateContributorInsightsRequest
+final class UpdateContributorInsightsRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
@@ -17,10 +17,10 @@ final readonly class UpdateContributorInsightsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ContributorInsightsAction $contributorInsightsAction,
-        public string $tableName,
-        public ?ContributorInsightsMode $contributorInsightsMode = null,
-        public ?string $indexName = null,
+        public readonly ContributorInsightsAction $contributorInsightsAction,
+        public readonly string $tableName,
+        public readonly ?ContributorInsightsMode $contributorInsightsMode = null,
+        public readonly ?string $indexName = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

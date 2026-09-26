@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class BatchStatementResponse
+final class BatchStatementResponse
 {
     public function __construct(
-        public ?BatchStatementError $error = null,
-        public ?AttributeValueMap $item = null,
-        public ?string $tableName = null,
+        public readonly ?BatchStatementError $error = null,
+        public readonly ?AttributeValueMap $item = null,
+        public readonly ?string $tableName = null,
     ) {}
 }

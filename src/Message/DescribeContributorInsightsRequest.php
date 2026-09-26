@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DescribeContributorInsightsRequest
+final class DescribeContributorInsightsRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
@@ -15,8 +15,8 @@ final readonly class DescribeContributorInsightsRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public ?string $indexName = null,
+        public readonly string $tableName,
+        public readonly ?string $indexName = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

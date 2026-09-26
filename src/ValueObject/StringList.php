@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @extends AbstractList<string>
  */
-final readonly class StringList extends AbstractList
+final class StringList extends AbstractList
 {
     protected static function validate(array $items): void
     {

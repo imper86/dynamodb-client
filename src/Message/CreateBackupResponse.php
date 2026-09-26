@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\BackupDetails;
 
-final readonly class CreateBackupResponse
+final class CreateBackupResponse
 {
     /**
      * DynamoDB answers every successful call with the details of the backup it started, but they are
@@ -14,6 +14,6 @@ final readonly class CreateBackupResponse
      * failure instead of a response the caller can inspect.
      */
     public function __construct(
-        public ?BackupDetails $backupDetails = null,
+        public readonly ?BackupDetails $backupDetails = null,
     ) {}
 }

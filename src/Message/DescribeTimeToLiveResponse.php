@@ -6,9 +6,9 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\TimeToLiveDescription;
 
-final readonly class DescribeTimeToLiveResponse
+final class DescribeTimeToLiveResponse
 {
     public function __construct(
-        public ?TimeToLiveDescription $timeToLiveDescription = null,
+        public readonly ?TimeToLiveDescription $timeToLiveDescription = null,
     ) {}
 }

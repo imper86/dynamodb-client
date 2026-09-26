@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\Model\Tag;
 use Imper86\DynamoDBClient\Model\TagList;
 use Webmozart\Assert\Assert;
 
-final readonly class TagResourceRequest
+final class TagResourceRequest
 {
     /**
      * @param non-empty-string $resourceArn the ARN of the table, index or stream to tag
@@ -17,8 +17,8 @@ final readonly class TagResourceRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $resourceArn,
-        public TagList $tags,
+        public readonly string $resourceArn,
+        public readonly TagList $tags,
     ) {
         Assert::stringNotEmpty($this->resourceArn);
         Assert::maxLength($this->resourceArn, 1283);

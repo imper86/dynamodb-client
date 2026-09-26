@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class ListTablesRequest
+final class ListTablesRequest
 {
     /**
      * @param null|non-empty-string $exclusiveStartTableName the `LastEvaluatedTableName` of the previous page
@@ -16,8 +16,8 @@ final readonly class ListTablesRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?string $exclusiveStartTableName = null,
-        public ?int $limit = null,
+        public readonly ?string $exclusiveStartTableName = null,
+        public readonly ?int $limit = null,
     ) {
         Assert::nullOrStringNotEmpty($this->exclusiveStartTableName);
         Assert::nullOrMinLength($this->exclusiveStartTableName, 3);

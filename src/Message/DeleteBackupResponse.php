@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\BackupDescription;
 
-final readonly class DeleteBackupResponse
+final class DeleteBackupResponse
 {
     /**
      * DynamoDB describes the backup it deleted, but that description is the whole payload: requiring
@@ -14,6 +14,6 @@ final readonly class DeleteBackupResponse
      * the caller can inspect.
      */
     public function __construct(
-        public ?BackupDescription $backupDescription = null,
+        public readonly ?BackupDescription $backupDescription = null,
     ) {}
 }

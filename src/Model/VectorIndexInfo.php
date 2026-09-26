@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Model;
 /**
  * The configuration of a vector index as it was when the backup was created.
  */
-final readonly class VectorIndexInfo
+final class VectorIndexInfo
 {
     public function __construct(
-        public ?int $dimensions = null,
-        public ?VectorDistanceFunction $distanceFunction = null,
-        public ?string $indexName = null,
-        public ?Projection $projection = null,
-        public ?SearchSchemaElementList $searchSchema = null,
-        public ?VectorAttributeDefinition $vectorAttribute = null,
+        public readonly ?int $dimensions = null,
+        public readonly ?VectorDistanceFunction $distanceFunction = null,
+        public readonly ?string $indexName = null,
+        public readonly ?Projection $projection = null,
+        public readonly ?SearchSchemaElementList $searchSchema = null,
+        public readonly ?VectorAttributeDefinition $vectorAttribute = null,
     ) {}
 }

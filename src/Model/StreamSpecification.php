@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class StreamSpecification
+final class StreamSpecification
 {
     public function __construct(
-        public bool $streamEnabled,
-        public ?StreamViewType $streamViewType = null,
+        public readonly bool $streamEnabled,
+        public readonly ?StreamViewType $streamViewType = null,
     ) {}
 }

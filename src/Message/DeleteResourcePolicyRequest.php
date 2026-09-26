@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteResourcePolicyRequest
+final class DeleteResourcePolicyRequest
 {
     /**
      * @param non-empty-string $resourceArn the ARN of the table or stream whose policy to delete
@@ -15,8 +15,8 @@ final readonly class DeleteResourcePolicyRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $resourceArn,
-        public ?string $expectedRevisionId = null,
+        public readonly string $resourceArn,
+        public readonly ?string $expectedRevisionId = null,
     ) {
         Assert::stringNotEmpty($this->resourceArn);
         Assert::maxLength($this->resourceArn, 1283);

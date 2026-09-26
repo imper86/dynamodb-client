@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class ConditionCheck
+final class ConditionCheck
 {
     /**
      * @param non-empty-string $conditionExpression the condition the item must meet for the transaction to succeed
@@ -17,12 +17,12 @@ final readonly class ConditionCheck
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $conditionExpression,
-        public AttributeValueMap $key,
-        public string $tableName,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
+        public readonly string $conditionExpression,
+        public readonly AttributeValueMap $key,
+        public readonly string $tableName,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?ReturnValuesOnConditionCheckFailure $returnValuesOnConditionCheckFailure = null,
     ) {
         Assert::stringNotEmpty($this->conditionExpression);
         Assert::stringNotEmpty($this->tableName);

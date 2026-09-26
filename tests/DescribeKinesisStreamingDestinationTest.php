@@ -35,10 +35,10 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DescribeKinesisStreamingDestinationTest extends TestCase
 {
-    private const string REQUEST_FIXTURE =
+    private const REQUEST_FIXTURE =
         __DIR__ . '/fixtures/describe-kinesis-streaming-destination-request.json';
 
-    private const string RESPONSE_FIXTURE =
+    private const RESPONSE_FIXTURE =
         __DIR__ . '/fixtures/describe-kinesis-streaming-destination-response.json';
 
     /**

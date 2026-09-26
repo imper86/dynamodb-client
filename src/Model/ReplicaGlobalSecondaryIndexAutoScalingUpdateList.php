@@ -9,7 +9,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectList;
 /**
  * @extends AbstractObjectList<ReplicaGlobalSecondaryIndexAutoScalingUpdate>
  */
-final readonly class ReplicaGlobalSecondaryIndexAutoScalingUpdateList extends AbstractObjectList
+final class ReplicaGlobalSecondaryIndexAutoScalingUpdateList extends AbstractObjectList
 {
     /**
      * @return class-string<ReplicaGlobalSecondaryIndexAutoScalingUpdate>

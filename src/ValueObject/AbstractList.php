@@ -14,14 +14,14 @@ use function count;
  * @template T
  * @implements CollectionInterface<int, T>
  */
-abstract readonly class AbstractList implements CollectionInterface
+abstract class AbstractList implements CollectionInterface
 {
     /**
      * @param list<T> $items
      * @throws InvalidArgumentException
      */
     final public function __construct(
-        protected array $items = [],
+        protected readonly array $items = [],
     ) {
         Assert::isList($this->items);
         static::validate($this->items);

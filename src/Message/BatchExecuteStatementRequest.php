@@ -9,14 +9,14 @@ use Imper86\DynamoDBClient\Model\BatchStatementRequestList;
 use Imper86\DynamoDBClient\Model\ReturnConsumedCapacity;
 use Webmozart\Assert\Assert;
 
-final readonly class BatchExecuteStatementRequest
+final class BatchExecuteStatementRequest
 {
     /**
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public BatchStatementRequestList $statements,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly BatchStatementRequestList $statements,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
     ) {
         Assert::minCount($this->statements, 1);
         Assert::maxCount($this->statements, 25);

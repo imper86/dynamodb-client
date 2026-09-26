@@ -7,12 +7,12 @@ namespace Imper86\DynamoDBClient\Message;
 use Imper86\DynamoDBClient\Model\DestinationStatus;
 use Imper86\DynamoDBClient\Model\EnableKinesisStreamingConfiguration;
 
-final readonly class DisableKinesisStreamingDestinationResponse
+final class DisableKinesisStreamingDestinationResponse
 {
     public function __construct(
-        public ?DestinationStatus $destinationStatus = null,
-        public ?EnableKinesisStreamingConfiguration $enableKinesisStreamingConfiguration = null,
-        public ?string $streamArn = null,
-        public ?string $tableName = null,
+        public readonly ?DestinationStatus $destinationStatus = null,
+        public readonly ?EnableKinesisStreamingConfiguration $enableKinesisStreamingConfiguration = null,
+        public readonly ?string $streamArn = null,
+        public readonly ?string $tableName = null,
     ) {}
 }

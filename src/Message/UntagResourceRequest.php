@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use Webmozart\Assert\Assert;
 
-final readonly class UntagResourceRequest
+final class UntagResourceRequest
 {
     /**
      * @param non-empty-string $resourceArn the ARN of the table, index or stream to remove the tags from
@@ -17,8 +17,8 @@ final readonly class UntagResourceRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $resourceArn,
-        public NonEmptyStringList $tagKeys,
+        public readonly string $resourceArn,
+        public readonly NonEmptyStringList $tagKeys,
     ) {
         Assert::stringNotEmpty($this->resourceArn);
         Assert::maxLength($this->resourceArn, 1283);

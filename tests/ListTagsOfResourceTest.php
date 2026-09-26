@@ -33,11 +33,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ListTagsOfResourceTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/list-tags-of-resource-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/list-tags-of-resource-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-tags-of-resource-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/list-tags-of-resource-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws ExceptionInterface

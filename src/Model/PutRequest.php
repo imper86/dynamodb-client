@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class PutRequest
+final class PutRequest
 {
     public function __construct(
-        public AttributeValueMap $item,
+        public readonly AttributeValueMap $item,
     ) {}
 }

@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
  *
  * @extends AbstractObjectMap<ItemList>
  */
-final readonly class ItemListMap extends AbstractObjectMap
+final class ItemListMap extends AbstractObjectMap
 {
     /**
      * @return class-string<ItemList>

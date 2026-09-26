@@ -32,9 +32,9 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class UntagResourceTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/untag-resource-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/untag-resource-request.json';
 
-    private const string RESOURCE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const RESOURCE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws ExceptionInterface

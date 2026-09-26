@@ -27,7 +27,7 @@
         }
     },
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.1",
         "composer-runtime-api": "^2.0",
         "php-http/client-common": "^2.3",
         "php-http/discovery": "^1.11",
@@ -53,7 +53,7 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpstan/phpstan-webmozart-assert": "^2.0",
-        "phpunit/phpunit": "^13.3",
+        "phpunit/phpunit": "^10.5 || ^11.5 || ^12.5 || ^13.3",
         "rector/rector": "^2.6",
         "shipmonk/composer-dependency-analyser": "^1.8"
     },

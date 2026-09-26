@@ -11,7 +11,7 @@ use Imper86\DynamoDBClient\ValueObject\AbstractObjectMap;
  *
  * @extends AbstractObjectMap<WriteRequestList>
  */
-final readonly class WriteRequestListMap extends AbstractObjectMap
+final class WriteRequestListMap extends AbstractObjectMap
 {
     /**
      * @return class-string<WriteRequestList>

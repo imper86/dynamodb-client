@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class KinesisDataStreamDestination
+final class KinesisDataStreamDestination
 {
     /**
      * `ApproximateCreationDateTimePrecision` is the precision of the timestamp on each record the table
@@ -14,9 +14,9 @@ final readonly class KinesisDataStreamDestination
      *                                                  enabling failed
      */
     public function __construct(
-        public ?ApproximateCreationDateTimePrecision $approximateCreationDateTimePrecision = null,
-        public ?DestinationStatus $destinationStatus = null,
-        public ?string $destinationStatusDescription = null,
-        public ?string $streamArn = null,
+        public readonly ?ApproximateCreationDateTimePrecision $approximateCreationDateTimePrecision = null,
+        public readonly ?DestinationStatus $destinationStatus = null,
+        public readonly ?string $destinationStatusDescription = null,
+        public readonly ?string $streamArn = null,
     ) {}
 }

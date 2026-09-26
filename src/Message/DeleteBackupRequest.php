@@ -7,14 +7,14 @@ namespace Imper86\DynamoDBClient\Message;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class DeleteBackupRequest
+final class DeleteBackupRequest
 {
     /**
      * @param non-empty-string $backupArn the ARN of the backup to delete
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $backupArn,
+        public readonly string $backupArn,
     ) {
         Assert::stringNotEmpty($this->backupArn);
         Assert::minLength($this->backupArn, 37);

@@ -10,7 +10,7 @@ use Webmozart\Assert\Assert;
 use function array_filter;
 use function count;
 
-final readonly class ReplicationGroupUpdate
+final class ReplicationGroupUpdate
 {
     /**
      * Exactly one of the three actions must be given.
@@ -18,9 +18,9 @@ final readonly class ReplicationGroupUpdate
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?CreateReplicationGroupMemberAction $create = null,
-        public ?DeleteReplicationGroupMemberAction $delete = null,
-        public ?UpdateReplicationGroupMemberAction $update = null,
+        public readonly ?CreateReplicationGroupMemberAction $create = null,
+        public readonly ?DeleteReplicationGroupMemberAction $delete = null,
+        public readonly ?UpdateReplicationGroupMemberAction $update = null,
     ) {
         Assert::same(
             count(array_filter(

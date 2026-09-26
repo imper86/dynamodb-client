@@ -47,11 +47,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class UpdateTableReplicaAutoScalingTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/update-table-replica-auto-scaling-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/update-table-replica-auto-scaling-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/update-table-replica-auto-scaling-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/update-table-replica-auto-scaling-response.json';
 
-    private const string ROLE_ARN = 'arn:aws:iam::123456789012:role/aws-service-role/'
+    private const ROLE_ARN = 'arn:aws:iam::123456789012:role/aws-service-role/'
         . 'dynamodb.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_DynamoDBTable';
 
     /**

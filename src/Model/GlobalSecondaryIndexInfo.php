@@ -7,13 +7,13 @@ namespace Imper86\DynamoDBClient\Model;
 /**
  * The properties of a global secondary index as they were when the backup was created.
  */
-final readonly class GlobalSecondaryIndexInfo
+final class GlobalSecondaryIndexInfo
 {
     public function __construct(
-        public ?string $indexName = null,
-        public ?KeySchemaElementList $keySchema = null,
-        public ?OnDemandThroughput $onDemandThroughput = null,
-        public ?Projection $projection = null,
-        public ?ProvisionedThroughput $provisionedThroughput = null,
+        public readonly ?string $indexName = null,
+        public readonly ?KeySchemaElementList $keySchema = null,
+        public readonly ?OnDemandThroughput $onDemandThroughput = null,
+        public readonly ?Projection $projection = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughput = null,
     ) {}
 }

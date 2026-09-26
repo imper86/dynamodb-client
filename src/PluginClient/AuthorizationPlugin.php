@@ -13,9 +13,9 @@ use Imper86\DynamoDBClient\Signer\SignatureV4;
 use Psr\Http\Message\RequestInterface;
 use RuntimeException;
 
-final readonly class AuthorizationPlugin implements Plugin
+final class AuthorizationPlugin implements Plugin
 {
-    private SignatureV4 $signer;
+    private readonly SignatureV4 $signer;
 
     /**
      * @param non-empty-string $region

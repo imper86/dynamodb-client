@@ -31,11 +31,11 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class DeleteResourcePolicyTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/delete-resource-policy-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/delete-resource-policy-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/delete-resource-policy-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/delete-resource-policy-response.json';
 
-    private const string TABLE_ARN = 'arn:aws:dynamodb:us-west-2:123456789012:table/Thread';
+    private const TABLE_ARN = 'arn:aws:dynamodb:us-west-2:123456789012:table/Thread';
 
     /**
      * @throws ExceptionInterface

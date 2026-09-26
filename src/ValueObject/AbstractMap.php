@@ -16,14 +16,14 @@ use function count;
  * @template T
  * @implements CollectionInterface<string, T>
  */
-abstract readonly class AbstractMap implements CollectionInterface
+abstract class AbstractMap implements CollectionInterface
 {
     /**
      * @param array<string, T> $items
      * @throws InvalidArgumentException
      */
     final public function __construct(
-        protected array $items = [],
+        protected readonly array $items = [],
     ) {
         Assert::isMap($this->items);
         static::validate($this->items);

@@ -83,7 +83,7 @@ final class AttributeValueUpdateTest extends TestCase
     public function testRejectsAnUpdateWithoutAnythingToDo(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('Only a DELETE can go without a Value.');
+        $this->expectExceptionMessageMatches('/Only a DELETE can go without a Value\./');
 
         new AttributeValueUpdate();
     }
@@ -94,7 +94,7 @@ final class AttributeValueUpdateTest extends TestCase
     public function testRejectsAnAddWithoutAValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessageIsOrContains('Only a DELETE can go without a Value.');
+        $this->expectExceptionMessageMatches('/Only a DELETE can go without a Value\./');
 
         new AttributeValueUpdate(action: AttributeAction::ADD);
     }

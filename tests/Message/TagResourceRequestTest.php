@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(TagResourceRequest::class)]
 final class TagResourceRequestTest extends TestCase
 {
-    private const string RESOURCE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
+    private const RESOURCE_ARN = 'arn:aws:dynamodb:eu-central-1:123456789012:table/Music';
 
     /**
      * @throws InvalidArgumentException

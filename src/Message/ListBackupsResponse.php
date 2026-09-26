@@ -6,7 +6,7 @@ namespace Imper86\DynamoDBClient\Message;
 
 use Imper86\DynamoDBClient\Model\BackupSummaryList;
 
-final readonly class ListBackupsResponse
+final class ListBackupsResponse
 {
     /**
      * A page without backups answers with an empty `BackupSummaries` list, so it defaults to empty
@@ -15,7 +15,7 @@ final readonly class ListBackupsResponse
      * @param null|string $lastEvaluatedBackupArn where the next page starts; absent on the last page
      */
     public function __construct(
-        public BackupSummaryList $backupSummaries = new BackupSummaryList(),
-        public ?string $lastEvaluatedBackupArn = null,
+        public readonly BackupSummaryList $backupSummaries = new BackupSummaryList(),
+        public readonly ?string $lastEvaluatedBackupArn = null,
     ) {}
 }

@@ -6,10 +6,10 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class TableClassSummary
+final class TableClassSummary
 {
     public function __construct(
-        public ?DateTimeImmutable $lastUpdateDateTime = null,
-        public ?TableClass $tableClass = null,
+        public readonly ?DateTimeImmutable $lastUpdateDateTime = null,
+        public readonly ?TableClass $tableClass = null,
     ) {}
 }

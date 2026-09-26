@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Imper86\DynamoDBClient\Model;
 
-final readonly class ReplicaGlobalSecondaryIndexDescription
+final class ReplicaGlobalSecondaryIndexDescription
 {
     public function __construct(
-        public ?string $indexName = null,
-        public ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
-        public ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
-        public ?GlobalSecondaryIndexWarmThroughputDescription $warmThroughput = null,
+        public readonly ?string $indexName = null,
+        public readonly ?OnDemandThroughputOverride $onDemandThroughputOverride = null,
+        public readonly ?ProvisionedThroughputOverride $provisionedThroughputOverride = null,
+        public readonly ?GlobalSecondaryIndexWarmThroughputDescription $warmThroughput = null,
     ) {}
 }

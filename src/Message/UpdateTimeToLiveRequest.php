@@ -8,7 +8,7 @@ use Imper86\DynamoDBClient\Model\TimeToLiveSpecification;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class UpdateTimeToLiveRequest
+final class UpdateTimeToLiveRequest
 {
     /**
      * {@see self::enable()} and {@see self::disable()} build the specification for you.
@@ -17,8 +17,8 @@ final readonly class UpdateTimeToLiveRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public TimeToLiveSpecification $timeToLiveSpecification,
+        public readonly string $tableName,
+        public readonly TimeToLiveSpecification $timeToLiveSpecification,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

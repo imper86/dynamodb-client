@@ -22,7 +22,7 @@ use Imper86\DynamoDBClient\Model\WarmThroughput;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 use Webmozart\Assert\Assert;
 
-final readonly class CreateTableRequest
+final class CreateTableRequest
 {
     /**
      * Only the table name is required: a table created from `GlobalTableSourceArn` takes its key schema,
@@ -34,25 +34,25 @@ final readonly class CreateTableRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public ?AttributeDefinitionList $attributeDefinitions = null,
-        public ?BillingMode $billingMode = null,
-        public ?bool $deletionProtectionEnabled = null,
-        public ?GlobalSecondaryIndexList $globalSecondaryIndexes = null,
-        public ?GlobalTableSettingsReplicationMode $globalTableSettingsReplicationMode = null,
-        public ?string $globalTableSourceArn = null,
-        public ?KeySchemaElementList $keySchema = null,
-        public ?LocalSecondaryIndexList $localSecondaryIndexes = null,
-        public ?OnDemandThroughput $onDemandThroughput = null,
-        public ?ProvisionedThroughput $provisionedThroughput = null,
-        public ?string $resourcePolicy = null,
+        public readonly string $tableName,
+        public readonly ?AttributeDefinitionList $attributeDefinitions = null,
+        public readonly ?BillingMode $billingMode = null,
+        public readonly ?bool $deletionProtectionEnabled = null,
+        public readonly ?GlobalSecondaryIndexList $globalSecondaryIndexes = null,
+        public readonly ?GlobalTableSettingsReplicationMode $globalTableSettingsReplicationMode = null,
+        public readonly ?string $globalTableSourceArn = null,
+        public readonly ?KeySchemaElementList $keySchema = null,
+        public readonly ?LocalSecondaryIndexList $localSecondaryIndexes = null,
+        public readonly ?OnDemandThroughput $onDemandThroughput = null,
+        public readonly ?ProvisionedThroughput $provisionedThroughput = null,
+        public readonly ?string $resourcePolicy = null,
         #[SerializedName('SSESpecification')]
-        public ?SSESpecification $sseSpecification = null,
-        public ?StreamSpecification $streamSpecification = null,
-        public ?TableClass $tableClass = null,
-        public ?TagList $tags = null,
-        public ?VectorIndexList $vectorIndexes = null,
-        public ?WarmThroughput $warmThroughput = null,
+        public readonly ?SSESpecification $sseSpecification = null,
+        public readonly ?StreamSpecification $streamSpecification = null,
+        public readonly ?TableClass $tableClass = null,
+        public readonly ?TagList $tags = null,
+        public readonly ?VectorIndexList $vectorIndexes = null,
+        public readonly ?WarmThroughput $warmThroughput = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

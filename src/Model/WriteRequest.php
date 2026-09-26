@@ -7,7 +7,7 @@ namespace Imper86\DynamoDBClient\Model;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
-final readonly class WriteRequest
+final class WriteRequest
 {
     /**
      * Exactly one of the two requests must be given; a put and a delete need two separate write requests.
@@ -15,8 +15,8 @@ final readonly class WriteRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public ?DeleteRequest $deleteRequest = null,
-        public ?PutRequest $putRequest = null,
+        public readonly ?DeleteRequest $deleteRequest = null,
+        public readonly ?PutRequest $putRequest = null,
     ) {
         Assert::true(
             (!$this->deleteRequest instanceof DeleteRequest) !== (!$this->putRequest instanceof PutRequest),

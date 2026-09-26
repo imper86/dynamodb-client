@@ -14,7 +14,7 @@ use Imper86\DynamoDBClient\ValueObject\NonEmptyStringList;
 use Imper86\DynamoDBClient\ValueObject\NonEmptyStringMap;
 use Webmozart\Assert\Assert;
 
-final readonly class QueryRequest
+final class QueryRequest
 {
     /**
      * @param non-empty-string $tableName the table name or its ARN
@@ -28,23 +28,23 @@ final readonly class QueryRequest
      * @throws InvalidArgumentException
      */
     public function __construct(
-        public string $tableName,
-        public ?NonEmptyStringList $attributesToGet = null,
-        public ?ConditionalOperator $conditionalOperator = null,
-        public ?bool $consistentRead = null,
-        public ?AttributeValueMap $exclusiveStartKey = null,
-        public ?NonEmptyStringMap $expressionAttributeNames = null,
-        public ?AttributeValueMap $expressionAttributeValues = null,
-        public ?string $filterExpression = null,
-        public ?string $indexName = null,
-        public ?string $keyConditionExpression = null,
-        public ?ConditionMap $keyConditions = null,
-        public ?int $limit = null,
-        public ?string $projectionExpression = null,
-        public ?ConditionMap $queryFilter = null,
-        public ?ReturnConsumedCapacity $returnConsumedCapacity = null,
-        public ?bool $scanIndexForward = null,
-        public ?Select $select = null,
+        public readonly string $tableName,
+        public readonly ?NonEmptyStringList $attributesToGet = null,
+        public readonly ?ConditionalOperator $conditionalOperator = null,
+        public readonly ?bool $consistentRead = null,
+        public readonly ?AttributeValueMap $exclusiveStartKey = null,
+        public readonly ?NonEmptyStringMap $expressionAttributeNames = null,
+        public readonly ?AttributeValueMap $expressionAttributeValues = null,
+        public readonly ?string $filterExpression = null,
+        public readonly ?string $indexName = null,
+        public readonly ?string $keyConditionExpression = null,
+        public readonly ?ConditionMap $keyConditions = null,
+        public readonly ?int $limit = null,
+        public readonly ?string $projectionExpression = null,
+        public readonly ?ConditionMap $queryFilter = null,
+        public readonly ?ReturnConsumedCapacity $returnConsumedCapacity = null,
+        public readonly ?bool $scanIndexForward = null,
+        public readonly ?Select $select = null,
     ) {
         Assert::stringNotEmpty($this->tableName);
         Assert::maxLength($this->tableName, 1024);

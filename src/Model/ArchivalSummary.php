@@ -6,11 +6,11 @@ namespace Imper86\DynamoDBClient\Model;
 
 use DateTimeImmutable;
 
-final readonly class ArchivalSummary
+final class ArchivalSummary
 {
     public function __construct(
-        public ?string $archivalBackupArn = null,
-        public ?DateTimeImmutable $archivalDateTime = null,
-        public ?string $archivalReason = null,
+        public readonly ?string $archivalBackupArn = null,
+        public readonly ?DateTimeImmutable $archivalDateTime = null,
+        public readonly ?string $archivalReason = null,
     ) {}
 }

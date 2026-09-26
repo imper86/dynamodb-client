@@ -9,10 +9,10 @@ use InvalidArgumentException;
 
 use function array_values;
 
-final readonly class InputFormatOptions
+final class InputFormatOptions
 {
     public function __construct(
-        public ?CsvOptions $csv = null,
+        public readonly ?CsvOptions $csv = null,
     ) {}
 
     /**

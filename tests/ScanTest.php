@@ -42,9 +42,9 @@ use function str_repeat;
 #[CoversClass(DynamoDBClient::class)]
 final class ScanTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/scan-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/scan-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/scan-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/scan-response.json';
 
     /**
      * @throws ExceptionInterface

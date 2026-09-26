@@ -41,9 +41,9 @@ use function range;
 #[CoversClass(DynamoDBClient::class)]
 final class BatchGetItemTest extends TestCase
 {
-    private const string REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-get-item-request.json';
+    private const REQUEST_FIXTURE = __DIR__ . '/fixtures/batch-get-item-request.json';
 
-    private const string RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-get-item-response.json';
+    private const RESPONSE_FIXTURE = __DIR__ . '/fixtures/batch-get-item-response.json';
 
     /**
      * @throws ExceptionInterface
