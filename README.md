@@ -39,6 +39,17 @@ composer require symfony/http-client nyholm/psr7
 The client finds them through [`php-http/discovery`](https://github.com/php-http/discovery). It works
 with Symfony Serializer 6.4, 7.4 and 8.x.
 
+### Symfony bundle
+
+If you use Symfony, install
+[`imper86/dynamodb-client-bundle`](https://github.com/imper86/dynamodb-client-bundle) instead. It
+registers the client as an autowirable service that you configure in YAML, and it sends requests
+through your app's PSR-18 client when there is one, so they show up in the profiler.
+
+```bash
+composer require imper86/dynamodb-client-bundle
+```
+
 ## Creating the client
 
 ```php
