@@ -8,6 +8,8 @@
 <p align="center">
   <a href="https://github.com/imper86/dynamodb-client/actions/workflows/ci.yml"><img src="https://github.com/imper86/dynamodb-client/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://codecov.io/gh/imper86/dynamodb-client"><img src="https://codecov.io/gh/imper86/dynamodb-client/graph/badge.svg" alt="Coverage"></a>
+  <a href="https://packagist.org/packages/imper86/dynamodb-client"><img src="https://img.shields.io/packagist/v/imper86/dynamodb-client" alt="Packagist"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/packagist/l/imper86/dynamodb-client" alt="License"></a>
 </p>
 
 An object-oriented PHP client for the [Amazon DynamoDB API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/).
