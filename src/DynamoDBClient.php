@@ -137,6 +137,10 @@ final class DynamoDBClient implements DynamoDBClientInterface
 
     /**
      * @param non-empty-string $region
+     * @param null|non-empty-string $endpoint an absolute http(s) url to send requests to instead of the
+     *                                        regional AWS endpoint, such as `http://localhost:8000` for
+     *                                        DynamoDB Local. Falls back to the AWS_ENDPOINT_URL_DYNAMODB
+     *                                        and AWS_ENDPOINT_URL variables.
      * @throws InvalidArgumentException
      * @throws MissingCredentialsException when no credentials are given and the environment does not provide any
      * @throws NotFoundException
@@ -149,8 +153,9 @@ final class DynamoDBClient implements DynamoDBClientInterface
         ?RequestFactoryInterface $requestFactory = null,
         ?StreamFactoryInterface $streamFactory = null,
         ?SerializerInterface $serializer = null,
+        ?string $endpoint = null,
     ) {
-        $this->httpClient = PluginClientFactory::create($region, $credentials, $httpClient);
+        $this->httpClient = PluginClientFactory::create($region, $credentials, $httpClient, endpoint: $endpoint);
         $this->requestFactory = $requestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
         $this->streamFactory = $streamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
         $this->serializer = $serializer ?? SerializerFactory::create();
