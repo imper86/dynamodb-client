@@ -3,13 +3,24 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         defaultTestSuite="default"
          failOnRisky="true"
          failOnWarning="true">
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
+            <exclude>tests/Integration</exclude>
+        </testsuite>
+        <!-- Runs against DynamoDB Local, see `composer integration`. -->
+        <testsuite name="integration">
+            <directory>tests/Integration</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <!-- An endpoint exported for local development must not redirect the unit tests. -->
+        <env name="AWS_ENDPOINT_URL_DYNAMODB" value="" force="true"/>
+        <env name="AWS_ENDPOINT_URL" value="" force="true"/>
+    </php>
     <source>
         <include>
             <directory>src</directory>

@@ -86,6 +86,32 @@ jobs:
 
       - run: vendor/bin/phpunit
 
+  # The integration suite runs the client against a real DynamoDB Local, custom endpoint included.
+  integration:
+    name: Integration (DynamoDB Local)
+    runs-on: ubuntu-latest
+    services:
+      dynamodb:
+        image: amazon/dynamodb-local
+        ports:
+          - 8000:8000
+    env:
+      DYNAMODB_LOCAL_ENDPOINT: http://localhost:8000
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: composer:v2
+
+      - uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: highest
+
+      - run: composer integration
+
   # Coverage is measured once, on the newest dependencies, and reported to Codecov for the README badge.
   coverage:
     name: Coverage

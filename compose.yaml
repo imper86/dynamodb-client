@@ -1,0 +1,9 @@
+# DynamoDB Local for the integration tests:
+#   docker compose up -d
+#   DYNAMODB_LOCAL_ENDPOINT=http://localhost:8000 composer integration
+# Set DYNAMODB_LOCAL_PORT when 8000 is taken, and adjust the endpoint to match.
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    ports:
+      - '${DYNAMODB_LOCAL_PORT:-8000}:8000'

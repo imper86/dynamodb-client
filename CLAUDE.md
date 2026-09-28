@@ -12,7 +12,12 @@ composer analyse       # cs:check + stan + rector:check + cda + unit — run bef
 composer fix           # cs:fix + rector:fix — run this first, then analyse
 composer unit          # phpunit
 composer stan          # phpstan only
+composer integration   # the tests/Integration suite, against DynamoDB Local
 ```
+
+The integration suite is excluded from the default suite and from `analyse`. It needs a running
+DynamoDB Local (`docker compose up -d`) and `DYNAMODB_LOCAL_ENDPOINT` pointing at it, and skips
+every test without that variable. CI runs it in its own job with a service container.
 
 A single test class or case:
 
@@ -38,9 +43,15 @@ exception from `src/Exception`. An operation method never touches HTTP or JSON i
 the `X-Amz-Target` and the response class.
 
 **Transport** is a `php-http` `PluginClient` assembled by `PluginClientFactory`. Plugin order matters:
-`BaseUriPlugin` (regional endpoint) → `HeaderDefaultsPlugin` (`application/x-amz-json-1.0`,
+`BaseUriPlugin` (the endpoint, see below) → `HeaderDefaultsPlugin` (`application/x-amz-json-1.0`,
 `identity` encoding) → `AuthorizationPlugin` (SigV4 via `Signer\SignatureV4`) → `UserAgentPlugin`. The
 user agent is added *after* signing because it is not part of the signature.
+
+`BaseUriPlugin` resolves the endpoint the way the AWS SDKs do: the `endpoint` argument, then `AWS_ENDPOINT_URL_DYNAMODB`, then
+`AWS_ENDPOINT_URL`, then `https://dynamodb.<region>.amazonaws.com`. `AWS_IGNORE_CONFIGURED_ENDPOINT_URLS=true`
+switches off the two variables. The region still goes into the signature whatever the endpoint is.
+`endpoint` is the *last* parameter of both `DynamoDBClient::__construct()` and
+`PluginClientFactory::create()`, so positional callers keep working.
 
 **Serialization** is Symfony Serializer, configured once in `SerializerFactory`:
 
@@ -263,6 +274,9 @@ Requests get them on the same terms. The requests that have them are the templat
 - **Never `assertEquals` two objects.** Rector turns it into `assertSame`, which compares identity and
   fails for two equal value objects. Compare members instead — individual properties, or `toArray()`
   on a collection.
+- **`phpunit.dist.xml` blanks `AWS_ENDPOINT_URL_DYNAMODB` and `AWS_ENDPOINT_URL`** so an endpoint exported
+  for local development cannot redirect the unit tests, which assert the `amazonaws.com` uri. That is
+  why the integration suite reads its own `DYNAMODB_LOCAL_ENDPOINT` and passes it as `endpoint:`.
 - **Known gap:** `Model\ConsumedCapacity` types `Table` as `?string`, but the API returns a `Capacity`
   object there, and `WriteCapacityUnits` and `VectorIndexes` are missing entirely. A response from
   `ReturnConsumedCapacity::INDEXES` will fail to deserialize for any operation.

@@ -65,6 +65,7 @@
         "rector:fix": "rector process",
         "cda": "composer-dependency-analyser",
         "unit": "phpunit",
+        "integration": "phpunit --testsuite integration",
         "analyse": [
             "@cs:check",
             "@stan",
@@ -84,6 +85,7 @@
         "rector:check": "Runs rector dry run",
         "rector:fix": "Runs rector",
         "cda": "Runs composer-dependency-analyser",
+        "integration": "Runs the integration tests against the DynamoDB Local at DYNAMODB_LOCAL_ENDPOINT",
         "analyse": "Runs cs:check, stan, rector:check and cda",
         "fix": "Runs cs:fix and rector:fix"
     }

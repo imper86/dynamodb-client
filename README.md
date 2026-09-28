@@ -67,7 +67,54 @@ $client = new DynamoDBClient(
 ```
 
 The constructor also accepts your own PSR-18 `httpClient`, PSR-17 `requestFactory` and
-`streamFactory`, and a Symfony `serializer`. Requests go to `https://dynamodb.<region>.amazonaws.com`.
+`streamFactory`, a Symfony `serializer`, and an `endpoint`.
+
+Requests go to `https://dynamodb.<region>.amazonaws.com` unless you set an endpoint. The client picks
+the first of these that is set, the same order the AWS SDKs use:
+
+1. the `endpoint` constructor argument
+2. the `AWS_ENDPOINT_URL_DYNAMODB` environment variable
+3. the `AWS_ENDPOINT_URL` environment variable
+
+Set `AWS_IGNORE_CONFIGURED_ENDPOINT_URLS=true` to make the client ignore both variables. The endpoint
+must be an absolute `http` or `https` url.
+
+### Running against DynamoDB Local
+
+[DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
+runs in Docker:
+
+```bash
+docker run -p 8000:8000 amazon/dynamodb-local
+```
+
+Point the client at it. DynamoDB Local does not check credentials, but requests still have to be
+signed, so pass any key and secret:
+
+```php
+$client = new DynamoDBClient(
+    region: 'us-east-1',
+    credentials: new Credentials('local', 'local'),
+    endpoint: 'http://localhost:8000',
+);
+```
+
+You can also leave your code as it is and switch to DynamoDB Local in the environment, for example
+in `compose.yaml`:
+
+```yaml
+services:
+  app:
+    environment:
+      AWS_ENDPOINT_URL_DYNAMODB: http://dynamodb:8000
+      AWS_ACCESS_KEY_ID: local
+      AWS_SECRET_ACCESS_KEY: local
+  dynamodb:
+    image: amazon/dynamodb-local
+```
+
+DynamoDB Local keeps a separate database for each access key and region, unless you start it with
+`-sharedDb`. Use the same credentials and region everywhere, or you will not see your tables.
 
 Type your dependencies against `DynamoDBClientInterface`, which makes the client easy to mock in tests.
 
@@ -270,8 +317,6 @@ The operations of the legacy Global Tables version 2017.11.29 are not covered: `
 
 ## Known limitations
 
-- The endpoint is always the regional AWS endpoint. A custom endpoint, such as DynamoDB Local, is not
-  supported yet.
 - The client does not retry. Retries on throttling and `UnprocessedItems` / `UnprocessedKeys` are up
   to you.
 - `ReturnConsumedCapacity::INDEXES` is not supported yet: `ConsumedCapacity` cannot read the per-table
@@ -283,6 +328,13 @@ The operations of the legacy Global Tables version 2017.11.29 are not covered: `
 composer fix       # php-cs-fixer + Rector
 composer analyse   # code style, PHPStan (level 10), Rector, dependency analysis, PHPUnit
 composer unit      # PHPUnit only
+```
+
+The integration tests run against DynamoDB Local and are not part of `composer analyse`:
+
+```bash
+docker compose up -d
+DYNAMODB_LOCAL_ENDPOINT=http://localhost:8000 composer integration
 ```
 
 ## License
